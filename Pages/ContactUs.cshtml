@@ -1,0 +1,193 @@
+﻿@* -----------------------------------------------------------------------------
+   File: ContactUs.cshtml
+   Author: RSI Website Rebuild (ASP.NET Core 8 Razor Pages)
+   Description:
+     View for the "Contact RSI" form with full layout/styling:
+       - Page hero, two-column grid (form + contact info/map)
+       - Validated inputs (Name, Email, Phone, Subject, Message)
+       - CSRF token, honeypot anti-spam field, Google reCAPTCHA v2
+       - Uses injected RecaptchaSettings for site key
+     POST is handled by ContactUs.cshtml.cs (OnPostAsync). On success the
+     PageModel currently redirects to ContactThanks.cshtml (PRG).
+   Notes:
+     - If you prefer an inline success alert instead of PRG, we can swap the
+       redirect for `return Page()` on success; for now we preserve PRG.
+   ----------------------------------------------------------------------------- *@
+
+@page "/contact-us"
+@model RSIWebsiteBackend.Pages.ContactUsModel
+@inject Microsoft.Extensions.Options.IOptions<RSIWebsiteBackend.Config.RecaptchaSettings> Recaptcha
+
+@{
+    ViewData["SiteName"] = "RSI";
+    ViewData["Title"] = "Contact RSI Today";
+    ViewData["MetaDescription"] = "Contact RSI for Spare parts, service, and upgrade solutions for X-ray and isotope-based thickness and coating gauges.";
+    ViewData["Canonical"] = "https://www.rsi-xray.com/contact-us";
+}
+
+@section HeadContent {
+    <link rel="stylesheet" href="~/css/contact-us.css" asp-append-version="true" />
+}
+
+<section class="page-hero-section">
+    <div class="container">
+        <h1>Contact RSI</h1>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container contact-grid">
+
+        <div class="contact-form-container">
+            <h2>Send Us a Message</h2>
+            <p>Have a question or need a quote? Fill out the form below and we'll get back to you shortly.</p>
+
+            @* ✅ Success or error feedback (note: with PRG, success shows on /contact-thanks) *@
+            @if (Model.FormSubmitted)
+            {
+                <div class="alert alert-success">
+                    Thank you for contacting RSI. A team member will be reaching out to you shortly.
+                </div>
+            }
+            else if (!string.IsNullOrEmpty(Model.ErrorMessage))
+            {
+                <div class="alert alert-danger">@Model.ErrorMessage</div>
+            }
+
+            <form method="post" novalidate>
+                @Html.AntiForgeryToken()
+
+                @* Show model validation errors *@
+                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+                @* Honeypot anti-spam field — matches PageModel check: Request.Form["website"] *@
+                <input type="text"
+                       name="website"
+                       autocomplete="off"
+                       tabindex="-1"
+                       aria-hidden="true"
+                       style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;" />
+
+                <div class="form-group">
+                    <label asp-for="FormData.Name"></label>
+                    <input asp-for="FormData.Name" class="form-control" required />
+                    <span asp-validation-for="FormData.Name" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="FormData.Email"></label>
+                    <input asp-for="FormData.Email" type="email" class="form-control" required />
+                    <span asp-validation-for="FormData.Email" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="FormData.Phone">Phone Number</label>
+                    <input asp-for="FormData.Phone" type="tel" class="form-control" />
+                    <span asp-validation-for="FormData.Phone" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="FormData.Subject"></label>
+                    <select asp-for="FormData.Subject" class="form-control" required>
+                        <option value="General Inquiry">General Inquiry</option>
+                        <option value="Free Consultation Request">Free Consultation Request</option>
+                        <option value="Uptime Report Request">Uptime Report Request</option>
+                        <option value="Equipment Evaluation">Equipment Evaluation</option>
+                        <option value="Sales Question">Sales Question</option>
+                        <option value="Service Request">Service Request</option>
+                        <option value="Spare Parts & Repairs">Spare Parts & Repairs</option>
+                    </select>
+                    <span asp-validation-for="FormData.Subject" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="FormData.Message"></label>
+                    <textarea asp-for="FormData.Message" rows="6" class="form-control" required></textarea>
+                    <span asp-validation-for="FormData.Message" class="text-danger"></span>
+                </div>
+
+                @* Google reCAPTCHA v2 *@
+                <div class="g-recaptcha" data-sitekey="@Recaptcha.Value.SiteKey" aria-label="Human verification"></div>
+                <noscript>
+                    <p>JavaScript is required to verify you are human. Please enable JavaScript to submit this form.</p>
+                </noscript>
+
+                <button type="submit" class="btn btn-primary">Submit Message</button>
+            </form>
+        </div>
+
+        <div class="contact-info-container">
+            <div class="contact-info-card">
+                <h3>Contact Information</h3>
+                <div class="contact-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <a href="https://www.google.com/maps/search/?api=1&query=4507+Metropolitan+Court+Unit+J,+Frederick,+MD+21704" target="_blank" rel="noopener">
+                        4507 Metropolitan Court<br />Unit J<br />Frederick, Maryland 21704 USA
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <a href="tel:+13018743494">(+1) 301-874-3494</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-fax"></i>
+                    <span>Fax: (+1) 301-874-3499</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <a href="tel:+17174769012">24/7 Emergency Hotline: (+1) 717-476-9012</a>
+                </div>
+            </div>
+
+            <div class="google-map-embed">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3084.9809051672046!2d-77.41855622457136!3d39.35666901947569!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c9d9a25e8a7257%3A0xedad56faf22ea346!2s4507%20Metropolitan%20Ct%20%23%20J%2C%20Frederick%2C%20MD%2021704!5e0!3m2!1sen!2sus!4v1710000000000"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="section section-alt-bg">
+    <div class="container">
+        <h2 style="text-align: center; margin-bottom: 3rem;">Department Contacts</h2>
+        <div class="department-grid">
+            <div class="card">
+                <img src="~/images/contact-us/sales-thumbnail-768x576.jpg" alt="Sales manager in a professional office setting" class="card-image-top">
+                <div class="card-content">
+                    <h3>Sales</h3>
+                    <p><strong>Clyde Hunt</strong>, Global Sales Manager</p>
+                    <p class="card-email">chunt@rsi-xray.com</p>
+                    <a href="mailto:chunt@rsi-xray.com" class="learn-more btn btn-primary">Email Clyde Hunt</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="~/images/contact-us/service-thumbnail-768x576.jpg" alt="Service manager smiling in an office setting" class="card-image-top">
+                <div class="card-content">
+                    <h3>Service</h3>
+                    <p><strong>Chris Gockley</strong>, Test & Field Service Manager</p>
+                    <p class="card-email">cgockley@rsi-xray.com</p>
+                    <a href="mailto:cgockley@rsi-xray.com" class="learn-more btn btn-primary">Email Chris Gockley</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="~/images/contact-us/spares-repairs-thumbnail-scaled.jpg" alt="Manufacturing VP in a clean industrial workshop" class="card-image-top">
+                <div class="card-content">
+                    <h3>Spares and Repairs</h3>
+                    <p><strong>Mike Cook</strong>, VP of Manufacturing</p>
+                    <p class="card-email">mcook@rsi-xray.com</p>
+                    <a href="mailto:mcook@rsi-xray.com" class="learn-more btn btn-primary">Email Mike Cook</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+}

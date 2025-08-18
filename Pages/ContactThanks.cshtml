@@ -1,0 +1,13 @@
+@page "/contact-thanks"
+@model RSIWebsiteBackend.Pages.ContactThanksModel
+@{
+    ViewData["Title"] = "Thank you";
+    ViewData["MetaDescription"] = "Thanks for contacting RSI. We received your message and will be in touch shortly.";
+    ViewData["CanonicalUrl"] = "/contact-thanks";
+}
+<!-- PRG landing page to prevent duplicate submissions on refresh -->
+<section class="container" style="padding:3rem 1rem">
+    <h1>Thanks — we got your message</h1>
+    <p>We’ve received your request and will reach out as soon as possible.</p>
+    <p><a class="btn btn-primary" href="/">Return to Home</a></p>
+</section>

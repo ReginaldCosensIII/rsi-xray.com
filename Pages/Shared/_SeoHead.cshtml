@@ -1,0 +1,63 @@
+﻿@{
+    var title = (string?)ViewData["Title"];
+    var siteName = (string?)(ViewData["SiteName"] ?? "RSI");
+    var description = (string?)ViewData["MetaDescription"];
+    var canonical = (string?)ViewData["Canonical"];
+    var robots = (string?)ViewData["Robots"];
+    var ogTitle = (string?)(ViewData["OgTitle"] ?? title);
+    var ogDescription = (string?)(ViewData["OgDescription"] ?? description);
+    var ogImage = (string?)ViewData["OgImage"];
+    var ogType = (string?)(ViewData["OgType"] ?? "website");
+    var twitterCard = (string?)(ViewData["TwitterCard"] ?? "summary_large_image");
+    var twitterSite = (string?)ViewData["TwitterSite"];
+    var twitterCreator = (string?)ViewData["TwitterCreator"];
+}
+@if (!string.IsNullOrWhiteSpace(title))
+{
+    <title>@title - @siteName</title>
+}
+@if (!string.IsNullOrWhiteSpace(description))
+{
+    <meta name="description" content="@description" />
+}
+@if (!string.IsNullOrWhiteSpace(robots))
+{
+    <meta name="robots" content="@robots" />
+}
+@if (!string.IsNullOrWhiteSpace(canonical))
+{
+    <link rel="canonical" href="@canonical" />
+}
+@if (!string.IsNullOrWhiteSpace(ogTitle))
+{
+    <meta property="og:title" content="@ogTitle" />
+}
+@if (!string.IsNullOrWhiteSpace(ogDescription))
+{
+    <meta property="og:description" content="@ogDescription" />
+}
+@if (!string.IsNullOrWhiteSpace(ogImage))
+{
+    <meta property="og:image" content="@ogImage" />
+}
+@if (!string.IsNullOrWhiteSpace(canonical))
+{
+    <meta property="og:url" content="@canonical" />
+}
+<meta property="og:type" content="@ogType" />
+@if (!string.IsNullOrWhiteSpace(siteName))
+{
+    <meta property="og:site_name" content="@siteName" />
+}
+@if (!string.IsNullOrWhiteSpace(twitterCard))
+{
+    <meta name="twitter:card" content="@twitterCard" />
+}
+@if (!string.IsNullOrWhiteSpace(twitterSite))
+{
+    <meta name="twitter:site" content="@twitterSite" />
+}
+@if (!string.IsNullOrWhiteSpace(twitterCreator))
+{
+    <meta name="twitter:creator" content="@twitterCreator" />
+}

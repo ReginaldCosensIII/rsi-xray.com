@@ -1,0 +1,48 @@
+# Build artifacts
+bin/
+obj/
+**/PubTmp/
+
+# User-specific files
+.vs/
+*.user
+*.suo
+*.csproj.user
+*.pubxml.user
+
+
+# System files
+.DS_Store
+Thumbs.db
+
+# App configuration (never commit secrets)
+appsettings.Development.json
+appsettings.Local.json
+appsettings.*.Secrets.json
+secrets.json
+
+# Rider / JetBrains IDE
+.idea/
+
+# Logs
+*.log
+
+# IIS publish artifacts
+App_Data/
+
+# Sensitive overrides (keep template versions only)
+appsettings.json
+
+# Publish profiles & user files
+**/*.pubxml
+**/*.pubxml.user
+
+# Certificates / keys
+*.pfx
+*.p12
+*.key
+*.snk
+
+# Env files (if used)
+.env
+
