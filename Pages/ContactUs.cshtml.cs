@@ -10,6 +10,9 @@
 //   - On success, PRG to ContactThanks.cshtml. On errors, return Page().
 //   - Exposes RecaptchaSiteKey only if you choose to use it in the view;
 //     current view injects IOptions<RecaptchaSettings> directly.
+//   - Optional hardening added:
+//       * No-cache header via [ResponseCache(NoStore = true)]
+//       * reCAPTCHA hostname check (non-Dev), request timeout
 // -----------------------------------------------------------------------------
 
 using Microsoft.AspNetCore.Mvc;
@@ -26,9 +29,12 @@ using System.Net.Mail;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Collections.Generic;
+using System.Threading;
 
 namespace RSIWebsiteBackend.Pages
 {
+    [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
     [ValidateAntiForgeryToken]
     [EnableRateLimiting("contact-posts")]
     public class ContactUsModel : PageModel
@@ -79,11 +85,11 @@ namespace RSIWebsiteBackend.Pages
                 return Page();
             }
 
-            // Normalize phone (very simple)
+            // Normalize phone (very simple) + re-validate just this field
             FormData.Phone = NormalizePhone(FormData.Phone);
             if (string.IsNullOrWhiteSpace(FormData.Phone))
             {
-                ModelState.AddModelError("FormData.Phone", "Please enter a valid phone number.");
+                ModelState.AddModelError(nameof(FormData.Phone), "Please enter a valid phone number.");
                 ErrorMessage = "Please correct the highlighted fields and try again.";
                 return Page();
             }
@@ -132,13 +138,14 @@ namespace RSIWebsiteBackend.Pages
             }
         }
 
-        // ------- reCAPTCHA v2 verify -------
+        // ------- reCAPTCHA v2 verify (with timeout + hostname check) -------
         private async Task<bool> VerifyRecaptchaV2Async(string token)
         {
             if (string.IsNullOrWhiteSpace(token) || string.IsNullOrWhiteSpace(_recaptcha.SecretKey))
                 return false;
 
             var client = _httpClientFactory.CreateClient();
+            client.Timeout = TimeSpan.FromSeconds(5); // avoid hanging
 
             using var content = new FormUrlEncodedContent(new[]
             {
@@ -147,18 +154,53 @@ namespace RSIWebsiteBackend.Pages
                 new KeyValuePair<string, string>("remoteip", HttpContext.Connection.RemoteIpAddress?.ToString() ?? "")
             });
 
-            var resp = await client.PostAsync("https://www.google.com/recaptcha/api/siteverify", content);
+            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(6));
+            HttpResponseMessage resp;
+            try
+            {
+                resp = await client.PostAsync("https://www.google.com/recaptcha/api/siteverify", content, cts.Token);
+            }
+            catch (OperationCanceledException)
+            {
+                _logger.LogWarning("reCAPTCHA verification timed out.");
+                return false;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, "reCAPTCHA verification failed to send request.");
+                return false;
+            }
+
             if (!resp.IsSuccessStatusCode) return false;
 
-            var json = await resp.Content.ReadAsStringAsync();
+            string json;
+            try
+            {
+                json = await resp.Content.ReadAsStringAsync(cts.Token);
+            }
+            catch (OperationCanceledException)
+            {
+                _logger.LogWarning("reCAPTCHA verification read timed out.");
+                return false;
+            }
 
             var result = JsonSerializer.Deserialize<RecaptchaV2Result>(
                 json,
                 new JsonSerializerOptions { PropertyNameCaseInsensitive = true }
             );
+            if (result is null || !result.success) return false;
 
-            if (result is null) return false;
-            return result.success;
+            // Optional: ensure CAPTCHA was solved for our host (relaxed in Dev)
+            var expectedHost = HttpContext?.Request?.Host.Host;
+            if (!_env.IsDevelopment() &&
+                !string.IsNullOrWhiteSpace(expectedHost) &&
+                !string.Equals(result.hostname, expectedHost, StringComparison.OrdinalIgnoreCase))
+            {
+                _logger.LogWarning("reCAPTCHA hostname mismatch. got={Got} expected={Expected}", result.hostname, expectedHost);
+                return false;
+            }
+
+            return true;
         }
 
         // Simple phone normalization: keep digits and one leading +
