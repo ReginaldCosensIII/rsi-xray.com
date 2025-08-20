@@ -1,101 +1,140 @@
-# RSI Website Backend
+RSI Website Rebuild – Backend (ASP.NET Core 8)
+📌 Project Overview
 
-ASP.NET Core 8 backend project for **Radiometric Services & Instruments (RSI)** website rebuild.  
-This backend provides secure form handling, email delivery, templating, and SEO support for a modern, responsive frontend.
+This repository contains the secure, modern backend implementation for the RSI (Radiometric Services & Instruments, LLC) website rebuild project, replacing a legacy Classic ASP infrastructure. The backend is built using ASP.NET Core 8 Razor Pages and designed to support secure form submissions, branded email notifications, reCAPTCHA validation, and modular page templating.
 
----
+The backend is tightly integrated with a responsive frontend and emphasizes security, SEO, performance, and lead generation.
 
-## 🚀 Features
+🔐 Production readiness: Nearing completion. Pending SMTP finalization, branded emails, and final deployment settings.
 
-- **Razor Pages Templating**  
-  Shared layouts for consistent header, hero, and footer sections.
-
-- **Secure Contact Form**  
-  Google reCAPTCHA v2 validation and SMTP-based email delivery.
-
-- **Email Notifications**  
-  Sends form submissions to RSI staff and confirmation emails to users.
-
-- **SEO Optimization**  
-  Per-page meta data, structured schema markup, and semantic HTML.
-
-- **Extensible Architecture**  
-  Designed to scale with additional pages and integrations.
-
----
-
-## 📂 Project Structure
-
+📁 Project Structure
 RSIWebsiteBackend/
+├── Pages/                 # Razor Pages (.cshtml and .cshtml.cs)
+│   ├── Index.cshtml       # Homepage
+│   └── ContactUs.cshtml   # Contact form page
 │
-├── Config/ # Strongly typed config classes (SMTP, reCAPTCHA)
-├── Pages/ # Razor Pages (e.g., Index.cshtml, ContactUs.cshtml)
-├── Services/ # Email service and helpers
-├── wwwroot/ # Static assets (CSS, JS, images)
-├── appsettings.json # Main configuration file
-├── Program.cs # Application entry point
-└── README.md # Project documentation
+├── Services/
+│   └── EmailService.cs    # IEmailService implementation for sending notifications
+│
+├── Templates/
+│   ├── InternalNotification.html    # HTML email to RSI staff
+│   └── VisitorConfirmation.html     # Confirmation email to user
+│
+├── Config/
+│   ├── SmtpSettings.cs
+│   └── RecaptchaSettings.cs
+│
+├── wwwroot/              # Static assets (CSS, JS, images)
+├── appsettings.json      # Configuration (non-secret)
+├── Program.cs            # Middleware, rate limiting, config binding
+├── SECURITY.md           # Security audit summary & hardening steps
+├── STATUS.md             # Deployment readiness checklist
+├── ARCHITECTURE.md       # High-level design diagram + flow
+└── README.md             # You're here
+⚙️ Core Features
 
----
+✅ Razor Pages templating engine with shared layout (_Layout.cshtml)
 
-## 🛡️ Security Considerations
+✅ Responsive SEO-ready pages (meta title, description, canonical)
 
-- All form submissions are validated with **Google reCAPTCHA v2**.  
-- No SMTP credentials or API keys are stored in the repo.  
-- Only **development settings** are tracked in version control (`appsettings.Development.json`).  
-- Production secrets should be injected via environment variables or server-level configuration.  
+✅ Secure Contact Form:
 
----
+Field validation + CSRF protection
 
-## 🔧 Development Workflow
+Google reCAPTCHA v2 integration
 
-1. Clone the repository:
-   git clone https://github.com/<YourUsername>/RSIWebsiteBackend.git
-   cd RSIWebsiteBackend
-Restore dependencies:
-dotnet restore
-Add your local development secrets to appsettings.Development.json:
-{
-  "RecaptchaSettings": {
-    "SiteKey": "your-dev-site-key",
-    "SecretKey": "your-dev-secret-key"
-  },
-  "SmtpSettings": {
-    "Host": "smtp.devprovider.com",
-    "Port": 587,
-    "Username": "dev@example.com",
-    "Password": "yourpassword"
-  }
-}
+Honeypot anti-bot input
 
-Run the project locally:
+ASP.NET built-in rate limiting
+
+✅ Email Notifications (via SMTP)
+
+Internal notification to RSI team
+
+Confirmation email to user
+
+Branded HTML + plain-text fallback
+
+✅ Environment-based secrets/config:
+
+SMTP credentials via User Secrets (dev) or Env Vars (prod)
+
+Separate settings for dev, staging, and production
+
+🔐 Security Measures Implemented
+Feature	Status
+Rate Limiting	✅ Enabled
+CSRF Protection	✅ Via Razor
+reCAPTCHA v2	✅ Verified
+SMTP Secrets Isolation	✅ Secured
+CSP + HSTS (non-dev)	✅ Configured
+Input Validation	✅ Annotations
+Email Fallback Logic	✅ In place
+
+See SECURITY.md for full audit notes and ongoing tasks.
+
+🚀 Deployment Instructions
+
+⚠️ This is a backend-only project. Frontend HTML/CSS/JS assets are authored separately and merged at publish time.
+
+Development
+
+dotnet user-secrets set "Smtp:Host" "smtp.example.com"
 dotnet run
 
-📦 Deployment
-Development: Hosted locally with .Development.json configs.
+Navigate to: https://localhost:5001
 
-Production:
+Publishing for IIS
 
-Configure SMTP with RSI domain email.
+dotnet publish -c Release -o ./publish
 
-Replace reCAPTCHA keys with RSI credentials.
+Copy ./publish to IIS-bound directory
 
-Publish using dotnet publish and deploy to IIS.
+Ensure app pool user has read/execute permissions
 
-🧩 Future Enhancements
-Branded HTML email templates
+Configure site binding for domain (e.g., test.rsi-xray.com)
 
-Logging with Serilog or NLog
+Production
 
-Centralized error handling middleware
+Store SMTP & Recaptcha keys in Environment Variables
 
-Continuous Integration (CI) pipeline with GitHub Actions
+Setup TLS (HTTPS) with trusted certificate
 
-📄 License
-Proprietary – Internal use only by Radiometric Services & Instruments (RSI).
+Update DNS, SPF/DKIM/DMARC for SMTP domain
 
-👨‍💻 Maintainer
-Developed by Reggie Cosens
-LinkedIn • GitHub
+Add CSP allowlist for Google domains
 
----
+✏️ Branded Email Templates
+
+/Templates/InternalNotification.html – sent to RSI staff
+
+/Templates/VisitorConfirmation.html – sent to visitor
+
+Temporary templates are live; final branding & customization are pending stakeholder feedback.
+
+📄 Documentation
+
+SECURITY.md – hardening overview
+
+STATUS.md – feature checklist
+
+ARCHITECTURE.md – project flow & layering
+
+📍 Project Goals Recap
+
+Migrate legacy site to secure, maintainable ASP.NET Core architecture
+
+Build modular and extensible backend for lead capture, contact, future CTAs
+
+Provide a foundation for future integrations (newsletter, CRM, downloads)
+
+Ensure performance, security, and SEO compliance
+
+👤 Contact & Ownership
+
+Developer: Reggie Cosens
+Hired by: CES Inc. on behalf of RSI
+Client: Radiometric Services & Instruments, LLC
+Project Status: Dev/QA complete – awaiting production SMTP & final content
+
+For project handoff, issues, or staging access, please contact CES project coordinator or RSI technical contact.
