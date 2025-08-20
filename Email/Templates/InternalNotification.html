@@ -1,0 +1,134 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>New Contact Form Submission</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body style="margin:0;padding:0;background:#f8f9fa;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f8f9fa;">
+        <tr>
+            <td align="center" style="padding:24px;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:720px;background:#ffffff;border:1px solid #c7c7cd;border-radius:8px;overflow:hidden;">
+                    <!-- Header -->
+                    <tr>
+                        <td style="background:#333333;padding:16px 24px;">
+                            <table role="presentation" width="100%">
+                                <tr>
+                                    <td align="center" style="background:#333333;padding:20px 24px;">
+                                        <a href="{{HomeUrl}}" target="_blank" style="text-decoration:none;">
+                                            <span style="
+                                                display:inline-block;
+                                                font-family:'Montserrat',Arial,sans-serif;
+                                                font-style:italic;
+                                                font-weight:bold;
+                                                font-size:28px;
+                                                color:#ff0000;
+                                                letter-spacing:1px;
+                                            ">
+                                                RSI
+                                            </span>
+                                        </a>
+                                    </td>
+                                    <td align="right" style="font-family:'Montserrat',Arial,Helvetica,sans-serif;font-size:14px;color:#ffffff;">
+                                        New Contact Form Submission
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Alert bar -->
+                    <tr>
+                        <td style="background:#e9e2e2;color:#333333;font-family:'Roboto',Arial,Helvetica,sans-serif;font-size:12px;padding:8px 24px;">
+                            Internal notification — do not forward externally.
+                        </td>
+                    </tr>
+
+                    <!-- Summary -->
+                    <tr>
+                        <td style="padding:20px 24px 8px 24px;">
+                            <h1 style="margin:0 0 12px 0;font-family:'Montserrat',Arial,Helvetica,sans-serif;font-size:20px;color:#333333;">
+                                Submission Details
+                            </h1>
+                            <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="font-family:'Roboto',Arial,Helvetica,sans-serif;font-size:14px;color:#333333;">
+                                <tr>
+                                    <td style="padding:6px 0;width:160px;color:#3f3f3f;">Subject</td>
+                                    <td style="padding:6px 0;"><strong>{{Subject}}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:6px 0;width:160px;color:#3f3f3f;">Submitted At</td>
+                                    <td style="padding:6px 0;">{{SubmittedAt}}</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Contact info grid -->
+                    <tr>
+                        <td style="padding:8px 24px 0 24px;">
+                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td style="vertical-align:top;padding:12px;background:#f8f9fa;border:1px solid #dadada;border-radius:6px;">
+                                        <h3 style="margin:0 0 8px 0;font-family:'Montserrat',Arial,Helvetica,sans-serif;font-size:16px;color:#333333;">Contact</h3>
+                                        <p style="margin:0 0 6px 0;font-family:'Roboto',Arial,Helvetica,sans-serif;font-size:14px;color:#333333;">
+                                            <strong>Name:</strong> {{Name}}
+                                        </p>
+                                        <p style="margin:0 0 6px 0;font-family:'Roboto',Arial,Helvetica,sans-serif;font-size:14px;color:#333333;">
+                                            <strong>Email:</strong> <a href="mailto:{{Email}}" style="color:#333333;text-decoration:underline;">{{Email}}</a>
+                                        </p>
+                                        <p style="margin:0;font-family:'Roboto',Arial,Helvetica,sans-serif;font-size:14px;color:#333333;">
+                                            <strong>Phone:</strong> {{Phone}}
+                                        </p>
+                                    </td>
+                                    <td width="16"></td>
+                                    <td style="vertical-align:top;padding:12px;background:#fff;border:1px solid #dadada;border-radius:6px;">
+                                        <h3 style="margin:0 0 8px 0;font-family:'Montserrat',Arial,Helvetica,sans-serif;font-size:16px;color:#333333;">Message</h3>
+                                        <div style="font-family:'Roboto',Arial,Helvetica,sans-serif;font-size:14px;color:#333333;white-space:pre-wrap;">
+                                            {{Message}}
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Actions -->
+                    <tr>
+                        <td style="padding:16px 24px 24px 24px;">
+                            <table role="presentation" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td style="border-radius:6px;background:#f1c40f;">
+                                        <a href="mailto:{{Email}}?subject=Re:%20{{Subject}}"
+                                           style="display:inline-block;padding:10px 16px;font-family:'Roboto',Arial,Helvetica,sans-serif;font-size:14px;color:#000000;text-decoration:none;font-weight:700;">
+                                            Reply to Contact
+                                        </a>
+                                    </td>
+                                    <td width="12"></td>
+                                    <td style="border-radius:6px;background:#ff0000;">
+                                        <a href="tel:{{Phone}}"
+                                            style="display:inline-block;padding:10px 16px;font-family:'Roboto',Arial,Helvetica,sans-serif;font-size:14px;color:#ffffff;text-decoration:none;font-weight:700;">
+                                            Call {{Phone}}
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Footer -->
+                    <tr>
+                        <td style="padding:16px 24px;background:#f8f9fa;border-top:1px solid #dadada;">
+                            <p style="margin:0;font-family:'Roboto',Arial,Helvetica,sans-serif;font-size:12px;color:#6c757d;">
+                                © {{Year}} Radiometric Services &amp; Instruments, LLC
+                            </p>
+                        </td>
+                    </tr>
+
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

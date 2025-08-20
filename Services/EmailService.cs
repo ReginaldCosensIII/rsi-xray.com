@@ -4,12 +4,17 @@
 // Description:
 //   Centralized email sender for the Contact form. Uses SmtpSettings from
 //   configuration and composes both (1) internal notification and (2) visitor
-//   confirmation. Safe headers, minimal logging (no PII in logs), and explicit
-//   fallbacks. Instantiates SmtpClient per-send (it is not thread-safe).
+//   confirmation using branded HTML templates + plain-text alternative.
+//   This version constructs proper multipart/alternative by adding both
+//   AlternateViews (text/plain first, then text/html) and does NOT set Body.
+// Security/Hardening: unchanged
 // Notes:
-//   - Expects SmtpSettings to be supplied via User Secrets (Dev) or Env Vars (Prod).
-//   - Works with the existing RSIWebsiteBackend.Pages.ContactUsModel.ContactForm
-//     type to avoid ripples; if you later extract a shared DTO, it's one method signature to change.
+//   Ensure templates are copied to output via .csproj:
+//     <ItemGroup>
+//       <Content Include="Email\Templates\**\*.html">
+//         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+//       </Content>
+//     </ItemGroup>
 // -----------------------------------------------------------------------------
 
 using System.Net;
@@ -46,55 +51,46 @@ namespace RSIWebsiteBackend.Services
             _logger = logger;
         }
 
+        // --------------------- PUBLIC API ---------------------
+
         public async Task SendInternalAsync(ContactForm data, CancellationToken ct = default)
         {
             var subjectPrefix = _env.IsDevelopment() ? "[DEV] " : "";
             var safeSubject = SanitizeSubject(data.Subject);
+            var subject = $"{subjectPrefix}[RSI Contact] {safeSubject}";
 
-            // Plain-text body (internal)
-            var body = new StringBuilder()
-                .AppendLine("A new contact form was submitted on the RSI website.")
-                .AppendLine()
-                .AppendLine($"Name: {data.Name}")
-                .AppendLine($"Email: {data.Email}")
-                .AppendLine($"Phone: {data.Phone}")
-                .AppendLine($"Subject: {data.Subject}")
-                .AppendLine()
-                .AppendLine("Message:")
-                .AppendLine(data.Message)
-                .ToString();
+            // Load + merge branded HTML template
+            var htmlBody = LoadAndMergeHtml("Email/Templates/InternalNotification.html", data);
+
+            // Plain text fallback for deliverability
+            var textBody = BuildPlainTextInternal(data);
 
             using var msg = new MailMessage
             {
                 From = new MailAddress(
-                    string.IsNullOrWhiteSpace(_smtp.FromEmail) ? "no-reply@rsi-dev.com" : _smtp.FromEmail,
+                    string.IsNullOrWhiteSpace(_smtp.FromEmail) ? "no-reply@rsi-xray.com" : _smtp.FromEmail,
                     string.IsNullOrWhiteSpace(_smtp.FromName) ? "RSI Website" : _smtp.FromName
                 ),
-                Subject = $"{subjectPrefix}[RSI Contact] {safeSubject}",
-                Body = body,
-                IsBodyHtml = false
+                Subject = subject,
+                // do NOT set Body / IsBodyHtml, we use AlternateViews instead
+                SubjectEncoding = Encoding.UTF8,
+                HeadersEncoding = Encoding.UTF8,
+                BodyEncoding = Encoding.UTF8
             };
 
-            // Decide internal recipient
-            string? to = null;
-            if (_env.IsDevelopment())
-            {
-                if (!string.IsNullOrWhiteSpace(_smtp.DefaultTo))
-                    to = _smtp.DefaultTo;
-            }
-            else
-            {
-                to = !string.IsNullOrWhiteSpace(_smtp.DefaultTo) ? _smtp.DefaultTo : data.Email;
-            }
-
-            if (string.IsNullOrWhiteSpace(to))
-                to = "test@example.com"; // final fallback
-
+            // Decide internal recipient (dev routes to DefaultTo)
+            var to = ResolveInternalTo(data);
             msg.To.Add(to);
 
             // Replies go to the visitor’s email
             if (!string.IsNullOrWhiteSpace(data.Email))
-                msg.ReplyToList.Add(new MailAddress(data.Email));
+                msg.ReplyToList.Add(new MailAddress(data.Email, data.Name));
+
+            // Proper multipart/alternative: text first, then HTML
+            var altText = AlternateView.CreateAlternateViewFromString(textBody, Encoding.UTF8, "text/plain");
+            var altHtml = AlternateView.CreateAlternateViewFromString(htmlBody, Encoding.UTF8, "text/html");
+            msg.AlternateViews.Add(altText);
+            msg.AlternateViews.Add(altHtml);
 
             await SendAsync(msg, ct);
         }
@@ -108,27 +104,38 @@ namespace RSIWebsiteBackend.Services
             var subjectPrefix = _env.IsDevelopment() ? "[DEV] " : "";
             var subject = $"{subjectPrefix}We’ve received your message — RSI";
 
-            var html = BuildVisitorConfirmationHtml(data);
-            var textBody = BuildVisitorConfirmationText(data);
+            var htmlBody = LoadAndMergeHtml("Email/Templates/VisitorConfirmation.html", data);
+            var textBody = BuildPlainTextVisitor(data);
 
             using var msg = new MailMessage
             {
                 From = new MailAddress(
-                    string.IsNullOrWhiteSpace(_smtp.FromEmail) ? "no-reply@rsi-dev.com" : _smtp.FromEmail,
+                    string.IsNullOrWhiteSpace(_smtp.FromEmail) ? "no-reply@rsi-xray.com" : _smtp.FromEmail,
                     string.IsNullOrWhiteSpace(_smtp.FromName) ? "RSI Website" : _smtp.FromName
                 ),
                 Subject = subject,
-                Body = html,
-                IsBodyHtml = true
+                SubjectEncoding = Encoding.UTF8,
+                HeadersEncoding = Encoding.UTF8,
+                BodyEncoding = Encoding.UTF8
             };
 
             msg.To.Add(new MailAddress(data.Email, data.Name));
-            msg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(textBody, null, "text/plain"));
+
+            // In dev, optionally BCC internal to see confirmations too
+            if (_env.IsDevelopment() && !string.IsNullOrWhiteSpace(_smtp.DefaultTo))
+                msg.Bcc.Add(_smtp.DefaultTo);
+
+            // Proper multipart/alternative: text first, then HTML
+            var altText = AlternateView.CreateAlternateViewFromString(textBody, Encoding.UTF8, "text/plain");
+            var altHtml = AlternateView.CreateAlternateViewFromString(htmlBody, Encoding.UTF8, "text/html");
+            msg.AlternateViews.Add(altText);
+            msg.AlternateViews.Add(altHtml);
 
             await SendAsync(msg, ct);
         }
 
-        // ---- SMTP send (single place) ----
+        // --------------------- SMTP SEND ---------------------
+
         private async Task SendAsync(MailMessage msg, CancellationToken ct)
         {
             using var smtp = new SmtpClient(_smtp.Host, _smtp.Port)
@@ -137,14 +144,52 @@ namespace RSIWebsiteBackend.Services
                 DeliveryMethod = SmtpDeliveryMethod.Network,
                 UseDefaultCredentials = false,
                 Credentials = new NetworkCredential(_smtp.Username, _smtp.Password),
-                Timeout = 1000 * 30 // 30s safety
+                Timeout = 1000 * 30 // 30s
             };
 
             _logger.LogInformation("[SMTP SEND] host={Host}:{Port} ssl={Ssl}", _smtp.Host, _smtp.Port, _smtp.EnableSsl);
             await smtp.SendMailAsync(msg, ct);
         }
 
-        // ---- Helpers ----
+        // --------------------- TEMPLATING ---------------------
+
+        private static string LoadAndMergeHtml(string relativePath, ContactForm data)
+        {
+            var html = LoadFile(relativePath);
+
+            // Merge tokens (HTML-escaped where appropriate)
+            html = html.Replace("{{Name}}", WebUtility.HtmlEncode(data.Name))
+                       .Replace("{{Email}}", WebUtility.HtmlEncode(data.Email))
+                       .Replace("{{Phone}}", WebUtility.HtmlEncode(data.Phone))
+                       .Replace("{{Subject}}", WebUtility.HtmlEncode(data.Subject))
+                       // Preserve user newlines as <br>, but HTML-escape first
+                       .Replace("{{Message}}", ToHtmlWithBreaks(data.Message))
+                       .Replace("{{SiteName}}", "RSI")
+                       .Replace("{{Year}}", DateTime.UtcNow.Year.ToString())
+                       .Replace("{{SubmittedAt}}", DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss"))
+                       .Replace("{{FromEmail}}", "no-reply@rsi-xray.com");
+
+            return html;
+        }
+
+        private static string LoadFile(string relativePath)
+        {
+            var baseDir = AppContext.BaseDirectory;
+            var full = Path.Combine(baseDir, relativePath.Replace('/', Path.DirectorySeparatorChar));
+            if (!File.Exists(full))
+                throw new FileNotFoundException($"Email template not found: {full}");
+            return File.ReadAllText(full, Encoding.UTF8);
+        }
+
+        private static string ToHtmlWithBreaks(string? value)
+        {
+            if (string.IsNullOrWhiteSpace(value)) return "";
+            var safe = WebUtility.HtmlEncode(value);
+            return safe.Replace("\r\n", "\n").Replace("\r", "\n").Replace("\n", "<br>");
+        }
+
+        // --------------------- HELPERS ---------------------
+
         private static string SanitizeSubject(string? input, int maxLen = 120)
         {
             if (string.IsNullOrWhiteSpace(input)) return "Website Contact";
@@ -152,46 +197,46 @@ namespace RSIWebsiteBackend.Services
             return s.Length > maxLen ? s[..maxLen] : s;
         }
 
-        private static string BuildVisitorConfirmationHtml(ContactForm data)
+        private string ResolveInternalTo(ContactForm data)
         {
-            var sb = new StringBuilder();
-            sb.AppendLine("<!doctype html>");
-            sb.AppendLine("<html><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">");
-            sb.AppendLine("<title>Thanks for contacting RSI</title></head><body style=\"font-family:Arial,Helvetica,sans-serif;line-height:1.5;color:#222;\">");
-            sb.AppendLine($"<h2 style=\"margin:0 0 16px 0;\">Hello {System.Net.WebUtility.HtmlEncode(data.Name)},</h2>");
-            sb.AppendLine("<p style=\"margin:0 0 16px 0;\">Thanks for reaching out to RSI. We’ve received your message and someone from our team will be in touch shortly.</p>");
-            sb.AppendLine("<p style=\"margin:0 0 16px 0;\">Here’s a copy of what you sent:</p>");
-            sb.AppendLine("<hr style=\"border:none;border-top:1px solid #ddd;margin:16px 0;\" />");
-            sb.AppendLine("<div>");
-            sb.AppendLine($"<p style=\"margin:0 0 8px 0;\"><strong>Subject:</strong> {System.Net.WebUtility.HtmlEncode(data.Subject)}</p>");
-            sb.AppendLine($"<p style=\"margin:0 0 8px 0;\"><strong>Name:</strong> {System.Net.WebUtility.HtmlEncode(data.Name)}</p>");
-            sb.AppendLine($"<p style=\"margin:0 0 8px 0;\"><strong>Email:</strong> {System.Net.WebUtility.HtmlEncode(data.Email)}</p>");
-            sb.AppendLine($"<p style=\"margin:0 0 8px 0;\"><strong>Phone:</strong> {System.Net.WebUtility.HtmlEncode(data.Phone)}</p>");
-            sb.AppendLine("<p style=\"margin:0 0 8px 0;\"><strong>Message:</strong></p>");
-            sb.AppendLine($"<p style=\"white-space:pre-wrap;margin:0 0 8px 0;\">{System.Net.WebUtility.HtmlEncode(data.Message)}</p>");
-            sb.AppendLine("</div>");
-            sb.AppendLine("<hr style=\"border:none;border-top:1px solid #ddd;margin:16px 0;\" />");
-            sb.AppendLine("<p style=\"margin:0;\">— RSI Team</p>");
-            sb.AppendLine("</body></html>");
+            if (_env.IsDevelopment() && !string.IsNullOrWhiteSpace(_smtp.DefaultTo))
+                return _smtp.DefaultTo;
+
+            // PROD routing: use configured default; as a last resort, fall back to FromEmail
+            return !string.IsNullOrWhiteSpace(_smtp.DefaultTo) ? _smtp.DefaultTo : _smtp.FromEmail;
+        }
+
+        private static string BuildPlainTextInternal(ContactForm data)
+        {
+            var sb = new StringBuilder()
+                .AppendLine("A new contact form was submitted on the RSI website.")
+                .AppendLine()
+                .AppendLine($"Name: {data.Name}")
+                .AppendLine($"Email: {data.Email}")
+                .AppendLine($"Phone: {data.Phone}")
+                .AppendLine($"Subject: {data.Subject}")
+                .AppendLine()
+                .AppendLine("Message:")
+                .AppendLine(data.Message);
             return sb.ToString();
         }
 
-        private static string BuildVisitorConfirmationText(ContactForm data)
+        private static string BuildPlainTextVisitor(ContactForm data)
         {
-            var sb = new StringBuilder();
-            sb.AppendLine($"Hello {data.Name},");
-            sb.AppendLine();
-            sb.AppendLine("Thanks for reaching out to RSI. We’ve received your message and someone from our team will be in touch shortly.");
-            sb.AppendLine();
-            sb.AppendLine("Subject: " + data.Subject);
-            sb.AppendLine("Name: " + data.Name);
-            sb.AppendLine("Email: " + data.Email);
-            sb.AppendLine("Phone: " + data.Phone);
-            sb.AppendLine();
-            sb.AppendLine("Message:");
-            sb.AppendLine(data.Message);
-            sb.AppendLine();
-            sb.AppendLine("— RSI Team");
+            var sb = new StringBuilder()
+                .AppendLine($"Hello {data.Name},")
+                .AppendLine()
+                .AppendLine("Thanks for contacting RSI. We’ve received your message and someone will be in touch shortly.")
+                .AppendLine()
+                .AppendLine($"Subject: {data.Subject}")
+                .AppendLine($"Name: {data.Name}")
+                .AppendLine($"Email: {data.Email}")
+                .AppendLine($"Phone: {data.Phone}")
+                .AppendLine()
+                .AppendLine("Message:")
+                .AppendLine(data.Message)
+                .AppendLine()
+                .AppendLine("— RSI Team");
             return sb.ToString();
         }
     }
