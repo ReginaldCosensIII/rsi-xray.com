@@ -13,4 +13,15 @@
 		</Content>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Remove="wwwroot\images\NewFolder1\**" />
+	  <Content Remove="wwwroot\images\NewFolder1\**" />
+	  <EmbeddedResource Remove="wwwroot\images\NewFolder1\**" />
+	  <None Remove="wwwroot\images\NewFolder1\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="wwwroot\images\faq\" />
+	</ItemGroup>
+
 </Project>

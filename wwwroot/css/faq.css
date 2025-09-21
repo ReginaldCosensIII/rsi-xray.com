@@ -1,0 +1,271 @@
+﻿/*
+ * FAQ PAGE STYLESHEET
+ * -------------------
+ * This file contains styles specific to the FAQ page, including
+ * the system components showcase, accordion, and image lightbox.
+*/
+
+
+/* =================================================================
+   1. System Components & Features Showcase
+   ================================================================= */
+.section-heading {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.grid-item {
+    background-color: var(--color-gray-900);
+    border: 1px solid var(--color-gray-800);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+    .grid-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .grid-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+        cursor: pointer; /* Indicates the image is clickable */
+    }
+
+.grid-item-caption {
+    background-color: #2a2a2a;
+    color: var(--color-accent-yellow);
+    font-weight: 700;
+    padding: 1rem;
+    text-align: center;
+    margin-top: auto;
+}
+
+
+/* =================================================================
+   2. Accordion Styles
+   ================================================================= */
+.accordion {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.accordion-item {
+    border-bottom: 1px solid var(--color-border);
+}
+
+.accordion-header {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    padding: 1.5rem 0;
+    text-align: left;
+    font-size: 1.25rem;
+    font-weight: bold;
+    font-family: var(--font-heading);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* --- Accordion Icon Styles (+ to x animation) --- */
+.accordion-icon {
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    position: relative;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+    .accordion-icon::before,
+    .accordion-icon::after {
+        content: '';
+        position: absolute;
+        background-color: var(--color-accent-yellow);
+        transition: transform 0.3s ease;
+    }
+
+    .accordion-icon::before {
+        width: 100%;
+        height: 2px;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+    }
+
+    .accordion-icon::after {
+        width: 2px;
+        height: 100%;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
+    }
+
+.accordion-header[aria-expanded="true"] .accordion-icon {
+    transform: rotate(45deg);
+}
+
+
+/* --- Accordion Content Panel --- */
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+}
+
+    .accordion-content p {
+        padding: 0 0 1.5rem 0;
+        margin: 0;
+        line-height: 1.7;
+    }
+
+.accordion-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.accordion-category-heading {
+    font-family: var(--font-heading);
+    color: var(--color-accent-red);
+    font-size: 1.75rem;
+    text-align: left;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-border);
+}
+
+    .accordion-category-heading:first-of-type {
+        margin-top: 0;
+    }
+
+
+/* =================================================================
+   3. Image Lightbox (Modal) Styles
+   ================================================================= */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    inset: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 900px;
+    animation: zoom 0.6s;
+    z-index: 2001;
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0)
+    }
+
+    to {
+        transform: scale(1)
+    }
+}
+
+.lightbox.is-open {
+    display: flex;
+}
+
+.lightbox-caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    background: transparent;
+    appearance: none;
+    -webkit-appearance: none;
+    border: 0; /* no border */
+    padding: 0;
+    margin: 0;
+    /* Size & layout */
+    width: 40px;
+    height: 40px;
+    line-height: 40px; /* vertically center the × */
+    text-align: center;
+    border-radius: 999px; /* optional, keeps a round hit area */
+    /* Icon/text */
+    color: #fff; /* white × on dark backdrop */
+    font-size: 28px;
+    font-weight: 700;
+    font-family: inherit; /* use your site font */
+    cursor: pointer;
+    /* Layer it on top of everything */
+    z-index: 1002;
+}
+
+.lightbox-close:hover,
+.lightbox-close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Hover/focus states (accessible) */
+.lightbox-close:hover,
+.lightbox-close:focus-visible {
+    outline: none;
+    background: rgba(255,255,255,0.12); /* subtle hover ring; remove if undesired */
+}
+
+
+/* =================================================================
+   4. Responsive Overrides
+   ================================================================= */
+@media (max-width: 768px) {
+    .image-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-section {
+        min-height: 40vh;
+    }
+}

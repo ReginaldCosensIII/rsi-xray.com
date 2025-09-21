@@ -4,6 +4,10 @@
     //  - set ViewData["Title"], ViewData["MetaDescription"], etc.
     //  - inject extra <head> tags via @section HeadContent
     Layout = null;
+
+    // Helper to mark the current nav item as active.
+    bool IsActive(string page) =>
+        string.Equals(ViewContext.RouteData.Values["page"] as string, page, StringComparison.OrdinalIgnoreCase);
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +15,8 @@
     <!-- Core meta -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="~/images/favicon.jpg">
+    <link rel="apple-touch-icon" href="~/images/favicon.jpg">
 
     <!-- Fonts & icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -62,15 +68,32 @@
 
                 <nav class="main-nav">
                     <ul id="main-nav-list" data-visible="false">
-                        <li><a asp-page="/Index">Home</a></li>
+                        <li>
+                            <a asp-page="/Index"
+                               class="@(IsActive("/Index") ? "is-active" : null)"
+                               aria-current="@(IsActive("/Index") ? "page" : null)">
+                                Home
+                            </a>
+                        </li>
                         <li><a href="#">Products</a></li>
                         <li><a href="#">Solutions</a></li>
                         <li><a href="#">Spare Parts & Repairs</a></li>
                         <li><a href="#">Performance Monitoring</a></li>
-                        <li><a href="#">Testimonials</a></li>
+                        <li>
+                            <a asp-page="/Faq"
+                               class="@(IsActive("/Faq") ? "is-active" : null)"
+                               aria-current="@(IsActive("/Faq") ? "page" : null)">
+                                FAQs
+                            </a>
+                        </li>
                         <li><a href="#">About Us</a></li>
-                        <li><a asp-page="/ContactUs">Contact Us</a></li>
-                        <li class="mobile-only"><a href="#">FAQ</a></li>
+                        <li>
+                            <a asp-page="/ContactUs"
+                               class="@(IsActive("/ContactUs") ? "is-active" : null)"
+                               aria-current="@(IsActive("/ContactUs") ? "page" : null)">
+                                Contact Us
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -105,15 +128,32 @@
                 <div class="footer-links">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a asp-page="/Index">Home</a></li>
+                        <li>
+                            <a asp-page="/Index"
+                               class="@(IsActive("/Index") ? "is-active" : null)"
+                               aria-current="@(IsActive("/Index") ? "page" : null)">
+                                Home
+                            </a>
+                        </li>
                         <li><a href="#">Products</a></li>
                         <li><a href="#">Solutions</a></li>
                         <li><a href="#">Spare Parts</a></li>
                         <li><a href="#">Performance</a></li>
-                        <li><a href="#">Testimonials</a></li>
+                        <li>
+                            <a asp-page="/Faq"
+                               class="@(IsActive("/Faq") ? "is-active" : null)"
+                               aria-current="@(IsActive("/Faq") ? "page" : null)">
+                                FAQs
+                            </a>
+                        </li>
                         <li><a href="#">About Us</a></li>
-                        <li><a asp-page="/ContactUs">Contact Us</a></li>
-                        <li><a href="#">FAQ</a></li>
+                        <li>
+                            <a asp-page="/ContactUs"
+                               class="@(IsActive("/ContactUs") ? "is-active" : null)"
+                               aria-current="@(IsActive("/ContactUs") ? "page" : null)">
+                                Contact Us
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

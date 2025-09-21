@@ -1,13 +1,35 @@
-@page "/contact-thanks"
-@model RSIWebsiteBackend.Pages.ContactThanksModel
+@page
 @{
-    ViewData["Title"] = "Thank you";
-    ViewData["MetaDescription"] = "Thanks for contacting RSI. We received your message and will be in touch shortly.";
-    ViewData["CanonicalUrl"] = "/contact-thanks";
+    Layout = "_Layout";
+    ViewData["Title"] = "Thank You | RSI";
+    ViewData["MetaDescription"] = "Thanks for contacting Radiometric Services & Instruments (RSI). We’ve received your message and will reply within one business day.";
 }
-<!-- PRG landing page to prevent duplicate submissions on refresh -->
-<section class="container" style="padding:3rem 1rem">
-    <h1>Thanks — we got your message</h1>
-    <p>We’ve received your request and will reach out as soon as possible.</p>
-    <p><a class="btn btn-primary" href="/">Return to Home</a></p>
-</section>
+
+@section HeadContent {
+    <link rel="stylesheet" href="~/css/contact-thanks.css" asp-append-version="true" />
+}
+
+<div class="contact-thanks-page">
+    <main class="thank-you-container">
+        <h1>Thank You for Contacting <span class="text-accent-brand">RSI</span></h1>
+        <p>We’ve received your message and a member of our team will follow up with you shortly.</p>
+
+        <div class="next-steps">
+            <h2>What Happens Next?</h2>
+            <ul>
+                <li>Your message has been forwarded to the appropriate department.</li>
+                <li>Expect a response within 1 business day.</li>
+                <li>
+                    If your inquiry is urgent, please call us at
+                    <strong><a href="tel:+13018743494">(+1) 301-874-3494</a></strong>.
+                </li>
+                <li>
+                    If this is an emergency, please call the 24/7 Emergency Hotline
+                    <strong><a href="tel:+17174769012">(+1) 717-476-9012</a></strong>.
+                </li>
+            </ul>
+        </div>
+
+        <a asp-page="/Index" class="btn btn-primary">Return to Homepage</a>
+    </main>
+</div>

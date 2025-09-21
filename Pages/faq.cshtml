@@ -1,0 +1,175 @@
+﻿@page "/Faq"
+@{
+    // Per-page SEO for _SeoHead partial
+    ViewData["SiteName"] = "RSI";
+    ViewData["Title"] = "Frequently Asked Questions";
+    ViewData["MetaDescription"] = "Answers to common questions about RSI thickness and coating gauges, system upgrades, components, and performance.";
+    ViewData["Canonical"] = "https://www.rsi-xray.com/faq/";
+}
+
+@section HeadContent {
+    <!-- Page-specific CSS (global.css + fonts/icons are provided by _Layout) -->
+    <link rel="stylesheet" href="~/css/faq.css" asp-append-version="true" />
+}
+
+<!-- ======= FAQ page content (rendered inside _Layout) ======= -->
+<section class="page-hero-section">
+    <div class="container">
+        <h1>Frequently Asked Questions</h1>
+    </div>
+</section>
+
+<section id="faq-project-showcase" class="section project-showcase">
+    <div class="container">
+        <h2 class="section-heading">System Components &amp; Features</h2>
+
+        <div class="image-grid">
+            <div class="grid-item">
+                <img src="~/images/faq/rsi-typical-system-config-asset.png"
+                     asp-append-version="true"
+                     alt="A diagram showing the typical system configuration of an RSI thickness gauge." />
+                <div class="grid-item-caption">RSI GaugeMaster Plus Typical Configuration</div>
+            </div>
+
+            <div class="grid-item">
+                <img src="~/images/faq/rsi-better-hot-mill-c-frame-diagram.png"
+                     asp-append-version="true"
+                     alt="A diagram highlighting the special features of a heavy-duty C-frame for steel hot mills." />
+                <div class="grid-item-caption">Hot Mill C-Frame Features</div>
+            </div>
+
+            <div class="grid-item">
+                <img src="~/images/faq/rsi-gaugemaster-plus-cabinet-diagram.png"
+                     asp-append-version="true"
+                     alt="A diagram showing the internal components of the Main Electronic Cabinet (MEC)." />
+                <div class="grid-item-caption">Inside the Main Electronic Cabinet</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section faq-section section-alt-bg">
+    <div class="container">
+        <div class="accordion">
+            <h3 class="accordion-category-heading">Installation &amp; Refurbished Projects</h3>
+
+            <div class="accordion-item">
+                <button class="accordion-header" aria-expanded="false">
+                    What is the process for a system upgrade?
+                    <span class="accordion-icon"></span>
+                </button>
+                <div class="accordion-content">
+                    <p>
+                        Our upgrade packages offer a cost-effective solution to gauge obsolescence by reusing existing measuring frames,
+                        sensors, and cabling. This minimizes installation costs and downtime, with most upgrades completed in just a few days.
+                        The process starts with a full evaluation of your current system to see what can be retrofitted with the latest technology.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header" aria-expanded="false">
+                    Are your components compatible with older systems?
+                    <span class="accordion-icon"></span>
+                </button>
+                <div class="accordion-content">
+                    <p>
+                        Yes. Our x-ray sources and detectors are mechanically and electrically backwards compatible with those used in many older gauges,
+                        including systems from DMC and Radiometrie. This allows you to benefit from improved performance while minimizing the need for
+                        additional costly spare parts.
+                    </p>
+                </div>
+            </div>
+
+            <h3 class="accordion-category-heading">General &amp; Technical Questions</h3>
+
+            <div class="accordion-item">
+                <button class="accordion-header" aria-expanded="false">
+                    What materials and thicknesses can your gauges measure?
+                    <span class="accordion-icon"></span>
+                </button>
+                <div class="accordion-content">
+                    <p>
+                        Our GaugeMaster Plus systems are equipped with various DC X-ray sources suitable for a wide range of materials and thicknesses.
+                        The table below outlines the maximum thickness our gauges can measure for both steel and pure aluminum, based on the X-ray source model:
+                    </p>
+                    <img src="~/images/faq/rsi-mastergauge-applications-table.png"
+                         asp-append-version="true"
+                         alt="A table showing the maximum measurable thickness for steel and aluminum based on different X-ray source kilovolt (kV) ratings."
+                         class="accordion-image" />
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header" aria-expanded="false">
+                    What is X-ray gauging?
+                    <span class="accordion-icon"></span>
+                </button>
+                <div class="accordion-content">
+                    <p>
+                        X-ray gauging is a non-contact method to measure the thickness of materials like steel and aluminum. It uses a C-frame with an x-ray source
+                        in the lower arm and a detector in the upper arm. By measuring how the material absorbs the x-rays, we can determine its thickness with high
+                        accuracy and speed.
+                    </p>
+                    <img src="~/images/faq/rsi-c-frame-illustration.jpg"
+                         asp-append-version="true"
+                         alt="Diagram of a C-Frame Gauge"
+                         class="accordion-image" />
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header" aria-expanded="false">
+                    How do you ensure measurement accuracy over time?
+                    <span class="accordion-icon"></span>
+                </button>
+                <div class="accordion-content">
+                    <p>
+                        While other manufacturers regulate beam intensity, RSI also tightly regulates beam energy. This ensures excellent long-term stability and maintains
+                        accuracy without needing a large number of internal samples. Our proprietary X-ray Spectrum Correction (XSC) technique compensates for the "aging"
+                        effect of components, guaranteeing that alloy correction factors do not change over the life of the gauge.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header" aria-expanded="false">
+                    Why should I choose RSI over other vendors?
+                    <span class="accordion-icon"></span>
+                </button>
+                <div class="accordion-content">
+                    <p>
+                        RSI is the industry leader in DMC and Radiometrie support with over 200 years of combined gauging experience. Our products are Made in the USA,
+                        and we provide fast, responsive on-site service from our multiple US-based Service Centers, backed by a 24/7 emergency hotline.
+                        At RSI, the customer is #1.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section cta-section">
+    <div class="container">
+        <h2>Still Have Questions?</h2>
+        <p>
+            If you couldn't find the answer you were looking for, or if you have a specific inquiry about a project or quote,
+            please don't hesitate to reach out.
+        </p>
+        <a asp-page="/ContactUs" class="btn btn-primary">Contact Our Experts</a>
+        @* If you plan to preload a subject like other pages:
+           <a asp-page="/ContactUs" asp-route-subject="FAQ Inquiry" class="btn btn-primary">Contact Our Experts</a> *@
+    </div>
+</section>
+
+@* Lightweight image lightbox container used by faq.js *@
+<div id="image-lightbox" class="lightbox" aria-hidden="true">
+    <button class="lightbox-close" aria-label="Close">&times;</button>
+    <img class="lightbox-content" id="lightbox-img" alt="" />
+    <div id="lightbox-caption" class="lightbox-caption" role="note"></div>
+</div>
+
+@section Scripts {
+    <!-- Page-specific JS -->
+    <script src="~/js/faq.js" defer asp-append-version="true"></script>
+}
