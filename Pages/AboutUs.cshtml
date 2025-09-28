@@ -1,0 +1,163 @@
+﻿@page "/about-us"
+@{
+    // Per-page SEO (consumed by _SeoHead partial via ViewData)
+    ViewData["SiteName"] = "RSI";
+    ViewData["Title"] = "About Us";
+    ViewData["MetaDescription"] = "Founded in 2003, RSI provides thickness & coating gauges, upgrade solutions, spare parts, service support, and in-house repairs—with a global service network and 24/7 emergency support.";
+    ViewData["Canonical"] = "https://www.rsi-xray.com/about-us";
+}
+
+@section HeadContent {
+    <!-- Page-specific CSS -->
+    <link rel="stylesheet" href="~/css/about-us.css" asp-append-version="true" />
+}
+
+<!-- ===== Body content only (header/footer come from _Layout) ===== -->
+
+<section class="page-hero-section">
+    <div class="container">
+        <h1>About Us</h1>
+    </div>
+</section>
+
+<section class="section dark-bg-section">
+    <div class="container about-us-grid">
+        <div class="about-us-image">
+            <img src="~/images/about-us/rsi-office-front.jpg"
+                 asp-append-version="true"
+                 alt="RSI Team or Facility" />
+        </div>
+        <div class="about-us-content">
+            <h2>Our Mission &amp; History</h2>
+            <p>Founded in 2003, RSI is a full service supplier of thickness and coating gauges, upgrade solutions, spare parts, service support and in-house repairs. We are a business partner backed by a solid guarantee with prompt, dependable service and a wealth of experience in the metals industry.</p>
+            <p>RSI is committed to creating and maintaining strong relationships with you, our customer, built on a foundation of excellence and trust. From the products we manufacture to our dedicated customer service and support, we know what’s important to you. Our goal is to be the primary source for all your gauging needs.</p>
+        </div>
+    </div>
+</section>
+
+<section class="stats-banner">
+    <div class="container stats-grid">
+        <div class="stat-item">
+            <span class="stat-number">200+</span>
+            <span class="stat-label">Years of Combined Experience</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">500+</span>
+            <span class="stat-label">System Upgrades Completed</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">25+</span>
+            <span class="stat-label">Years of Industry Leadership</span>
+        </div>
+    </div>
+</section>
+
+<section class="section section-alt-bg">
+    <div class="container about-us-grid-alt">
+        <div class="about-us-content">
+            <h2>The DMC Legacy</h2>
+            <p>RSI carries forward a rich heritage from the pioneers of the gauging industry. Our lineage traces back to DMC (Data Measurement Corporation), a key innovator in thickness and coating measurement. When DMC was acquired, its key personnel brought their expertise to RSI, continuing the mission of providing robust, reliable gauging solutions.</p>
+            <p>Today, RSI is the undisputed industry leader in support and system upgrades for legacy DMC and Radiometrie systems. We are committed to ensuring that these powerful, long-lasting systems continue to perform for our clients, preserving their investment and maximizing their operational efficiency.</p>
+        </div>
+        <div class="timeline-diagram-container">
+            <img src="~/images/about-us/rsi-legacy-timeline-asset.png"
+                 asp-append-version="true"
+                 alt="DMC RSI Company Timeline Diagram"
+                 class="enlarge-on-click"
+                 data-caption="The evolution of RSI from industry pioneers like DMC and Radiometrie." />
+        </div>
+    </div>
+</section>
+
+<section class="stats-banner">
+    <div class="container stats-grid">
+        <div class="stat-item">
+            <span class="stat-number">10+</span>
+            <span class="stat-label">Legacy Systems Supported</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">24/7</span>
+            <span class="stat-label">Emergency Support</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Commitment to Service</span>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container about-us-grid">
+        <div class="about-us-image">
+            <img src="~/images/homepage/performance-monitoring-card-768x576.jpg"
+                 asp-append-version="true"
+                 alt="Image representing quality and excellence" />
+        </div>
+        <div class="about-us-content">
+            <h2>Our Promise of Excellence</h2>
+            <p>At RSI, our mission is built on three pillars: Quality, Reliability, and Service. We believe that reliability is the key to customer satisfaction, and every product we manufacture is built with this in mind. Our systems are designed using the highest quality components and workmanship, arriving fully tested for a fast, efficient installation and startup.</p>
+            <p>We stand behind our products with a commitment to service and support that is second to none. When problems occur, we respond quickly and courteously, ensuring that your operations continue to run smoothly. This dedication to excellence is our promise to you.</p>
+            <p class="slogan-text">At <span>RSI</span>, the Customer is #1</p>
+        </div>
+    </div>
+</section>
+
+<section class="stats-banner">
+    <div class="container stats-grid">
+        <div class="stat-item">
+            <span class="stat-number">99%</span>
+            <span class="stat-label">Customer Satisfaction</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">24/7</span>
+            <span class="stat-label">Emergency Support</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Guaranteed Quality</span>
+        </div>
+    </div>
+</section>
+
+<section class="section section-alt-bg">
+    <div class="container about-us-grid-alt">
+        <div class="about-us-content">
+            <h2>Global Reach &amp; Dedicated Support</h2>
+            <p>To maintain integrity and consistent high-performance, measurement systems require regular inspections and maintenance by qualified Service and Support Engineers. To support these efforts, RSI has Service Centers located in Maryland, West Virginia and Ohio, as well as a worldwide network of agents with local offices in China, Taiwan, the United Kingdom, and Argentina.</p>
+            <p>Our global presence ensures that we can provide fast, responsive, on-site service by experienced engineers who know your equipment inside and out. For emergencies, we offer a 24-hour telephone hotline, providing you with the peace of mind that comes from knowing that expert help is always just a phone call away.</p>
+        </div>
+        <div class="about-us-image-container">
+            <img src="~/images/about-us/rsi-beijing-headquarters.jpg"
+                 asp-append-version="true"
+                 alt="Image representing global support network"
+                 class="main-image" />
+            <img src="~/images/about-us/rsi-beijing-plaque.png"
+                 asp-append-version="true"
+                 alt="RSI Beijing Office Plaque"
+                 class="overlay-plaque" />
+        </div>
+    </div>
+</section>
+
+<section class="section cta-section">
+    <div class="container">
+        <h2>Let's Talk</h2>
+        <p>Ready to improve your operations? Contact our experts today to learn how RSI can help. For a full list of our service and sales contacts, please visit our Contact Us page.</p>
+        <a asp-page="/ContactUs" class="btn btn-primary">Get in Touch</a>
+    </div>
+</section>
+
+@* Lightweight image lightbox container used by faq.js *@
+<div id="image-lightbox" class="modal-overlay">
+    <div class="modal-content">
+        <span class="lightbox-close">&times;</span>
+        <figure>
+            <img id="lightbox-img" src="" alt="Enlarged view">
+            <figcaption id="lightbox-caption"></figcaption>
+        </figure>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/modal.js" defer asp-append-version="true"></script>
+}
