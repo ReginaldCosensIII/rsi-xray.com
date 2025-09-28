@@ -1,4 +1,4 @@
-﻿@page "/Faq"
+﻿@page "/faq"
 @{
     // Per-page SEO for _SeoHead partial
     ViewData["SiteName"] = "RSI";
@@ -27,21 +27,21 @@
             <div class="grid-item">
                 <img src="~/images/faq/rsi-typical-system-config-asset.png"
                      asp-append-version="true"
-                     alt="A diagram showing the typical system configuration of an RSI thickness gauge." />
+                     alt="A diagram showing the typical system configuration of an RSI thickness gauge." class="enlarge-on-click" />
                 <div class="grid-item-caption">RSI GaugeMaster Plus Typical Configuration</div>
             </div>
 
             <div class="grid-item">
                 <img src="~/images/faq/rsi-better-hot-mill-c-frame-diagram.png"
                      asp-append-version="true"
-                     alt="A diagram highlighting the special features of a heavy-duty C-frame for steel hot mills." />
+                     alt="A diagram highlighting the special features of a heavy-duty C-frame for steel hot mills." class="enlarge-on-click" />
                 <div class="grid-item-caption">Hot Mill C-Frame Features</div>
             </div>
 
             <div class="grid-item">
                 <img src="~/images/faq/rsi-gaugemaster-plus-cabinet-diagram.png"
                      asp-append-version="true"
-                     alt="A diagram showing the internal components of the Main Electronic Cabinet (MEC)." />
+                     alt="A diagram showing the internal components of the Main Electronic Cabinet (MEC)." class="enlarge-on-click" />
                 <div class="grid-item-caption">Inside the Main Electronic Cabinet</div>
             </div>
         </div>
@@ -163,13 +163,19 @@
 </section>
 
 @* Lightweight image lightbox container used by faq.js *@
-<div id="image-lightbox" class="lightbox" aria-hidden="true">
-    <button class="lightbox-close" aria-label="Close">&times;</button>
-    <img class="lightbox-content" id="lightbox-img" alt="" />
-    <div id="lightbox-caption" class="lightbox-caption" role="note"></div>
-</div>
+    <div id="image-lightbox" class="modal-overlay">
+        <div class="modal-content">
+            <span class="lightbox-close">&times;</span>
+            <figure>
+                <img id="lightbox-img" src="" alt="Enlarged view">
+                <figcaption id="lightbox-caption"></figcaption>
+            </figure>
+        </div>
+    </div>
 
 @section Scripts {
     <!-- Page-specific JS -->
     <script src="~/js/faq.js" defer asp-append-version="true"></script>
+    <script src="~/js/modal.js" defer asp-append-version="true"></script>
+
 }

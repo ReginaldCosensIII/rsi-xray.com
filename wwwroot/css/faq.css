@@ -41,7 +41,6 @@
         width: 100%;
         height: auto;
         display: block;
-        cursor: pointer; /* Indicates the image is clickable */
     }
 
 .grid-item-caption {
@@ -157,105 +156,6 @@
     .accordion-category-heading:first-of-type {
         margin-top: 0;
     }
-
-
-/* =================================================================
-   3. Image Lightbox (Modal) Styles
-   ================================================================= */
-.lightbox {
-    display: none;
-    position: fixed;
-    z-index: 2000;
-    padding-top: 60px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.9);
-    inset: 0;
-    align-items: center;
-    justify-content: center;
-}
-
-.lightbox-content {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 900px;
-    animation: zoom 0.6s;
-    z-index: 2001;
-}
-
-@keyframes zoom {
-    from {
-        transform: scale(0)
-    }
-
-    to {
-        transform: scale(1)
-    }
-}
-
-.lightbox.is-open {
-    display: flex;
-}
-
-.lightbox-caption {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-    text-align: center;
-    color: #ccc;
-    padding: 10px 0;
-    height: 150px;
-}
-
-.lightbox-close {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
-    transition: 0.3s;
-    background: transparent;
-    appearance: none;
-    -webkit-appearance: none;
-    border: 0; /* no border */
-    padding: 0;
-    margin: 0;
-    /* Size & layout */
-    width: 40px;
-    height: 40px;
-    line-height: 40px; /* vertically center the × */
-    text-align: center;
-    border-radius: 999px; /* optional, keeps a round hit area */
-    /* Icon/text */
-    color: #fff; /* white × on dark backdrop */
-    font-size: 28px;
-    font-weight: 700;
-    font-family: inherit; /* use your site font */
-    cursor: pointer;
-    /* Layer it on top of everything */
-    z-index: 1002;
-}
-
-.lightbox-close:hover,
-.lightbox-close:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* Hover/focus states (accessible) */
-.lightbox-close:hover,
-.lightbox-close:focus-visible {
-    outline: none;
-    background: rgba(255,255,255,0.12); /* subtle hover ring; remove if undesired */
-}
-
 
 /* =================================================================
    4. Responsive Overrides

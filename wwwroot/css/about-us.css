@@ -1,0 +1,170 @@
+﻿/* --- Page-Specific Section Layouts --- */
+.dark-bg-section {
+    background-image: linear-gradient(rgba(39, 39, 39, 0.97), rgba(134, 134, 134, 0.97)), url('/images/textures/gravel.png');
+    background-size: auto;
+    background-position: center;
+}
+
+    .dark-bg-section h2 {
+        color: var(--color-accent-yellow);
+    }
+
+    .dark-bg-section p {
+        color: var(--color-white);
+    }
+
+.about-us-grid,
+.about-us-grid-alt {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+}
+
+.about-us-grid {
+    grid-template-columns: 1fr 1fr;
+}
+
+.about-us-grid-alt {
+    grid-template-columns: 1fr 1fr;
+}
+
+/* --- Stats Banner Section --- */
+.stats-banner {
+    background-color: var(--color-gray-800);
+    padding: 2rem 0;
+    /* UPDATED: Added subtle inner shadows for depth */
+    box-shadow: inset 0 60px 25px -25px rgba(0, 0, 0, 0.3), inset 0 -60px 25px -25px rgba(0, 0, 0, 0.3);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    text-align: center;
+    color: var(--color-white);
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-number {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--color-accent-yellow);
+    /* UPDATED: Added transition for hover effect */
+    transition: transform 0.2s ease-out;
+}
+
+    /* UPDATED: Added hover effect for stat numbers */
+    .stat-number:hover {
+        transform: scale(1.1);
+    }
+
+.stat-label {
+    font-size: 1rem;
+    color: var(--color-gray-200);
+}
+
+/* --- Content & Image Styling --- */
+.about-us-image img,
+.about-us-image-container .main-image {
+    width: 100%;
+    height: auto;
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.about-us-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.about-us-content p {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+/* --- Slogan Text Styling --- */
+.about-us-content .slogan-text {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-black);
+    transition: transform 0.2s ease-out;
+}
+
+.slogan-text:hover {
+    transform: scale(1.03);
+}
+
+.slogan-text span {
+    color: var(--color-accent-red);
+    font-style: italic;
+    font-size: 2.2rem;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+/* --- Timeline Diagram --- */
+.timeline-diagram-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .timeline-diagram-container img {
+        width: 100%;
+        height: auto;
+        max-height: 450px;
+        object-fit: contain;
+        border-radius: 10px;
+    }
+
+/* --- Global Reach Image Overlay --- */
+.about-us-image-container {
+    position: relative;
+}
+
+.overlay-plaque {
+    position: absolute;
+    width: 40%;
+    height: auto;
+    bottom: -20px;
+    left: -15px;
+    border-radius: 8px;
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.3));
+    z-index: 2;
+    transition: transform 0.2s ease-out;
+}
+
+    .overlay-plaque:hover {
+        transform: scale(1.1);
+    }
+
+/* --- Responsive Overrides --- */
+@media (max-width: 768px) {
+
+    .stats-grid,
+    .about-us-grid,
+    .about-us-grid-alt {
+        grid-template-columns: 1fr;
+        min-height: unset;
+        max-height: unset;
+    }
+
+    .stats-grid {
+        gap: 2rem;
+    }
+
+    .about-us-grid-alt .timeline-diagram-container,
+    .about-us-grid-alt .about-us-image-container {
+        order: -1;
+    }
+}

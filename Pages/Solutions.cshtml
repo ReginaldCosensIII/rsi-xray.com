@@ -1,0 +1,269 @@
+﻿@page "/solutions"
+@model SolutionsModel
+@{
+    // === Per-page SEO for _SeoHead ===
+    ViewData["SiteName"] = "RSI";
+    ViewData["Title"] = "Custom Gauge Solutions & Legacy Upgrades | RSI";
+    ViewData["MetaDescription"] = "RSI provides custom X-ray gauging solutions, system integration, and expert support for legacy DMC equipment. Extend the life of your machinery.";
+    ViewData["Canonical"] = "https://www.rsi-xray.com/solutions";
+    ViewData["OgTitle"] = "Custom Gauge Solutions & Legacy Upgrades | RSI";
+    ViewData["OgDescription"] = "RSI provides custom X-ray gauging solutions, system integration, and expert support for legacy DMC equipment. Extend the life of your machinery.";
+    ViewData["OgImage"] = "https://www.rsi-xray.com/images/solutions/rsi-lab-gauge-social-card.jpg";
+}
+
+@section HeadContent {
+    <!-- Page CSS (global.css is in _Layout) -->
+    <link rel="stylesheet" href="~/css/products-shared.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/solutions.css" asp-append-version="true" />
+
+    <!-- JSON-LD: Organization w/ services -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Radiometric Services & Instruments, LLC",
+      "url": "https://www.rsi-xray.com/solutions",
+      "logo": "https://www.rsi-xray.com/images/cropped-logo.png",
+      "description": "RSI specializes in high-quality thickness and coating weight gauges, legacy system upgrades, and custom-engineered solutions for the metals industry.",
+      "provider": [
+        {
+          "@type": "Service",
+          "serviceType": "Legacy System Upgrades",
+          "description": "Upgrade packages for obsolete gauging electronics from DMC, Radiometrie, Loral, Weston, and more, reusing existing frames and sensors to minimize downtime.",
+          "provider": { "@type": "Organization", "name": "Radiometric Services & Instruments, LLC" }
+        },
+        {
+          "@type": "Service",
+          "serviceType": "Custom Instrument Engineering",
+          "description": "Design and manufacturing of high-quality, custom instruments for Steel & Aluminum Thickness Gauging and coating weight analysis.",
+          "provider": { "@type": "Organization", "name": "Radiometric Services & Instruments, LLC" }
+        },
+        {
+          "@type": "Service",
+          "serviceType": "Technology Replacement",
+          "description": "Safer, more accurate X-ray Gauging replacements for older radioisotope systems that use Americium-241.",
+          "provider": { "@type": "Organization", "name": "Radiometric Services & Instruments, LLC" }
+        }
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD: Breadcrumbs -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.rsi-xray.com/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Solutions",
+        "item": "https://www.rsi-xray.com/solutions"
+      }]
+    }
+    </script>
+}
+
+<!-- ====== Body content (Layout provides header/footer) ====== -->
+
+<section class="page-hero-section">
+  <div class="container">
+    <h1>Custom Gauging Solutions & Legacy System Support</h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container" style="text-align: center;">
+    <h2 class="section-heading">Solving Your Toughest Gauging Challenges</h2>
+    <p class="section-intro-text" style="max-width: 800px; margin: 0 auto;">
+      For decades, the metals industry has relied on precision gauging for quality control. But what happens when technology ages, components become obsolete, or you require a measurement solution that doesn't exist? That's where RSI steps in. RSI is a full-service provider with over <strong>200 years of combined experience</strong>.
+    </p>
+
+    <div class="solutions-features-grid">
+      <div class="feature-card">
+        <div class="feature-card-icon-wrapper">
+          <i class="fa-solid fa-screwdriver-wrench"></i>
+        </div>
+        <div class="feature-card-content">
+          <h3>Extend Equipment Life</h3>
+          <p>We engineer custom solutions to extend the life of your existing equipment, upgrading it with modern technology.</p>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-card-icon-wrapper">
+          <i class="fa-solid fa-sitemap"></i>
+        </div>
+        <div class="feature-card-content">
+          <h3>Integrate Complex Systems</h3>
+          <p>Our experts seamlessly integrate new and existing systems, including solutions for <strong>Cutting Gauges</strong>, into your plant's infrastructure.</p>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-card-icon-wrapper">
+          <i class="fa-solid fa-compass-drafting"></i>
+        </div>
+        <div class="feature-card-content">
+          <h3>Build New Instruments</h3>
+          <p>We build new instruments from the ground up, saving you significant capital while minimizing downtime.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt-bg">
+  <div class="container feature-grid">
+    <div class="feature-image">
+      <img src="~/images/solutions/rsi-embeded-mb-cpu.png"
+           asp-append-version="true"
+           alt="RSI Gauge Processor board, a key component in legacy system upgrades.">
+    </div>
+    <div class="feature-content">
+      <h2>Upgrade & Modernize Legacy Systems</h2>
+      <p>
+        The evolution of technology has rendered many gauge computers obsolete, while the frames and sensors remain viable. An RSI Upgrade Package makes your aging gauge perform better than new for a fraction of the cost. We reuse existing radiation sources and measuring frames, and can often upgrade detector units, reducing spare parts costs. Most upgrades require only a new Main Electronic Cabinet (MEC) and can be completed in just a few days, minimizing downtime. We offer flexible upgrade solutions for many legacy systems, including
+        <strong><a href="/spare-parts.html#dmc">DMC Equipment Support</a></strong>
+        and gauges from Radiometrie, Loral, Weston, Accuray, Thermo Fisher, and more.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container feature-grid">
+    <div class="feature-content">
+      <h2>Safer, More Accurate Technology Replacement</h2>
+      <p>
+        Many facilities still use older radioisotope systems that rely on sources like <strong>Americium-241</strong>, which are becoming less desirable due to significant safety and environmental concerns. Our expertise in <strong>X-ray Gauging</strong> allows us to not only provide a modern cost-effective, more accurate replacement but also a replacement that is both safer for your team and the environment. Our
+        <strong><a href="/products.html#model-50">Model 50 X-ray Gauge</a></strong>
+        delivers superior performance with faster response and larger air gaps, completely eliminating the risks associated with radioactive materials.
+      </p>
+    </div>
+    <div class="feature-image">
+      <video class="lazy-video" autoplay muted playsinline
+             poster="~/images/solutions/environmental-impact-img.jpg" asp-append-version="true"
+             aria-describedby="video-description">
+        <source data-src="~/videos/solutions/environmental-impact-video.webm" type="video/webm">
+        <source data-src="~/videos/solutions/environmental-impact-video.mp4" type="video/mp4">
+      </video>
+      <span id="video-description" class="visually-hidden">
+        Environmental impact gauge in the high-risk zone, symbolizing the danger of Americium-241 systems.
+      </span>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt-bg">
+  <div class="container feature-grid">
+    <div class="feature-image">
+      <img src="~/images/solutions/rsi-benchtop-coating-gauge-no-bg.png"
+           asp-append-version="true"
+           alt="RSI's custom-built GaugeMaster Lab Coating Gauge for Wheeling-Nippon Steel.">
+    </div>
+    <div class="feature-content">
+      <h2>Custom-Engineered Gauging Instruments</h2>
+      <p>
+        When a standard product won't solve your challenge, our engineering team will. We specialize in designing and manufacturing high-quality, custom instruments for Steel & Aluminum Thickness Gauging and coating weight analysis. We work with you to understand your unique application and build a solution tailored to your exact quality control needs.
+      </p>
+
+      <div class="case-study-block">
+        <h3>Featured Build: A Custom GaugeMaster Lab Coating Gauge Solution</h3>
+        <p>
+          For Wheeling-Nippon Steel, we designed a custom lab gauge for quality sampling of Zinc, Galvanneal, and ZAM® coatings. This instrument provides unskilled operators a simple, reliable way to verify coating weights, ensuring product quality.
+        </p>
+        <button id="openModalBtn" class="btn btn-primary">View Project Details</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section cta-section">
+  <div class="container">
+    <h2>Have a Unique Challenge?</h2>
+    <p>Our engineers are ready to design a custom solution for you. Contact us to discuss your specific project requirements today.</p>
+    <a asp-page="/ContactUs" class="btn btn-primary" asp-route-subject="Solutions Inquiry">Discuss Your Project</a>
+  </div>
+</section>
+
+<!-- Case Study Modal (page-specific; not the shared image lightbox) -->
+<div id="caseStudyModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">×</span>
+    <h2>GaugeMaster Lab Coating Gauge Details</h2>
+
+    <div class="modal-body-grid">
+      <div class="modal-carousel">
+        <div class="carousel-container">
+          <div class="carousel-slides">
+            <div class="carousel-slide visible">
+              <img src="~/images/solutions/rsi-main-electronic-cabinet.jpg" asp-append-version="true" alt="Main Electronic Cabinet for the GaugeMaster Lab Gauge">
+            </div>
+            <div class="carousel-slide">
+              <img src="~/images/solutions/rsi-benchtop-coating-gauge.png" asp-append-version="true" alt="Bench Top Head Enclosure for the GaugeMaster Lab Gauge">
+            </div>
+            <div class="carousel-slide">
+              <img src="~/images/solutions/rsi-online-thickness gauge.jpg" asp-append-version="true" alt="Gauge Processor board for the GaugeMaster Lab Gauge">
+            </div>
+          </div>
+          <button class="carousel-btn prev-btn">❮</button>
+          <button class="carousel-btn next-btn">❯</button>
+        </div>
+
+        <div class="carousel-caption-block">
+          <div class="carousel-caption-text visible">
+            <h3>Main Electronic Cabinet</h3>
+            <p>Houses the gauge processor and a 17&quot; touchscreen display.</p>
+          </div>
+          <div class="carousel-caption-text">
+            <h3>Bench Top Head Enclosure</h3>
+            <p>Custom enclosure with an air-cooled X-ray measuring head.</p>
+          </div>
+          <div class="carousel-caption-text">
+            <h3>Online Thickness Gauge</h3>
+            <p>RSI's online thickness gauges provide reliable, high-speed, non-contact measurement directly on the processing line.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-details">
+        <h3>System Specifications & Features</h3>
+        <p>This custom quality control instrument was designed for product sampling of various coatings on carbon and stainless steel substrates.</p>
+
+        <h4>Process & Application</h4>
+        <p>To ensure final product quality, this Lab Coating Gauge provides precise offline analysis. After our automated online gauges control the coating thickness during production, random samples are taken from the coil. This instrument is then used for the critical quality control step of verifying the coating weight and generating valuable statistical data.</p>
+
+        <h4>Application Data:</h4>
+        <ul>
+          <li><strong>Coating Types:</strong> Measures Zinc, Galvanneal, Al-Zn (ZAM®), and Aluminum Types 1 &amp; 2.</li>
+          <li><strong>Substrate Thickness:</strong> 0.35 to 3.5 Millimeters.</li>
+          <li><strong>Coating Weights:</strong> Measures Zinc up to 1.4 oz./ft.² and Galvanneal up to 0.6 oz./ft.².</li>
+        </ul>
+
+        <h4>Key Components:</h4>
+        <ul>
+          <li><strong>Gauge Processor:</strong> Features an Ubuntu (Linux) Real-Time Operating System with a Compact Flash Drive for enhanced reliability.</li>
+          <li><strong>Operator Display:</strong> A 17&quot; touchscreen for system configuration, diagnostics, and operation.</li>
+          <li><strong>Measuring Head:</strong> An air-cooled, X-ray measuring head is housed in a custom Bench Top Enclosure with a foot-switch-operated sample clamp.</li>
+          <li><strong>Software:</strong> Includes application software for various coating types, calibration curve management, and extensive fault reporting.</li>
+        </ul>
+
+        <h4>Support &amp; Warranty:</h4>
+        <ul>
+          <li><strong>Warranty:</strong> All parts of RSI's own manufacture are warranted for a period of twelve (12) months from the date of shipment.</li>
+          <li><strong>Long-Term Support:</strong> RSI provides support and spare parts for its equipment for a period of 10 years from the date of manufacture.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+@section Scripts {
+    <!-- Page-specific JS -->
+    <script src="~/js/solutions.js" asp-append-version="true"></script>
+}
