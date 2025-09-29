@@ -1,15 +1,97 @@
 ﻿@page "/faq"
 @{
-    // Per-page SEO for _SeoHead partial
-    ViewData["SiteName"] = "RSI";
-    ViewData["Title"] = "Frequently Asked Questions";
-    ViewData["MetaDescription"] = "Answers to common questions about RSI thickness and coating gauges, system upgrades, components, and performance.";
-    ViewData["Canonical"] = "https://www.rsi-xray.com/faq/";
+    // ===== SEO for _SeoHead partial =====
+    ViewData["SiteName"]        = "Radiometric Services & Instruments, LLC";
+    ViewData["Title"]           = "FAQs | X-ray Gauging & Legacy Systems Answered";
+    ViewData["MetaDescription"] = "Answers to common questions about X-ray gauging, handling obsolete radiation equipment, system upgrades, and why RSI is the leading choice.";
+    ViewData["Canonical"]       = "https://www.rsi-xray.com/faq";
+
+    // Open Graph / Twitter
+    ViewData["OgTitle"]         = "FAQs | X-ray Gauging & Legacy Systems Answered";
+    ViewData["OgDescription"]   = "Answers to common questions about X-ray gauging, handling obsolete radiation equipment, system upgrades, and why RSI is the leading choice.";
+    ViewData["OgImage"]         = "https://www.rsi-xray.com/images/social-cards/faqs.jpg";
+    ViewData["OgType"]          = "website";
+
+    // Twitter
+    ViewData["TwitterCard"] = "summary_large_image";
+    ViewData["TwitterTitle"] = "FAQs | X-ray Gauging & Legacy Systems Answered";
+    ViewData["TwitterDescription"] = "Answers to common questions about X-ray gauging, handling obsolete radiation equipment, system upgrades, and why RSI is the leading choice.";
+    ViewData["TwitterImage"] = "https://www.rsi-xray.com/images/social-media/faqs.jpg";
 }
 
 @section HeadContent {
-    <!-- Page-specific CSS (global.css + fonts/icons are provided by _Layout) -->
+    <!-- Page-specific CSS (global.css + fonts/icons come from _Layout) -->
     <link rel="stylesheet" href="~/css/faq.css" asp-append-version="true" />
+
+    <!-- JSON-LD: FAQPage (questions reflect on-page content) -->
+    <script type="application/ld+json">
+    @Html.Raw(@"{
+      ""@context"": ""https://schema.org"",
+      ""@type"": ""FAQPage"",
+      ""mainEntity"": [
+        {
+          ""@type"": ""Question"",
+          ""name"": ""What is the process for a system upgrade?"",
+          ""acceptedAnswer"": {
+            ""@type"": ""Answer"",
+            ""text"": ""RSI evaluates your current system and reuses viable components like measuring frames, sensors, and cabling. We replace aging electronics with a modern MEC and controls, minimizing downtime—typically a few days—while delivering better-than-new performance.""
+          }
+        },
+        {
+          ""@type"": ""Question"",
+          ""name"": ""Are your components compatible with older systems?"",
+          ""acceptedAnswer"": {
+            ""@type"": ""Answer"",
+            ""text"": ""Yes. Our X-ray sources and detectors are designed to be mechanically and electrically backward compatible with many legacy gauges, including DMC and Radiometrie, which reduces spare parts costs and simplifies upgrades.""
+          }
+        },
+        {
+          ""@type"": ""Question"",
+          ""name"": ""What materials and thicknesses can your gauges measure?"",
+          ""acceptedAnswer"": {
+            ""@type"": ""Answer"",
+            ""text"": ""GaugeMaster Plus systems support a range of DC X-ray sources tailored for different alloys and thicknesses. Maximum measurable thickness depends on the selected source kV and the material (e.g., steel vs. pure aluminum).""
+          }
+        },
+        {
+          ""@type"": ""Question"",
+          ""name"": ""What is X-ray gauging?"",
+          ""acceptedAnswer"": {
+            ""@type"": ""Answer"",
+            ""text"": ""It is a non-contact thickness/coating measurement method using a C-frame with an X-ray source and an upper detector. By analyzing absorption through the strip, the system calculates thickness accurately at high speed.""
+          }
+        },
+        {
+          ""@type"": ""Question"",
+          ""name"": ""How do you ensure measurement accuracy over time?"",
+          ""acceptedAnswer"": {
+            ""@type"": ""Answer"",
+            ""text"": ""Beyond stabilizing beam intensity, RSI controls X-ray energy and uses X-ray Spectrum Correction (XSC) to compensate for component aging. This maintains long-term stability and keeps alloy correction factors consistent.""
+          }
+        },
+        {
+          ""@type"": ""Question"",
+          ""name"": ""Why should I choose RSI over other vendors?"",
+          ""acceptedAnswer"": {
+            ""@type"": ""Answer"",
+            ""text"": ""With 200+ years of combined gauging experience, RSI leads in DMC and Radiometrie support. We manufacture in the USA, maintain multiple US service centers, offer a 24/7 hotline, and deliver fast, expert on-site support.""
+          }
+        }
+      ]
+    }")
+    </script>
+
+    <!-- JSON-LD: BreadcrumbList -->
+    <script type="application/ld+json">
+    @Html.Raw(@"{
+      ""@context"": ""https://schema.org"",
+      ""@type"": ""BreadcrumbList"",
+      ""itemListElement"": [
+        { ""@type"": ""ListItem"", ""position"": 1, ""name"": ""Home"", ""item"": ""https://www.rsi-xray.com/"" },
+        { ""@type"": ""ListItem"", ""position"": 2, ""name"": ""FAQs"", ""item"": ""https://www.rsi-xray.com/faq"" }
+      ]
+    }")
+    </script>
 }
 
 <!-- ======= FAQ page content (rendered inside _Layout) ======= -->

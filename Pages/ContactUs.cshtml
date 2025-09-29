@@ -2,16 +2,7 @@
    File: ContactUs.cshtml
    Author: RSI Website Rebuild (ASP.NET Core 8 Razor Pages)
    Description:
-     View for the "Contact RSI" form with full layout/styling:
-       - Page hero, two-column grid (form + contact info/map)
-       - Validated inputs (Name, Email, Phone, Subject, Message)
-       - CSRF token, honeypot anti-spam field, Google reCAPTCHA v2
-       - Uses injected RecaptchaSettings for site key
-     POST is handled by ContactUs.cshtml.cs (OnPostAsync). On success the
-     PageModel currently redirects to ContactThanks.cshtml (PRG).
-   Notes:
-     - If you prefer an inline success alert instead of PRG, we can swap the
-       redirect for `return Page()` on success; for now we preserve PRG.
+     Contact form page with SEO-optimized head metadata & JSON-LD.
    ----------------------------------------------------------------------------- *@
 
 @page "/contact-us"
@@ -19,14 +10,62 @@
 @inject Microsoft.Extensions.Options.IOptions<RSIWebsiteBackend.Config.RecaptchaSettings> Recaptcha
 
 @{
-    ViewData["SiteName"] = "RSI";
-    ViewData["Title"] = "Contact RSI Today";
-    ViewData["MetaDescription"] = "Contact RSI for Spare parts, service, and upgrade solutions for X-ray and isotope-based thickness and coating gauges.";
-    ViewData["Canonical"] = "https://www.rsi-xray.com/contact-us";
+    // ----- SEO Meta (consumed by _SeoHead.cshtml) -----
+    ViewData["SiteName"]        = "Radiometric Services & Instruments, LLC";
+    ViewData["Title"]           = "Contact RSI | Request a Free Onsite Evaluation";
+    ViewData["MetaDescription"] = "Contact Radiometric Services & Instruments for sales, service, or support. Call us or fill out our form to request a free evaluation of your gauging systems.";
+    ViewData["Canonical"]       = "https://www.rsi-xray.com/contact-us";
+
+    // Open Graph / Twitter
+    ViewData["OgTitle"]         = "Contact RSI | Request a Free Onsite Evaluation";
+    ViewData["OgDescription"]   = "Contact Radiometric Services & Instruments for sales, service, or support. Call us or fill out our form to request a free evaluation of your gauging systems.";
+    ViewData["OgImage"]         = "https://www.rsi-xray.com/images/social-cards/contact-us.jpg";
+    ViewData["OgType"]          = "website";
+
+        // Twitter
+    ViewData["TwitterCard"] = "summary_large_image";
+    ViewData["TwitterTitle"] = "Contact RSI | Request a Free Onsite Evaluation";
+    ViewData["TwitterDescription"] = "Contact Radiometric Services & Instruments for sales, service, or support. Call us or fill out our form to request a free evaluation of your gauging systems.";
+    ViewData["TwitterImage"] = "https://www.rsi-xray.com/images/social-media/contact-us.jpg";
 }
 
 @section HeadContent {
     <link rel="stylesheet" href="~/css/contact-us.css" asp-append-version="true" />
+
+    <!-- JSON-LD: ContactPage (+ embedded Organization) -->
+    <script type="application/ld+json">
+    @Html.Raw(@"{
+      ""@context"": ""https://schema.org"",
+      ""@type"": ""ContactPage"",
+      ""url"": ""https://www.rsi-xray.com/contact-us"",
+      ""mainEntity"": {
+        ""@type"": ""Organization"",
+        ""name"": ""Radiometric Services & Instruments, LLC"",
+        ""url"": ""https://www.rsi-xray.com/"",
+        ""telephone"": ""+1-301-874-3494"",
+        ""address"": {
+          ""@type"": ""PostalAddress"",
+          ""streetAddress"": ""4507 Metropolitan Ct, Unit J"",
+          ""addressLocality"": ""Frederick"",
+          ""addressRegion"": ""MD"",
+          ""postalCode"": ""21704"",
+          ""addressCountry"": ""US""
+        }
+      }
+    }")
+    </script>
+
+    <!-- JSON-LD: BreadcrumbList -->
+    <script type="application/ld+json">
+    @Html.Raw(@"{
+      ""@context"": ""https://schema.org"",
+      ""@type"": ""BreadcrumbList"",
+      ""itemListElement"": [
+        { ""@type"": ""ListItem"", ""position"": 1, ""name"": ""Home"", ""item"": ""https://www.rsi-xray.com/"" },
+        { ""@type"": ""ListItem"", ""position"": 2, ""name"": ""Contact Us"", ""item"": ""https://www.rsi-xray.com/contact-us"" }
+      ]
+    }")
+    </script>
 }
 
 <section class="page-hero-section">

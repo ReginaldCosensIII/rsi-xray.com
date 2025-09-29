@@ -4,13 +4,20 @@
     var description = (string?)ViewData["MetaDescription"];
     var canonical = (string?)ViewData["Canonical"];
     var robots = (string?)ViewData["Robots"];
+
     var ogTitle = (string?)(ViewData["OgTitle"] ?? title);
     var ogDescription = (string?)(ViewData["OgDescription"] ?? description);
     var ogImage = (string?)ViewData["OgImage"];
     var ogType = (string?)(ViewData["OgType"] ?? "website");
+
+    // NEW: twitter-specific fields with fallbacks
     var twitterCard = (string?)(ViewData["TwitterCard"] ?? "summary_large_image");
     var twitterSite = (string?)ViewData["TwitterSite"];
     var twitterCreator = (string?)ViewData["TwitterCreator"];
+    var twitterTitle = (string?)(ViewData["TwitterTitle"] ?? ogTitle ?? title);
+    var twitterDescription = (string?)(ViewData["TwitterDescription"] ?? ogDescription ?? description);
+    var twitterImage = (string?)(ViewData["TwitterImage"] ?? ogImage);
+    var twitterUrl = (string?)(ViewData["TwitterUrl"] ?? canonical);
 }
 @if (!string.IsNullOrWhiteSpace(title))
 {
@@ -28,6 +35,7 @@
 {
     <link rel="canonical" href="@canonical" />
 }
+
 @if (!string.IsNullOrWhiteSpace(ogTitle))
 {
     <meta property="og:title" content="@ogTitle" />
@@ -49,6 +57,7 @@
 {
     <meta property="og:site_name" content="@siteName" />
 }
+
 @if (!string.IsNullOrWhiteSpace(twitterCard))
 {
     <meta name="twitter:card" content="@twitterCard" />
@@ -60,4 +69,20 @@
 @if (!string.IsNullOrWhiteSpace(twitterCreator))
 {
     <meta name="twitter:creator" content="@twitterCreator" />
+}
+@if (!string.IsNullOrWhiteSpace(twitterTitle))
+{
+    <meta name="twitter:title" content="@twitterTitle" />
+}
+@if (!string.IsNullOrWhiteSpace(twitterDescription))
+{
+    <meta name="twitter:description" content="@twitterDescription" />
+}
+@if (!string.IsNullOrWhiteSpace(twitterImage))
+{
+    <meta name="twitter:image" content="@twitterImage" />
+}
+@if (!string.IsNullOrWhiteSpace(twitterUrl))
+{
+    <meta name="twitter:url" content="@twitterUrl" />
 }

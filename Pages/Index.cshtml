@@ -1,17 +1,69 @@
 ﻿@page "/"
 @model IndexModel
 @{
-    // Per-page SEO (consumed by _SeoHead partial)
-    ViewData["SiteName"] = "RSI";
-    ViewData["Title"] = "Premium Thickness & Coating Gauge Solutions";
-    ViewData["MetaDescription"] = "Spare parts, service, and upgrade solutions for X-ray and isotope-based thickness and coating gauges.";
+    // --- Per-page SEO consumed by _SeoHead ---
+    ViewData["SiteName"] = "Radiometric Services & Instruments, LLC";
+    ViewData["Title"] = "RSI | High-Performance Thickness & Coating Gauges";
+    ViewData["MetaDescription"] = "RSI designs and manufactures high-quality thickness and coating weight gauges for the metals industry. We specialize in legacy system upgrades, service, and support.";
     ViewData["Canonical"] = "https://www.rsi-xray.com/";
+
+    // Open Graph / Twitter
+    ViewData["OgTitle"] = "RSI | High-Performance Thickness & Coating Gauges";
+    ViewData["OgDescription"] = "RSI specializes in legacy system upgrades, service, and support for the metals industry.";
+    ViewData["OgImage"] = "https://www.rsi-xray.com/images/social-cards/home.jpg";
+    ViewData["OgType"] = "website";
+
+    // Twitter
+    ViewData["TwitterCard"] = "summary_large_image";
+    ViewData["TwitterTitle"] = "RSI | High-Performance Thickness & Coating Gauges";
+    ViewData["TwitterDescription"] = "RSI specializes in legacy system upgrades, service, and support for the metals industry.";
+    ViewData["TwitterImage"] = "https://www.rsi-xray.com/images/social-media/home.jpg";
 }
 
 @section HeadContent {
-    <!-- Page-specific CSS (keep global.css in layout) -->
     <link rel="stylesheet" href="~/css/homepage.css" asp-append-version="true" />
+
+    <!-- Structured Data: Organization -->
+    <script type="application/ld+json">
+    @Html.Raw(@"{
+      ""@context"": ""https://schema.org"",
+      ""@type"": ""Organization"",
+      ""name"": ""Radiometric Services & Instruments, LLC"",
+      ""alternateName"": ""RSI"",
+      ""url"": ""https://www.rsi-xray.com/"",
+      ""logo"": ""https://www.rsi-xray.com/images/cropped-logo.png"",
+      ""contactPoint"": {
+        ""@type"": ""ContactPoint"",
+        ""telephone"": ""+1-301-874-3494"",
+        ""contactType"": ""customer service""
+      },
+      ""address"": {
+        ""@type"": ""PostalAddress"",
+        ""streetAddress"": ""4507 Metropolitan Ct, Unit J"",
+        ""addressLocality"": ""Frederick"",
+        ""addressRegion"": ""MD"",
+        ""postalCode"": ""21704"",
+        ""addressCountry"": ""US""
+      },
+      ""description"": ""RSI is a full-service supplier of high-quality gauging systems, electronics upgrade packages, and expert support for the metals industry, specializing in DMC and Radiometrie systems.""
+    }")
+    </script>
+
+    <!-- Structured Data: WebSite + SearchAction -->
+    <script type="application/ld+json">
+    @Html.Raw(@"{
+      ""@context"": ""https://schema.org"",
+      ""@type"": ""WebSite"",
+      ""url"": ""https://www.rsi-xray.com/"",
+      ""potentialAction"": {
+        ""@type"": ""SearchAction"",
+        ""target"": ""https://www.rsi-xray.com/search?q={search_term_string}"",
+        ""query-input"": ""required name=search_term_string""
+      }
+    }")
+    </script>
 }
+
 
 <!-- ======= Homepage sections (body only; no <html>/<head>/<body>) ======= -->
 
@@ -22,14 +74,16 @@
         <div class="hero-buttons">
             <a asp-page="/ContactUs"
                asp-route-subject="Free Consultation Request"
-               class="btn btn-primary">
-               Book a 15 Minute Call
+               class="btn btn-primary"
+               aria-label="Book a 15 Minute Call">
+                Book a 15 Minute Call
             </a>
 
             <a asp-page="/ContactUs"
                asp-route-subject="Uptime Report Request"
-               class="btn btn-primary">
-               Request a Free Uptime Report
+               class="btn btn-primary"
+               aria-label="Request a Free Uptime Report">
+                Request a Free Uptime Report
             </a>
         </div>
     </div>
@@ -46,7 +100,7 @@
         <div class="features-grid">
             <div class="card card--icon">
                 <div class="card-icon">
-                    <i class="fa-solid fa-wrench"></i>
+                    <i class="fa-solid fa-wrench" aria-hidden="true"></i>
                 </div>
                 <h3>Full Service Supplier</h3>
                 <p>Founded in 2003 RSI offers a full supply of thickness and coating gauges, upgrade solutions, spare parts, service support and in house repairs.</p>
@@ -54,7 +108,7 @@
 
             <div class="card card--icon">
                 <div class="card-icon">
-                    <i class="fa-solid fa-award"></i>
+                    <i class="fa-solid fa-award" aria-hidden="true"></i>
                 </div>
                 <h3>200+ Years of Experience</h3>
                 <p>With the expertise & knowledge to offer new thickness and coating gauges and to extend the lifetime of existing systems. RSI knows gauges better than any other gauge supplier in North America.</p>
@@ -62,7 +116,7 @@
 
             <div class="card card--icon">
                 <div class="card-icon">
-                    <i class="fa-solid fa-recycle"></i>
+                    <i class="fa-solid fa-recycle" aria-hidden="true"></i>
                 </div>
                 <h3>Specialize in Legacy Support</h3>
                 <p>RSI offers upgrade solutions for many legacy x-ray, isotope, and coating gauges including: DMC, Radiometrie, 12S, Loral, Weston, and more.</p>
@@ -71,8 +125,9 @@
 
         <div class="section-cta">
             <a asp-page="/ContactUs"
-                asp-route-subject="Equipment Evaluation"
-                class="btn btn-primary">
+               asp-route-subject="Equipment Evaluation"
+               class="btn btn-primary"
+               aria-label="Contact us for equipment evaluation">
                 Contact Us for Equipment Evaluation
             </a>
         </div>
@@ -92,7 +147,7 @@
                 <div class="card-content">
                     <h3>Upgrade Packages</h3>
                     <p>The RSI Upgrade Package provides a flexible solution to obsolescence issues of older gauging electronics. Upgrade packages re-use the existing radiation sources and measuring frames and can often re-use or upgrade existing detector units, reducing the cost of new spare parts inventories.</p>
-                    <a href="#" class="learn-more btn btn-primary">Learn More</a>
+                    <a href="/Solutions#Upgrade" class="learn-more btn btn-primary" aria-label="Learn more about upgrade packages">Learn More</a>
                 </div>
             </div>
 
@@ -101,7 +156,7 @@
                 <div class="card-content">
                     <h3>Repairs and Parts Services</h3>
                     <p>There’s always the risk that even the best components will fail, impacting the productivity of your plant. A fast and reliable repair service is essential if costly downtime needs to be avoided. Our In-house Repair Services make repairs easy for you.</p>
-                    <a href="#" class="learn-more btn btn-primary">Learn More</a>
+                    <a href="#" class="learn-more btn btn-primary" aria-label="Learn more about repairs and parts services">Learn More</a>
                 </div>
             </div>
 
@@ -110,7 +165,7 @@
                 <div class="card-content">
                     <h3>Performance Monitoring</h3>
                     <p>Real-time software provides high performance accuracy while being versatile for the end-user. From temperature and coatings to changes in alloys, RSI can provide dynamic calculations and corrections for most situations.</p>
-                    <a href="#" class="learn-more btn btn-primary">Learn More</a>
+                    <a href="#" class="learn-more btn btn-primary" aria-label="Learn more about performance monitoring">Learn More</a>
                 </div>
             </div>
         </div>

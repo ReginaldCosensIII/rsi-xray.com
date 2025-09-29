@@ -51,6 +51,21 @@
     <!-- Global CSS -->
     <link rel="stylesheet" href="~/css/global.css" asp-append-version="true" />
 
+    @* -----------------------------
+       Google Analytics 4 (gtag.js)
+       - To enable: remove this Razor comment wrapper
+       - Replace ID if needed
+       ----------------------------- *@
+    @*
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T4XTG0R754"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-T4XTG0R754', { anonymize_ip: true });
+    </script>
+    *@
+
     <!-- Per-page SEO/meta (reads ViewData[...] keys) -->
     @await Html.PartialAsync("_SeoHead")
 
@@ -102,7 +117,13 @@
 
                         <!-- Products / Solutions placeholders still # until you have pages -->
                         <li><a href="#">Products</a></li>
-                        <li><a href="#">Solutions</a></li>
+                        <li>
+                            <a asp-page="/Solutions"
+                               class="@(IsActive("/solutions") ? "is-active" : null)"
+                               aria-current="@(IsActive("/solutions") ? "page" : null)">
+                                Solutions
+                            </a>
+                        </li>
                         <li><a href="#">Spare Parts & Repairs</a></li>
                         <li><a href="#">Performance Monitoring</a></li>
 
@@ -171,7 +192,14 @@
                             </a>
                         </li>
                         <li><a href="#">Products</a></li>
-                        <li><a href="#">Solutions</a></li>
+                        <li><a href="#">Products</a></li>
+                        <li>
+                            <a asp-page="/Solutions"
+                               class="@(IsActive("/solutions") ? "is-active" : null)"
+                               aria-current="@(IsActive("/solutions") ? "page" : null)">
+                                Solutions
+                            </a>
+                        </li>
                         <li><a href="#">Spare Parts</a></li>
                         <li><a href="#">Performance</a></li>
                         <li>

@@ -1,15 +1,70 @@
 ﻿@page "/about-us"
 @{
-    // Per-page SEO (consumed by _SeoHead partial via ViewData)
+    // ===== Per-page SEO (consumed by _SeoHead partial via ViewData) =====
     ViewData["SiteName"] = "RSI";
-    ViewData["Title"] = "About Us";
-    ViewData["MetaDescription"] = "Founded in 2003, RSI provides thickness & coating gauges, upgrade solutions, spare parts, service support, and in-house repairs—with a global service network and 24/7 emergency support.";
+    ViewData["Title"] = "About RSI | 200+ Years of Gauging Experience";
+    ViewData["MetaDescription"] = "Learn about RSI's history, from our roots in DMC to becoming a global leader in gauging systems. Our experienced team provides unparalleled support and expertise.";
     ViewData["Canonical"] = "https://www.rsi-xray.com/about-us";
+
+    // Open Graph
+    ViewData["OgType"] = "website";
+    ViewData["OgTitle"] = "About RSI | 200+ Years of Gauging Experience";
+    ViewData["OgDescription"] = "Learn about RSI's history, from our roots in DMC to becoming a global leader in gauging systems.";
+    ViewData["OgImage"] = "https://www.rsi-xray.com/images/social-media/about-us.jpg";
+
+    // Twitter
+    ViewData["TwitterCard"] = "summary_large_image";
+    ViewData["TwitterTitle"] = "About RSI | 200+ Years of Gauging Experience";
+    ViewData["TwitterDescription"] = "Learn about RSI's history, from our roots in DMC to becoming a global leader in gauging systems.";
+    ViewData["TwitterImage"] = "https://www.rsi-xray.com/images/social-media/about-us.jpg";
 }
 
 @section HeadContent {
-    <!-- Page-specific CSS -->
+
     <link rel="stylesheet" href="~/css/about-us.css" asp-append-version="true" />
+
+    <script type="application/ld+json">
+    @Html.Raw(@"{
+      ""@context"": ""https://schema.org"",
+      ""@graph"": [
+        {
+          ""@type"": ""AboutPage"",
+          ""name"": ""About RSI | 200+ Years of Gauging Experience"",
+          ""url"": ""https://www.rsi-xray.com/about-us"",
+          ""description"": ""Learn about RSI's history, from our roots in DMC to becoming a global leader in gauging systems. Our experienced team provides unparalleled support and expertise."",
+          ""about"": {
+            ""@type"": ""Organization"",
+            ""name"": ""Radiometric Services & Instruments, LLC"",
+            ""url"": ""https://www.rsi-xray.com/"",
+            ""logo"": ""https://www.rsi-xray.com/images/cropped-logo.png""
+          }
+        },
+        {
+          ""@type"": ""BreadcrumbList"",
+          ""itemListElement"": [
+            { ""@type"": ""ListItem"", ""position"": 1, ""name"": ""Home"", ""item"": ""https://www.rsi-xray.com/"" },
+            { ""@type"": ""ListItem"", ""position"": 2, ""name"": ""About Us"", ""item"": ""https://www.rsi-xray.com/about-us"" }
+          ]
+        },
+        {
+          ""@type"": ""Organization"",
+          ""name"": ""Radiometric Services & Instruments, LLC"",
+          ""url"": ""https://www.rsi-xray.com/"",
+          ""logo"": ""https://www.rsi-xray.com/images/cropped-logo.png"",
+          ""contactPoint"": { ""@type"": ""ContactPoint"", ""telephone"": ""+1-301-874-3494"", ""contactType"": ""customer service"" },
+          ""address"": {
+            ""@type"": ""PostalAddress"",
+            ""streetAddress"": ""4507 Metropolitan Ct, Unit J"",
+            ""addressLocality"": ""Frederick"",
+            ""addressRegion"": ""MD"",
+            ""postalCode"": ""21704"",
+            ""addressCountry"": ""US""
+          },
+          ""sameAs"": []
+        }
+      ]
+    }")
+    </script>
 }
 
 <!-- ===== Body content only (header/footer come from _Layout) ===== -->
@@ -147,7 +202,7 @@
     </div>
 </section>
 
-@* Lightweight image lightbox container used by faq.js *@
+@* Lightweight image lightbox container used by modal.js *@
 <div id="image-lightbox" class="modal-overlay">
     <div class="modal-content">
         <span class="lightbox-close">&times;</span>
@@ -159,5 +214,5 @@
 </div>
 
 @section Scripts {
-    <script src="~/js/modal.js" defer asp-append-version="true"></script>
+    <script src="~/js/modal.js" asp-append-version="true"></script>
 }

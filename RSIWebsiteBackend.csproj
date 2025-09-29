@@ -23,7 +23,9 @@
 	<ItemGroup>
 	  <Folder Include="wwwroot\images\faq\" />
 	  <Folder Include="wwwroot\images\about-us\" />
+	  <Folder Include="wwwroot\images\solutions\" />
 	  <Folder Include="wwwroot\images\textures\" />
+	  <Folder Include="wwwroot\videos\solutions\" />
 	</ItemGroup>
 
 </Project>

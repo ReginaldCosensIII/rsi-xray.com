@@ -214,8 +214,14 @@ a {
     background: var(--color-white);
     border: 1px solid var(--color-border);
     border-radius: 0.625rem;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
 
 .card-image-top {
     width: 100%;
@@ -380,6 +386,12 @@ a {
         display: none;
     }
 
+/* Mobile drawer: make the active page red (text + underline) */
+#main-nav-list a.is-active,
+#main-nav-list a[aria-current="page"] {
+    color: var(--color-accent-red) !important;
+    border-bottom-color: var(--color-accent-red) !important;
+}
 
 /* =================================================================
    7) FOOTER
