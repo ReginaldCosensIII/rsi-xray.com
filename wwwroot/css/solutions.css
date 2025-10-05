@@ -2,7 +2,7 @@
 
 /* NEW: Constrains the H1 in the hero section for better readability on large screens */
 .page-hero-section h1 {
-    max-width: 62.5rem;
+    max-width: 900px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -17,7 +17,7 @@
 
 /* --- Feature Card Styles --- */
 .feature-card {
-    background-color: #f9f9f9;
+    background-color: rgb(249, 249, 249, .6);
     border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;
@@ -25,12 +25,10 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     padding-top: 2rem;
 }
-
-    .feature-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    }
-
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
 .feature-card-icon-wrapper {
     margin: 0 auto 1.5rem;
     width: 80px;
@@ -41,36 +39,32 @@
     align-items: center;
     justify-content: center;
 }
-
-    .feature-card-icon-wrapper i {
-        font-size: 2.5rem;
-        color: black;
-    }
-
+.feature-card-icon-wrapper i {
+    font-size: 2.5rem;
+    color: black;
+}
 .feature-card-content {
     padding: 1.5rem;
     padding-top: 0;
 }
-
-    .feature-card-content h3 {
-        font-size: 1.25rem;
-        margin-bottom: 0.5rem;
-    }
+.feature-card-content h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
 
 /* --- On-Page Image & Video Sizing --- */
 .feature-image {
     max-width: 550px;
     margin: 0 auto;
-    overflow: hidden;
+    overflow: hidden; 
     border-radius: 8px;
 }
-
-    .feature-image video {
-        width: 100%;
-        height: auto;
-        border-radius: 8px;
-        transform: scale(1.03);
-    }
+.feature-image video {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transform: scale(1.03);
+}
 
 /* --- Case Study Block --- */
 .case-study-block {
@@ -80,17 +74,13 @@
     text-align: left;
 }
 
-#caseStudyModal .modal-details h3 {
-    color: var(--color-accent-red);
-}
-
 /* =============================================
    SELF-CONTAINED MODAL STYLES
    ============================================= */
 
 /* Base Modal Styles */
 .modal {
-    display: none;
+    display: none; 
     position: fixed;
     z-index: 1000;
     left: 0;
@@ -101,7 +91,6 @@
     background-color: rgba(0,0,0,0.6);
     animation: fadeIn 0.3s;
 }
-
 .modal-content {
     background-color: #fefefe;
     margin: 5% auto;
@@ -114,7 +103,6 @@
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     animation: slideIn 0.3s;
 }
-
 .close-btn {
     color: #aaa;
     position: absolute;
@@ -126,12 +114,10 @@
     cursor: pointer;
     transition: color 0.2s ease;
 }
-
-    .close-btn:hover,
-    .close-btn:focus {
-        color: black;
-    }
-
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+}
 .modal-content h2 {
     text-align: center;
     margin-bottom: 1.5rem;
@@ -147,35 +133,30 @@
     overflow-y: auto;
     padding-right: 1rem;
 }
-
 .modal-carousel,
 .modal-details {
-    flex: 1 1 0;
+    flex: 1 1 0; 
     min-width: 300px;
 }
-
-    .modal-details h4,
-    .modal-details strong {
-        color: var(--color-accent-red);
-    }
-
-    .modal-details ul {
-        list-style-type: none;
-        padding-left: 0;
-    }
-
-        .modal-details ul li {
-            margin-bottom: 0.75rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-            .modal-details ul li::before {
-                content: '✓';
-                color: var(--color-primary);
-                position: absolute;
-                left: 0;
-            }
+.modal-details h4,.modal-details h3,
+.modal-details strong {
+    color: var(--color-accent-red);
+}
+.modal-details ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+.modal-details ul li {
+    margin-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+.modal-details ul li::before {
+    content: '✓';
+    color: var(--color-primary);
+    position: absolute;
+    left: 0;
+}
 
 /* Carousel Styles */
 .carousel-container {
@@ -184,31 +165,26 @@
     overflow: hidden;
     border-radius: 8px;
 }
-
 .carousel-slides {
     display: flex;
 }
-
 .carousel-slide {
     min-width: 100%;
     position: relative;
     display: none;
-    background-color: #f0f0f0;
+    background-color: #f0f0f0; 
+    border-radius: 8px; 
+}
+.carousel-slide.visible {
+    display: block;
+}
+.carousel-slide img {
+    width: 100%;
+    max-height: 500px; 
+    object-fit: contain; 
+    display: block;
     border-radius: 8px;
 }
-
-    .carousel-slide.visible {
-        display: block;
-    }
-
-    .carousel-slide img {
-        width: 100%;
-        max-height: 500px;
-        object-fit: contain;
-        display: block;
-        border-radius: 8px;
-    }
-
 .carousel-caption-block {
     background-color: #f0f0f0;
     padding: 1rem 1.5rem;
@@ -217,27 +193,22 @@
     text-align: center;
     border: 1px solid #ddd;
 }
-
 .carousel-caption-text {
     display: none;
 }
-
-    .carousel-caption-text.visible {
-        display: block;
-    }
-
-    .carousel-caption-text h3 {
-        margin: 0 0 0.25rem 0;
-        font-size: 1.1rem;
-        color: var(--color-accent-yellow);
-    }
-
-    .carousel-caption-text p {
-        margin: 0;
-        font-size: 0.9rem;
-        color: #555;
-    }
-
+.carousel-caption-text.visible {
+    display: block;
+}
+.carousel-caption-text h3 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.1rem;
+    color: var(--color-accent-yellow);
+}
+.carousel-caption-text p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #555;
+}
 .carousel-btn {
     position: absolute;
     top: 50%;
@@ -256,39 +227,25 @@
     text-align: center;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
-
-    .carousel-btn:hover {
-        background-color: #fff;
-        color: #000;
-    }
-
+.carousel-btn:hover {
+    background-color: #fff;
+    color: #000;
+}
 .prev-btn {
     left: 15px;
 }
-
 .next-btn {
     right: 15px;
 }
 
 /* Keyframe animations for the modal */
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
+    from {opacity: 0;}
+    to {opacity: 1;}
 }
-
 @keyframes slideIn {
-    from {
-        transform: translateY(-50px);
-    }
-
-    to {
-        transform: translateY(0);
-    }
+    from {transform: translateY(-50px);}
+    to {transform: translateY(0);}
 }
 
 /* =============================================
@@ -300,19 +257,17 @@
         gap: 1.5rem;
     }
 
-    .feature-content {
-        text-align: center;
-    }
-
     .feature-grid .feature-content:first-child {
         order: 2;
     }
-
     .feature-grid .feature-image:last-child {
         order: 1;
     }
-
     .case-study-block {
+        text-align: center;
+    }
+        /* UPDATED: Only center the heading, not all content */
+    .feature-grid .feature-content h2 {
         text-align: center;
     }
 
@@ -320,10 +275,11 @@
     .modal-content {
         margin: 2% auto; /* Reduce top/bottom margin */
         max-height: 95vh; /* Allow modal to use more vertical space */
+        overflow: hidden;
     }
-
     .modal-body-grid {
         max-height: 80vh; /* Adjust body grid height accordingly */
         padding-right: 0.5rem;
     }
 }
+

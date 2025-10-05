@@ -1,0 +1,226 @@
+﻿@page
+@{
+    ViewData["SiteName"] = "Radiometric Services & Instruments, LLC";
+    ViewData["Title"] = "High-Performance Gauging Systems | RSI";
+    ViewData["MetaDescription"] = "Explore RSI's range of high-performance online thickness gauges, coating weight gauges, and custom lab instruments for the metals industry.";
+    ViewData["Canonical"] = "https://www.rsi-xray.com/products";
+
+    ViewData["OgTitle"] = "High-Performance Gauging Systems | RSI";
+    ViewData["OgDescription"] = "Explore RSI's range of high-performance online thickness gauges, coating weight gauges, and custom lab instruments for the metals industry.";
+    ViewData["OgImage"] = "https://www.rsi-xray.com/images/social-cards/products.jpg";
+    ViewData["OgType"] = "website";
+
+    ViewData["TwitterCard"] = "summary_large_image";
+    ViewData["TwitterTitle"] = "High-Performance Gauging Systems | RSI";
+    ViewData["TwitterDescription"] = "Explore RSI's range of high-performance online thickness gauges, coating weight gauges, and custom lab instruments for the metals industry.";
+    ViewData["TwitterImage"] = "https://www.rsi-xray.com/images/social-cards/products.jpg";
+}
+
+@section HeadContent {
+    <link rel="stylesheet" href="~/css/products-shared.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/products.css" asp-append-version="true" />
+
+    <script type="application/ld+json">
+    @Html.Raw(@"{
+      ""@context"": ""https://schema.org"",
+      ""@type"": ""CollectionPage"",
+      ""name"": ""RSI Products"",
+      ""description"": ""An overview of RSI's high-performance gauging systems, including online thickness gauges, coating weight gauges, custom lab instruments, and core components."",
+      ""url"": ""https://www.rsi-xray.com/products"",
+      ""mainEntity"": {
+        ""@type"": ""ItemList"",
+        ""itemListElement"": [
+          {
+            ""@type"": ""ListItem"",
+            ""position"": 1,
+            ""item"": {
+              ""@type"": ""Product"",
+              ""name"": ""Online Coating Weight Gauges"",
+              ""url"": ""https://www.rsi-xray.com/products/coating-gauges.html""
+            }
+          },
+          {
+            ""@type"": ""ListItem"",
+            ""position"": 2,
+            ""item"": {
+              ""@type"": ""Product"",
+              ""name"": ""Online Thickness Gauges"",
+              ""url"": ""https://www.rsi-xray.com/products/thickness-gauges.html""
+            }
+          },
+          {
+            ""@type"": ""ListItem"",
+            ""position"": 3,
+            ""item"": {
+              ""@type"": ""Product"",
+              ""name"": ""Lab Coating Gauge"",
+              ""url"": ""https://www.rsi-xray.com/products/lab-coating-gauge.html""
+            }
+          },
+          {
+            ""@type"": ""ListItem"",
+            ""position"": 4,
+            ""item"": {
+              ""@type"": ""Product"",
+              ""name"": ""X-Ray Sources & Detectors"",
+              ""url"": ""https://www.rsi-xray.com/products/sources-detectors.html""
+            }
+          }
+        ]
+      },
+      ""breadcrumb"": {
+        ""@type"": ""BreadcrumbList"",
+        ""itemListElement"": [{
+          ""@type"": ""ListItem"",
+          ""position"": 1,
+          ""name"": ""Home"",
+          ""item"": ""https://www.rsi-xray.com/""
+        },{
+          ""@type"": ""ListItem"",
+          ""position"": 2,
+          ""name"": ""Products"",
+          ""item"": ""https://www.rsi-xray.com/products.html""
+        }]
+      }
+    }")
+    </script>
+}
+
+<main>
+    <section class="page-hero-section">
+        <div class="container">
+            <h1>High-Performance Gauging Systems</h1>
+        </div>
+    </section>
+
+    <section class="section intro-section-wrapper">
+        <div class="container">
+            <h2 class="section-heading">Engineered for Reliability and Precision</h2>
+            <p class="section-intro-text">RSI products are designed using the highest quality components and workmanship to deliver reliable, accurate measurement for the metals industry. Our systems are fully tested to ensure fast, efficient installation and are built to provide better control, improve product quality, and increase productivity.</p>
+            
+            <div class="spotlight-carousel-container">
+                <div class="spotlight-carousel-slides">
+                    <div class="tech-spotlight active">
+                        <div class="spotlight-icon"><i class="fa-solid fa-atom"></i></div>
+                        <div class="spotlight-content">
+                            <h4>The RSI Difference: Beam Energy Regulation</h4>
+                            <p>While others simply regulate beam intensity, we also tightly regulate beam energy. This ensures superior long-term accuracy and simplifies alloy compensation.</p>
+                        </div>
+                    </div>
+                    <div class="tech-spotlight">
+                        <div class="spotlight-icon"><i class="fa-solid fa-microchip"></i></div>
+                        <div class="spotlight-content">
+                            <h4>The RSI Difference: Future-Proof Electronics</h4>
+                            <p>We use Computer-on-Module (COM) technology, allowing for simple CPU module exchanges to prevent hardware obsolescence and ensure long-term support.</p>
+                        </div>
+                    </div>
+                    <div class="tech-spotlight">
+                        <div class="spotlight-icon"><i class="fa-solid fa-crosshairs"></i></div>
+                        <div class="spotlight-content">
+                            <h4>The RSI Difference: Advanced Detectors</h4>
+                            <p>Our rugged, thermally stable Ion Chamber Detectors provide superior stability and recover instantly from high X-ray exposure, unlike competing technologies.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-dots"></div>
+            </div>
+
+            <div class="spotlight-mobile-view">
+                <div class="spotlight-mobile-item">
+                    <div class="spotlight-mobile-icon"><i class="fa-solid fa-atom"></i></div>
+                    <div class="spotlight-mobile-content">
+                        <h4>The RSI Difference: Beam Energy Regulation</h4>
+                        <p>While others simply regulate beam intensity, we also tightly regulate beam energy. This ensures superior long-term accuracy and simplifies alloy compensation.</p>
+                    </div>
+                </div>
+                <div class="spotlight-mobile-item">
+                    <div class="spotlight-mobile-icon"><i class="fa-solid fa-microchip"></i></div>
+                    <div class="spotlight-mobile-content">
+                        <h4>The RSI Difference: Future-Proof Electronics</h4>
+                        <p>We use Computer-on-Module (COM) technology to prevent hardware obsolescence and ensure long-term support.</p>
+                    </div>
+                </div>
+                <div class="spotlight-mobile-item">
+                    <div class="spotlight-mobile-icon"><i class="fa-solid fa-crosshairs"></i></div>
+                    <div class="spotlight-mobile-content">
+                        <h4>The RSI Difference: Advanced Detectors</h4>
+                        <p>Our rugged Ion Chamber Detectors provide superior stability and recover instantly from high X-ray exposure.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="product-feature-grid section">
+        <div class="container feature-grid">
+            <div class="feature-image">
+                <img src="~/images/products/rsi-gauge-master-plus-o-frame.jpg" alt="RSI Online Coating Weight Gauge O-Frame">
+            </div>
+            <div class="feature-content">
+                <h2>Online Coating Weight Gauges</h2>
+                <p>Our GaugeMaster <strong>coating weight gauge</strong> is a high-performance system designed for the most demanding applications on CGL, EGL, and ETL lines. Featuring low noise and fast response, it employs high-power x-ray sources and differential ion chambers for improved control and product quality. The rugged O-frame design and multiple measurement modes provide flexibility and reliability for any process.</p>
+                <a asp-page="/Products/CoatingGauges" class="btn btn-primary">View Technical Specs</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="product-feature-grid section section-alt-bg">
+        <div class="container feature-grid">
+            <div class="feature-content">
+                <h2>Online Thickness Gauges</h2>
+                <p>RSI offers accurate, high-speed, non-contact <strong>thickness gauges</strong> like the GaugeMaster PLUS and Model 50. With measurement speeds up to 1,000 per second and an expandable architecture that can accommodate two C-frames, these systems are designed for peak performance. The Model 50 is also the perfect modern replacement for older, hazardous Americium-241 isotope systems, offering a safer and more reliable solution.</p>
+                <a asp-page="/Products/ThicknessGauges" class="btn btn-primary">View Technical Specs</a>
+            </div>
+            <div class="feature-image">
+                <img src="~/images/products/rsi-c-frame-cold-mill-no-frame.jpg" alt="RSI Online Thickness Gauge C-Frame">
+            </div>
+        </div>
+    </section>
+
+    <section class="product-feature-grid section lab-gauge-section">
+        <div class="container feature-grid">
+            <div class="feature-image">
+                <img src="~/images/solutions/rsi-benchtop-coating-gauge.png" alt="RSI Lab Coating Gauge for offline sampling">
+            </div>
+            <div class="feature-content">
+                <h2>Lab Coating Gauge</h2>
+                <p>As a final quality control checkpoint, our custom-built <strong>lab coating gauge</strong> provides precise offline analysis. This bench-top instrument is used to verify coating weights on random samples from a finished coil, generating critical statistical data. Its simple, foot-pedal-operated interface allows for easy and reliable measurement by any user.</p>
+                <a asp-page="/Products/LabCoatingGauge" class="btn btn-primary">View Technical Specs</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-alt-bg">
+        <div class="container">
+            <div class="vertical-product-grid">
+                <div class="vertical-product-card">
+                    <h3>X-Ray Sources & Detectors</h3>
+                    <img src="~/images/products/rsi-compact-80kv-x-ray-source.jpg" alt="RSI X-Ray Source and Ion Chamber Detector">
+                    <p>The core of our systems are the in-house manufactured, high-powered X-ray sources and advanced Ion Chamber Detectors. Our sources are designed for long life and high stability, while our rugged, thermally stable detectors provide superior shock resistance and fast response times (as low as 0.5 milliseconds), ensuring reliable performance in the most severe environments.</p>
+                    <a asp-page="/Products/SourcesDetectors" class="btn btn-primary">View Sources & Detectors</a>
+                </div>
+                <div class="vertical-product-card">
+                    <h3>Legacy System Support & Upgrades</h3>
+                    <img src="~/images/products/rsi-embeded-etx-com-chip.jpg" alt="RSI Gauge Processor Board for legacy system support and upgrades">
+                    <p>Our expertise extends beyond new products. We are industry leaders in supporting <strong>legacy and obsolete systems</strong>, offering both a comprehensive inventory of spare parts and complete upgrade packages. A system upgrade from RSI can make your aging gauge perform better than new for a fraction of the cost, typically in just a few days. Our goal is to ensure the longevity and peak performance of your existing equipment.</p>
+                    <div class="btn-group">
+                        <a asp-page="/SpareParts" class="btn btn-primary">Explore Spare Parts</a>
+                        <a asp-page="/Products/UpgradePackage" class="btn btn-primary">View Upgrade Packages</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section cta-section">
+        <div class="container">
+            <h2>Have a Question About a Product?</h2>
+            <p>Our expert team is ready to provide technical specifications, discuss your application, or help you find the right gauging solution. Contact us today for a consultation.</p>
+            <a asp-page="/ContactUs" asp-route-subject="Product Inquiry" class="btn btn-primary">Make a Product Inquiry</a>
+        </div>
+    </section>
+</main>
+
+@section Scripts {
+    <script src="~/js/products.js" asp-append-version="true"></script>
+}

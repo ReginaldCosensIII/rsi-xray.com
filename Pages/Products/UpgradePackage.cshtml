@@ -1,0 +1,111 @@
+﻿@page
+@{
+    ViewData["SiteName"] = "Radiometric Services & Instruments, LLC";
+    ViewData["Title"] = "RSI Upgrade Packages | Modernize Legacy Gauges";
+    ViewData["MetaDescription"] = "Technical details for RSI's upgrade packages, a cost-effective solution to modernize obsolete gauge computers and electronics from DMC, Radiometrie, and more.";
+    ViewData["Canonical"] = "https://www.rsi-xray.com/products/upgrade-package";
+    
+    ViewData["OgTitle"] = "RSI Upgrade Packages | Modernize Legacy Gauges";
+    ViewData["OgDescription"] = "Technical details for RSI's upgrade packages, a cost-effective solution to modernize obsolete gauge computers and electronics from DMC, Radiometrie, and more.";
+    ViewData["OgImage"] = "https://www.rsi-xray.com/images/social-cards/products-upgrade-package.jpg";
+    ViewData["OgType"] = "website";
+    
+    ViewData["TwitterCard"] = "summary_large_image";
+    ViewData["TwitterTitle"] = "RSI Upgrade Packages | Modernize Legacy Gauges";
+    ViewData["TwitterDescription"] = "Technical details for RSI's upgrade packages, a cost-effective solution to modernize obsolete gauge computers and electronics from DMC, Radiometrie, and more.";
+    ViewData["TwitterImage"] = "https://www.rsi-xray.com/images/social-cards/products-upgrade-package.jpg";
+}
+
+@section HeadContent {
+    <link rel="stylesheet" href="~/css/products-shared.css" asp-append-version="true" />
+    <script type="application/ld+json">
+    @Html.Raw(@"{
+      ""@context"": ""https://schema.org"",
+      ""@type"": ""Product"",
+      ""name"": ""RSI Upgrade Package"",
+      ""description"": ""A system upgrade from RSI will make your aging thickness or coating gauge perform even better than when it was brand new, for a fraction of the price of a new gauge. Upgrades offer faster measurement speeds, advanced network connectivity, and improved diagnostics."",
+      ""brand"": { ""@type"": ""Brand"", ""name"": ""RSI"" },
+      ""additionalProperty"": [
+        { ""@type"": ""PropertyValue"", ""name"": ""Benefit"", ""value"": ""Cost-effective alternative to new gauging systems"" },
+        { ""@type"": ""PropertyValue"", ""name"": ""Installation Time"", ""value"": ""Typically completed in a few days"" },
+        { ""@type"": ""PropertyValue"", ""name"": ""Key Feature"", ""value"": ""Re-use of existing x-ray sources and measuring frames"" },
+        { ""@type"": ""PropertyValue"", ""name"": ""Support"", ""value"": ""10-year support guarantee"" }
+      ]
+    }")
+    </script>
+    <script type="application/ld+json">
+    @Html.Raw(@"{
+      ""@context"": ""https://schema.org"",
+      ""@type"": ""BreadcrumbList"",
+      ""itemListElement"": [{
+        ""@type"": ""ListItem"", ""position"": 1, ""name"": ""Home"", ""item"": ""https://www.rsi-xray.com/""
+      },{
+        ""@type"": ""ListItem"", ""position"": 2, ""name"": ""Products"", ""item"": ""https://www.rsi-xray.com/products.html""
+      },{
+        ""@type"": ""ListItem"", ""position"": 3, ""name"": ""Upgrade Packages"", ""item"": ""https://www.rsi-xray.com/products/upgrade-package.html""
+      }]
+    }")
+    </script>
+}
+
+<main>
+    <section class="page-hero-section">
+        <div class="container">
+            <h1>RSI Upgrade Packages</h1>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container spec-sheet-container">
+            <div class="breadcrumb">
+                <a asp-page="/Products">‹ Back to Products</a>
+            </div>
+
+            <div class="spec-sheet-main">
+                <div class="spec-sheet-content">
+                    <h2>Recycle Your Old Gauge</h2>
+                    <p>The computer in your gauge might be old or obsolete, but the frame and sensors are not. A system upgrade from RSI will make your aging thickness or coating gauge perform even better than when it was brand new for a fraction of the price. RSI upgrade packages offer faster measurement speeds, advanced network connectivity, and improved event logging and diagnostic capabilities.</p>
+                    <p>A typical upgrade requires only the installation of a new Main Electronic Cabinet (MEC) and an optional remote operator panel. The installation of most upgrades takes just a few days, minimizing the costly downtime associated with the installation of new gauging systems.</p>
+                    
+                    <h3>Key Features & Components</h3>
+                    <ul>
+                        <li><strong>Main Electronic Cabinet (MEC):</strong> Houses an LCD touchscreen, high-speed processors, flash drives, and industry-standard hardware.</li>
+                        <li><strong>Advanced I/O:</strong> Includes 16-bit analog-to-digital channels and 48 channels of configurable digital I/O for reliable and accurate measurements.</li>
+                        <li><strong>Seamless Integration:</strong> A number of popular communication links are available, permitting seamless integration with existing automation systems.</li>
+                        <li><strong>Reliable Power:</strong> All power supplies are protected by circuit breakers and are monitored and alarmed for malfunctions. Color-coded wiring simplifies troubleshooting.</li>
+                        <li><strong>Cost-Effective:</strong> RSI system upgrades re-use the existing x-ray sources and measuring frames. Existing detector units are upgraded to meet today's demands.</li>
+                        <li><strong>Future-Proof Design:</strong> Our hardware and software are designed to minimize future obsolescence issues, and we back everything up with a 10-year support guarantee.</li>
+                    </ul>
+                </div>
+                <div class="spec-sheet-image">
+                    <figure>
+                        <img src="~/images/products/rsi-embeded-etx-com-chip.jpg" alt="RSI Gauge Processor Board for legacy system support and upgrades">
+                        <figcaption>The modern processor at the core of an RSI upgrade.</figcaption>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="spec-sheet-gallery">
+                <h3>Additional Images</h3>
+                <div class="gallery-grid">
+                    <figure>
+                        <img src="~/images/products/rsi-main-electronics-cabinet-wide.png" alt="Main Electronic Cabinet (MEC)">
+                         <figcaption>New Main Electronic Cabinet (MEC).</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="~/images/products/rsi-technician-terminal-screenshot-jpg.jpg" alt="Screenshot of RSI Operator Interface">
+                        <figcaption>Modern Touchscreen Operator Interface.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section cta-section">
+        <div class="container">
+            <h2>Modernize Your Equipment</h2>
+            <p>Contact our team to discuss how an RSI Upgrade Package can extend the life and improve the performance of your existing systems.</p>
+            <a asp-page="/ContactUs" asp-route-subject="Upgrade Inquiry" class="btn btn-primary">Inquire About Upgrades</a>
+        </div>
+    </section>
+</main>

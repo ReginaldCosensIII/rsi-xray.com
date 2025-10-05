@@ -1,0 +1,150 @@
+﻿@page
+@{
+    ViewData["SiteName"] = "Radiometric Services & Instruments, LLC";
+    ViewData["Title"] = "Online Thickness Gauges | RSI";
+    ViewData["MetaDescription"] = "Technical details for RSI's high-performance online thickness gauges, including the GaugeMaster PLUS and the Model 50 X-Ray Gauge for various metal processing lines.";
+    ViewData["Canonical"] = "https://www.rsi-xray.com/products/thickness-gauges";
+
+    ViewData["OgTitle"] = "Online Thickness Gauges | RSI";
+    ViewData["OgDescription"] = "Technical details for RSI's high-performance online thickness gauges, including the GaugeMaster PLUS and the Model 50 X-Ray Gauge.";
+    ViewData["OgImage"] = "https://www.rsi-xray.com/images/social-cards/products-thickness-gauges.jpg";
+    ViewData["OgType"] = "website";
+
+    ViewData["TwitterCard"] = "summary_large_image";
+    ViewData["TwitterTitle"] = "Online Thickness Gauges | RSI";
+    ViewData["TwitterDescription"] = "Technical details for RSI's high-performance online thickness gauges, including the GaugeMaster PLUS and the Model 50 X-Ray Gauge.";
+    ViewData["TwitterImage"] = "https://www.rsi-xray.com/images/social-cards/products-thickness-gauges.jpg";
+}
+
+@section HeadContent {
+    <link rel="stylesheet" href="~/css/products-shared.css" asp-append-version="true" />
+    <script type="application/ld+json">
+    @Html.Raw(@"{
+      ""@context"": ""https://schema.org"",
+      ""@type"": ""Product"",
+      ""name"": ""RSI Online Thickness Gauges"",
+      ""description"": ""RSI's line of online thickness gauges, including the GaugeMaster PLUS and Model 50, provide accurate, high-speed, non-contact measurement for demanding environments."",
+      ""brand"": { ""@type"": ""Brand"", ""name"": ""RSI"" },
+      ""additionalProperty"": [
+        { ""@type"": ""PropertyValue"", ""name"": ""Measurement Speed"", ""value"": ""Up to 1,000 measurements per second"" },
+        { ""@type"": ""PropertyValue"", ""name"": ""CPU Cycle Time"", ""value"": ""Up to 1 millisecond"" },
+        { ""@type"": ""PropertyValue"", ""name"": ""Key Feature"", ""value"": ""DynaComp Alloy Correction"" },
+        { ""@type"": ""PropertyValue"", ""name"": ""Key Feature"", ""value"": ""X-ray Spectrum Correction (XSC)"" },
+        { ""@type"": ""PropertyValue"", ""name"": ""Technology"", ""value"": ""ETX computer-on-module (COM) for future-proofing"" }
+      ]
+    }")
+    </script>
+    <script type="application/ld+json">
+    @Html.Raw(@"{
+      ""@context"": ""https://schema.org"",
+      ""@type"": ""BreadcrumbList"",
+      ""itemListElement"": [{
+        ""@type"": ""ListItem"", ""position"": 1, ""name"": ""Home"", ""item"": ""https://www.rsi-xray.com/""
+      },{
+        ""@type"": ""ListItem"", ""position"": 2, ""name"": ""Products"", ""item"": ""https://www.rsi-xray.com/products.html""
+      },{
+        ""@type"": ""ListItem"", ""position"": 3, ""name"": ""Online Thickness Gauges"", ""item"": ""https://www.rsi-xray.com/products/thickness-gauges.html""
+      }]
+    }")
+    </script>
+}
+
+<main>
+    <section class="page-hero-section">
+        <div class="container">
+            <h1>Online Thickness Gauges</h1>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container spec-sheet-container">
+            <div class="breadcrumb">
+                <a asp-page="/Products">‹ Back to Products</a>
+            </div>
+
+            <div class="spec-page-grid spec-page-grid--60-40">
+                <div class="feature-content">
+                    <h2>GaugeMaster PLUS</h2>
+                    <p>Designed for use in the most demanding environments, the GaugeMaster PLUS X-ray Thickness Gauge provides the most accurate and dependable, high-speed measurement available. One of the fastest-growing concepts in the embedded world is the computer-on-module (COM), which we use to ensure our systems have compatible replacement modules available regardless of an individual CPU’s rapid obsolescence, guaranteeing a long application lifetime.</p>
+                    
+                    <h3>Key Features</h3>
+                    <ul>
+                        <li>Accurate, high-speed measurements; up to 1,000 per second.</li>
+                        <li>Expandable architecture; can accommodate two C-frames per cabinet.</li>
+                        <li>Configurable for centerline, scanning, and dual profile setups.</li>
+                        <li>Unmatched CPU performance: up to 1 millisecond cycle time.</li>
+                        <li>Real-time diagnostics and event logging.</li>
+                        <li>Supports most popular network interfaces: TCP/IP, EtherNet/IP, PROFIBUS, PROFINET, XML, OPC, etc.</li>
+                        <li>Simple, easy-to-use touchscreen interface with multi-level access control.</li>
+                        <li>Remote Diagnostic Capability for fast and efficient support.</li>
+                    </ul>
+                </div>
+                <div class="feature-image">
+                    <figure>
+                        <img src="~/images/products/rsi-c-frame-cold-mill-no-frame.jpg" alt="RSI GaugeMaster PLUS C-Frame">
+                        <figcaption>RSI GaugeMaster PLUS C-Frame.</figcaption>
+                    </figure>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <div id="model-50"  class="spec-page-grid spec-page-grid--40-60">
+                <div class="feature-image">
+                    <figure>
+                        <img src="~/images/products/rsi-compact-main-electronics-cabinet.jpg" alt="RSI Compact Main Electronics Cabinet for the RSI Model 50 X-Ray Gauge">
+                        <figcaption>Compact Main Electronics Cabinet for the Model 50.</figcaption>
+                    </figure>
+                </div>
+                <div class="feature-content">
+                    <h2>Model 50 X-Ray Gauge</h2>
+                    <p>The Model 50 provides reliable, accurate non-contact thickness measurement of sheet metals on every type of processing line. With a compact design and superior performance, this gauge is the perfect choice for a durable and reliable thickness gauge at an affordable price. It is the perfect modern replacement for traditional gamma-ray applications using Americium-241, as our X-ray systems are inherently safer and provide significantly better accuracy, faster response times, and larger air gaps.</p>
+                    
+                    <h3>General Specifications</h3>
+                    <ul>
+                        <li><strong>Source Type:</strong> X-ray source up to 80 kV</li>
+                        <li><strong>Material:</strong> Steel strip</li>
+                        <li><strong>Measurement Range:</strong> 0.1 mm to 6.0 mm (0.004 in. to 0.24 in.)</li>
+                        <li><strong>Detector Type:</strong> Ionization chamber</li>
+                        <li><strong>C-frame Air Gap:</strong> Up to 400 mm (15.75 in.)</li>
+                    </ul>
+
+                    <h3>Typical Applications</h3>
+                    <ul>
+                        <li>Pickling lines</li>
+                        <li>Annealing lines</li>
+                        <li>Shear and Inspection lines</li>
+                        <li>Slitting lines</li>
+                        <li>Cut-to-length Shearing lines</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="spec-sheet-gallery">
+                <h3>Additional Images</h3>
+                <div class="gallery-grid">
+                    <figure>
+                        <img src="~/images/products/rsi-hot-mill-c-frame.jpg" alt="RSI Hot Mill C-Frame">
+                        <figcaption>Heavy-Duty C-Frame for Hot Mill Applications.</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="~/images/products/rsi-mill-junction-box.jpg" alt="RSI Mill Junction Box">
+                        <figcaption>RSI Mill Junction Box.</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="~/images/products/rsi-technician-terminal-screenshot-jpg.jpg" alt="Screenshot of RSI Technician's Terminal software">
+                        <figcaption>Technician's Terminal Interface.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section cta-section">
+        <div class="container">
+            <h2>Have Questions?</h2>
+            <p>Contact our team to discuss your specific application needs or to request a quote for an Online Thickness Gauge.</p>
+            <a asp-page="/ContactUs" asp-route-subject="Thickness Gauge Inquiry" class="btn btn-primary">Contact Us</a>
+        </div>
+    </section>
+</main>
