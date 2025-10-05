@@ -2,9 +2,9 @@
    SHARED STYLES FOR PRODUCT, SOLUTIONS, & SERVICE PAGES
    ================================================================= */
 
-/* --- Page Hero Banner (Reusable) --- */
+/* --- 1. Hero & CTA Sections --- */
 .page-hero-section {
-    background-image: linear-gradient(rgba(255, 0, 0, 0.7), rgba(255, 0, 0, 0.7)), url('../images/homepage/AdobeStock_445895041.jpeg'); /* Placeholder */
+    background-image: linear-gradient(rgba(255, 0, 0, 0.7), rgba(255, 0, 0, 0.7)), url('../images/homepage/AdobeStock_445895041.jpeg');
     background-size: cover;
     background-position: center;
     padding: 4rem 0;
@@ -16,14 +16,56 @@
         font-size: 3rem;
     }
 
-/* --- General Section Styling --- */
+.cta-section {
+    background-image: linear-gradient(rgba(175, 175, 175, 0.9), rgba(212, 212, 212, 0.9)), url('/images/homepage/AdobeStock_445895041.jpeg');
+    text-align: center;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+}
+
+    .cta-section h2 {
+        font-size: 2.5rem;
+    }
+
+    .cta-section p {
+        font-size: 1.125rem;
+        color: var(--color-secondary);
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+/* --- Products & Solutions Intro Section - BG --- */
+.intro-section-wrapper {
+    position: relative;
+    background-image: url('/images/products/full-width.png');
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+
+    .intro-section-wrapper::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+
+/* --- 2. General Section & Layout Styles --- */
 .section-heading {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 3rem;
 }
 
-/* --- Two-Column Feature Layout --- */
 .feature-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -48,54 +90,131 @@
     margin-bottom: 1.5rem;
 }
 
-/* --- Product/Category Grid --- */
-.product-grid {
+/* --- 3. Styles for Individual Product Spec Pages --- */
+.spec-sheet-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.breadcrumb {
+    margin-bottom: 2rem;
+}
+
+    .breadcrumb a {
+        color: var(--color-primary);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.1rem;
+    }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+.spec-sheet-main {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    align-items: flex-start;
 }
 
-/* --- Call to Action Section --- */
-.cta-section {
-    background-color: var(--color-background-alt);
+.spec-sheet-image img {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.feature-content h3 {
+    margin-top: 1.0rem;
+}
+
+hr.section-divider {
+    border: 0;
+    height: 1px;
+    margin: 3rem 0;
+}
+
+/* Spec Page 60/40 Grid */
+.spec-page-grid {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+    scroll-margin-top: 145px;
+}
+
+.spec-page-grid--60-40 {
+    grid-template-columns: 3fr 2fr; /* 60/40 split */
+}
+
+.spec-page-grid--40-60 {
+    grid-template-columns: 2fr 3fr; /* 40/60 split */
+}
+
+/* NEW: Figure & Figcaption Styles for Image Captions */
+figure {
+    margin: 0; /* Resets browser default margin */
+    padding: 0;
+}
+
+figcaption {
     text-align: center;
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: 0.75rem;
+    font-style: italic;
 }
 
-/* --- Responsive Overrides --- */
+
+/* --- 4. Gallery Styles --- */
+.spec-sheet-gallery {
+    margin-top: 3rem;
+    padding-top: 3rem;
+    border-top: 1px solid #eee;
+}
+
+    .spec-sheet-gallery h3 {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .spec-sheet-gallery img {
+        border-radius: 8px;
+    }
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    align-items: center;
+}
+
+    .gallery-grid img {
+        width: 100%;
+        max-height: 350px;
+        object-fit: contain;
+    }
+
+/* --- 5. Responsive Overrides --- */
+@media (max-width: 992px) {
+    .spec-sheet-main {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media (max-width: 768px) {
-    .feature-grid {
+    .feature-grid,
+    .spec-page-grid {
         grid-template-columns: 1fr;
     }
 
-        .feature-grid .feature-image {
-            order: -1; /* Move image above text on mobile */
+        /* UPDATED: Universal rule to put image first on mobile for all grids */
+        .feature-grid .feature-image,
+        .spec-page-grid .feature-image {
+            order: -1;
         }
 
     .cta-section {
         min-height: 40vh;
     }
 }
-/* --- Call to Action Section --- */
-.cta-section {
-    background-image: linear-gradient(rgba(175, 175, 175, 0.9), rgba(212, 212, 212, 0.9)), url('/images/homepage/AdobeStock_445895041.jpeg');
-    background-color: var(--color-background-alt);
-    text-align: center;
-    min-height: 60vh; /* Adjust height as needed */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-size: cover;
-    background-position: center;
-}
-
-    .cta-section h2 {
-        font-size: 2.5rem;
-    }
-
-    .cta-section p {
-        font-size: 1.125rem;
-        color: var(--color-secondary);
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-    }

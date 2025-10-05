@@ -1,0 +1,291 @@
+﻿body {
+}
+/* =================================================================
+   PAGE-SPECIFIC STYLES for products.html
+   ================================================================= */
+
+/* --- 1. Intro Section & Carousel --- */
+.intro-section-wrapper {
+    position: relative;
+    background-image: url('/images/products/full-width.png');
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+
+    .intro-section-wrapper::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .intro-section-wrapper .section-heading,
+    .intro-section-wrapper .section-intro-text {
+        color: #333;
+    }
+
+.spotlight-carousel-container {
+    position: relative;
+    margin-top: 4rem;
+    padding: 1rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
+}
+
+.spotlight-carousel-slides {
+    position: relative;
+    min-height: 200px;
+}
+
+.tech-spotlight {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background-color: rgb(248, 249, 250, .6);
+    border: 1px solid rgb(255, 255, 255, .8);
+    border-left: 5px solid var(--color-accent-red);
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out, box-shadow 0.3s ease;
+    z-index: 1;
+    overflow: hidden;
+}
+
+    .tech-spotlight:hover {
+        transform: scale(1.03);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .tech-spotlight.active {
+        opacity: 1;
+        transform: translateX(0);
+        z-index: 2;
+    }
+
+        .tech-spotlight.active:hover {
+            transform: scale(1.03);
+        }
+
+    .tech-spotlight.enter-from-right {
+        transform: translateX(50px);
+    }
+
+    .tech-spotlight.enter-from-left {
+        transform: translateX(-50px);
+    }
+
+    .tech-spotlight.exit-to-left {
+        opacity: 0;
+        transform: translateX(-50px);
+        z-index: 1;
+    }
+
+    .tech-spotlight.exit-to-right {
+        opacity: 0;
+        transform: translateX(50px);
+        z-index: 1;
+    }
+
+.spotlight-icon {
+    width: 80px;
+    height: 80px;
+    background-color: var(--color-accent-red);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+    .spotlight-icon i {
+        font-size: 2.5rem;
+        color: black;
+    }
+
+.spotlight-content h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.spotlight-content p {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.carousel-dots {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.dot {
+    cursor: pointer;
+    height: 12px;
+    width: 12px;
+    margin: 0 5px;
+    background-color: #ccc;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+    .dot.active, .dot:hover {
+        background-color: var(--color-primary);
+    }
+
+.spotlight-mobile-view {
+    display: none;
+}
+
+
+/* --- 2. Main Product Sections (Alternating) --- */
+.product-feature-grid .feature-content h2 {
+    /* UPDATED: Increased space below the heading */
+    margin-bottom: 2rem;
+}
+
+.product-feature-grid .feature-content p {
+    /* UPDATED: Increased space below the paragraph */
+    margin-bottom: 2rem;
+}
+
+.product-feature-grid .btn {
+    display: inline-block;
+    width: auto;
+}
+
+.lab-gauge-section .feature-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .lab-gauge-section .feature-image img {
+        max-height: 450px;
+        width: auto;
+        object-fit: contain;
+    }
+
+.btn-group {
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.vertical-product-card .btn-group {
+    gap: 2.5rem; /* Adjust this value as needed */
+}
+
+/* --- 3. Two-Column Vertical Product Section --- */
+.vertical-product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.vertical-product-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+    .vertical-product-card h3 {
+        font-size: 1.75rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .vertical-product-card img {
+        width: 100%;
+        border-radius: 8px;
+        margin-bottom: 1.5rem;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+    }
+
+    .vertical-product-card p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        flex-grow: 1;
+    }
+
+    .vertical-product-card .btn {
+        margin-top: 1.5rem;
+        display: inline-block;
+        width: auto;
+        align-self: center; /* Center the button horizontally */
+    }
+
+
+/* --- 4. Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .vertical-product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .spotlight-carousel-container {
+        display: none;
+    }
+
+    .spotlight-mobile-view {
+        display: block;
+    }
+
+    .spotlight-mobile-view {
+        margin-top: 3rem;
+        border-top: 1px solid #ddd;
+        padding-top: 3rem;
+    }
+
+    .spotlight-mobile-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+        .spotlight-mobile-item:last-child {
+            margin-bottom: 0;
+        }
+
+    .spotlight-mobile-icon {
+        font-size: 1.75rem;
+        color: var(--color-accent-red);
+        flex-shrink: 0;
+        margin-top: 5px;
+    }
+
+    .spotlight-mobile-content h4 {
+        margin: 0 0 0.5rem 0;
+        font-size: 1.25rem;
+        color: #333;
+    }
+
+    .spotlight-mobile-content p {
+        margin: 0;
+        line-height: 1.6;
+        color: #555;
+    }
+
+    .section-intro-text {
+        text-align: center;
+    }
+
+    .product-feature-grid .feature-content h2 {
+        text-align: center;
+    }
+}
+

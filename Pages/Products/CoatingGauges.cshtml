@@ -1,0 +1,111 @@
+﻿@page
+@{
+    ViewData["SiteName"] = "Radiometric Services & Instruments, LLC";
+    ViewData["Title"] = "Online Coating Weight Gauges | RSI";
+    ViewData["MetaDescription"] = "Technical details for RSI's GaugeMaster high-performance online coating weight gauges for CGL, EGL, and ETL lines.";
+    ViewData["Canonical"] = "https://www.rsi-xray.com/products/coating-gauges";
+
+    ViewData["OgTitle"] = "Online Coating Weight Gauges | RSI";
+    ViewData["OgDescription"] = "Technical details for RSI's GaugeMaster high-performance online coating weight gauges for CGL, EGL, and ETL lines.";
+    ViewData["OgImage"] = "https://www.rsi-xray.com/images/social-cards/products-coating-gauges.jpg";
+    ViewData["OgType"] = "website";
+
+    ViewData["TwitterCard"] = "summary_large_image";
+    ViewData["TwitterTitle"] = "Online Coating Weight Gauges | RSI";
+    ViewData["TwitterDescription"] = "Technical details for RSI's GaugeMaster high-performance online coating weight gauges for CGL, EGL, and ETL lines.";
+    ViewData["TwitterImage"] = "https://www.rsi-xray.com/images/social-cards/products-coating-gauges.jpg";
+}
+
+@section HeadContent {
+    <link rel="stylesheet" href="~/css/products-shared.css" asp-append-version="true" />
+    <script type="application/ld+json">
+    @Html.Raw(@"{
+      ""@context"": ""https://schema.org"",
+      ""@type"": ""Product"",
+      ""name"": ""GaugeMaster Online Coating Weight Gauge"",
+      ""description"": ""A high-performance coating weight gauge featuring low noise and fast response for demanding applications on CGL, EGL, and ETL lines. Measures single and total coatings including Zn, Al, Sn, Cr, Galfan, Galvalume, and Galvanneal."",
+      ""brand"": { ""@type"": ""Brand"", ""name"": ""RSI"" },
+      ""additionalProperty"": [
+        { ""@type"": ""PropertyValue"", ""name"": ""Application"", ""value"": ""CGL, EGL, and ETL Lines"" },
+        { ""@type"": ""PropertyValue"", ""name"": ""Key Feature"", ""value"": ""Low noise and fast response"" },
+        { ""@type"": ""PropertyValue"", ""name"": ""Measurement Modes"", ""value"": ""Single Point, Continuous Scanning, Triple Spot"" },
+        { ""@type"": ""PropertyValue"", ""name"": ""Operating System"", ""value"": ""Ubuntu (Linux) Real-Time OS"" },
+        { ""@type"": ""PropertyValue"", ""name"": ""Hardware"", ""value"": ""Rugged O-frame with high-power X-ray sources"" }
+      ]
+    }")
+    </script>
+    <script type="application/ld+json">
+    @Html.Raw(@"{
+      ""@context"": ""https://schema.org"",
+      ""@type"": ""BreadcrumbList"",
+      ""itemListElement"": [{
+        ""@type"": ""ListItem"", ""position"": 1, ""name"": ""Home"", ""item"": ""https://www.rsi-xray.com/""
+      },{
+        ""@type"": ""ListItem"", ""position"": 2, ""name"": ""Products"", ""item"": ""https://www.rsi-xray.com/products.html""
+      },{
+        ""@type"": ""ListItem"", ""position"": 3, ""name"": ""Online Coating Weight Gauges"", ""item"": ""https://www.rsi-xray.com/products/coating-gauges.html""
+      }]
+    }")
+    </script>
+}
+
+<main>
+    <section class="page-hero-section">
+        <div class="container">
+            <h1>Online Coating Weight Gauges</h1>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container spec-sheet-container">
+            <div class="breadcrumb">
+                <a asp-page="/Products">‹ Back to Products</a>
+            </div>
+
+            <div class="spec-sheet-main">
+                <div class="spec-sheet-content">
+                    <h2>GaugeMaster for Metal Coatings</h2>
+                    <p>The GaugeMaster system is a high-performance coating weight gauge featuring low noise and fast response for the most demanding applications on CGL, EGL, and ETL lines. High-power x-ray sources are employed to provide better noise-to-signal ratios for improved control, product quality, and productivity. Differential ion chambers with selected filters ensure high sensitivity and immunity from Compton backscatter effects. A closed loop chiller for cooling the x-ray sources and many other optional features are available. These include split frame scanners, collimated x-ray beams for ridge detection and measuring close to the strip edges, Coil Reports and Archiving.</p>
+                    
+                    <h3>Key Features</h3>
+                    <ul>
+                        <li><strong>Coatings Measured:</strong> Single coatings (Zn, Al, Sn, Cr) and Total Coatings (Galfan, Galvalume, Galvanneal).</li>
+                        <li><strong>High Performance:</strong> Low noise and fast response for demanding applications.</li>
+                        <li><strong>Rugged Hardware:</strong> Measuring heads are mounted on a proven, rugged O-frame design.</li>
+                        <li><strong>Flexible Measurement Modes:</strong> Includes Single Point, Continuous Scanning, and Triple Spot modes.</li>
+                        <li><strong>Modern Interface:</strong> Features a Main Electronics Cabinet with a Touchscreen Technician's Panel for extensive diagnostics.</li>
+                        <li><strong>Reliable OS:</strong> Utilizes Ubuntu (Linux) Real-Time Operating System with separate CPUs for measurements and communications.</li>
+                    </ul>
+                </div>
+                <div class="spec-sheet-image">
+                    <figure>
+                        <img src="~/images/products/rsi-gauge-master-plus-o-frame-side-view.jpg" alt="RSI GaugeMaster O-Frame for Coating Weight Gauges - side view">
+                        <figcaption>RSI GaugeMaster O-Frame for coating weight measurement (Side-View).</figcaption>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="spec-sheet-gallery">
+                <h3>Additional Images</h3>
+                <div class="gallery-grid">
+                    <figure>
+                        <img src="~/images/products/rsi-gauge-master-plus-o-frame.jpg" alt="RSI GaugeMaster O-Frame for Coating Weight Gauges - (front view)">
+                        <figcaption>RSI GaugeMaster O-Frame for coating weight measurement (Front-View)</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="~/images/products/rsi-main-electronics-cabinet-wide.png" alt="Main Electronic Cabinet (MEC) for RSI gauging systems">
+                        <figcaption>Main Electronic Cabinet (MEC)</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section cta-section">
+        <div class="container">
+            <h2>Have Questions?</h2>
+            <p>Contact our team to discuss your specific application needs or to request a quote for the GaugeMaster Coating Gauge.</p>
+            <a asp-page="/ContactUs" asp-route-subject="Coating Gauge Inquiry" class="btn btn-primary">Contact Us</a>
+        </div>
+    </section>
+</main>

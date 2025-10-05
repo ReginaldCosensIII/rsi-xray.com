@@ -1,0 +1,134 @@
+﻿@page
+@{
+    ViewData["SiteName"] = "Radiometric Services & Instruments, LLC";
+    ViewData["Title"] = "X-Ray Sources & Detectors | RSI";
+    ViewData["MetaDescription"] = "Technical details for RSI's in-house manufactured, high-powered X-ray sources and advanced Ion Chamber Detectors, designed for high stability and performance.";
+    ViewData["Canonical"] = "https://www.rsi-xray.com/products/sources-detectors";
+    
+    ViewData["OgTitle"] = "X-Ray Sources & Detectors | RSI";
+    ViewData["OgDescription"] = "Technical details for RSI's in-house manufactured, high-powered X-ray sources and advanced Ion Chamber Detectors, designed for high stability and performance.";
+    ViewData["OgImage"] = "https://www.rsi-xray.com/images/social-cards/products-sources-detectors.jpg";
+    ViewData["OgType"] = "website";
+    
+    ViewData["TwitterCard"] = "summary_large_image";
+    ViewData["TwitterTitle"] = "X-Ray Sources & Detectors | RSI";
+    ViewData["TwitterDescription"] = "Technical details for RSI's in-house manufactured, high-powered X-ray sources and advanced Ion Chamber Detectors, designed for high stability and performance.";
+    ViewData["TwitterImage"] = "https://www.rsi-xray.com/images/social-cards/products-sources-detectors.jpg";
+}
+
+@section HeadContent {
+    <link rel="stylesheet" href="~/css/products-shared.css" asp-append-version="true" />
+    <script type="application/ld+json">
+    @Html.Raw(@"{
+      ""@context"": ""https://schema.org"",
+      ""@type"": ""Product"",
+      ""name"": ""RSI X-Ray Sources & Detectors"",
+      ""description"": ""The core of our systems are the in-house manufactured, high-powered X-ray sources and advanced Ion Chamber Detectors, designed for high stability and superior performance in severe environments."",
+      ""brand"": { ""@type"": ""Brand"", ""name"": ""RSI"" },
+      ""additionalProperty"": [
+        { ""@type"": ""PropertyValue"", ""name"": ""Source Types"", ""value"": ""50kV, 100kV, 160kV, and 250kV"" },
+        { ""@type"": ""PropertyValue"", ""name"": ""Detector Type"", ""value"": ""Ion Chamber Detector"" },
+        { ""@type"": ""PropertyValue"", ""name"": ""Key Feature"", ""value"": ""In-house manufacturing for quality control"" },
+        { ""@type"": ""PropertyValue"", ""name"": ""Key Feature"", ""value"": ""Superior thermal stability and shock resistance"" },
+        { ""@type"": ""PropertyValue"", ""name"": ""Response Time"", ""value"": ""Typically 2-3 milliseconds (0.5ms available)"" }
+      ]
+    }")
+    </script>
+    <script type="application/ld+json">
+    @Html.Raw(@"{
+      ""@context"": ""https://schema.org"",
+      ""@type"": ""BreadcrumbList"",
+      ""itemListElement"": [{
+        ""@type"": ""ListItem"", ""position"": 1, ""name"": ""Home"", ""item"": ""https://www.rsi-xray.com/""
+      },{
+        ""@type"": ""ListItem"", ""position"": 2, ""name"": ""Products"", ""item"": ""https://www.rsi-xray.com/products.html""
+      },{
+        ""@type"": ""ListItem"", ""position"": 3, ""name"": ""X-Ray Sources & Detectors"", ""item"": ""https://www.rsi-xray.com/products/sources-detectors.html""
+      }]
+    }")
+    </script>
+}
+
+<main>
+    <section class="page-hero-section">
+        <div class="container">
+            <h1>X-Ray Sources & Detectors</h1>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container spec-sheet-container">
+            <div class="breadcrumb">
+                <a asp-page="/Products">‹ Back to Products</a>
+            </div>
+
+            <div class="spec-page-grid spec-page-grid--60-40">
+                <div class="feature-content">
+                    <h2>In-House Manufactured X-Ray Sources</h2>
+                    <p>At the core of our gauging systems are high-powered X-ray sources developed and built in-house. This allows us to monitor and control the complete manufacturing process, ensuring the highest quality and stability. By placing high-voltage components inside the source housing, we eliminate troublesome high-voltage cables and connectors, leading to more reliable, trouble-free operation for many years.</p>
+                    <h3>Key Features</h3>
+                    <ul>
+                        <li>Long-life, liquid-cooled sources for hot and cold mill applications.</li>
+                        <li>Available in 50kV, 100kV, 160kV, and 250kV.</li>
+                        <li>Heavy-duty housings with integral cooling passages provide superior thermal stability.</li>
+                        <li>Typical lifetime of 4-5 years, ensuring long-term value.</li>
+                    </ul>
+                </div>
+                <div class="feature-image">
+                    <figure>
+                        <img src="~/images/products/rsi-compact-80kv-x-ray-source.jpg" alt="RSI In-House Manufactured X-Ray Source">
+                        <figcaption>RSI's in-house manufactured, liquid-cooled X-Ray Source.</figcaption>
+                    </figure>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <div class="spec-page-grid spec-page-grid--40-60">
+                <div class="feature-image">
+                    <figure>
+                        <img src="~/images/products/rsi-ion-chamber-detector.png" alt="RSI Advanced Ion Chamber Detector">
+                        <figcaption>High-stability Ion Chamber Detector.</figcaption>
+                    </figure>
+                </div>
+                <div class="feature-content">
+                    <h2>Advanced X-Ray Detectors</h2>
+                    <p>RSI utilizes Ion Chamber Detectors for their superior physical attributes and performance in severe environments. They are rugged, thermally stable, and shock-resistant. A key advantage is their lack of "dark current," which provides virtually zero "hysteresis" and allows for a quick recovery from excessive X-ray exposure ("blinding"), unlike other detector technologies.</p>
+                    <h3>Key Features</h3>
+                    <ul>
+                        <li>Optimum stability in severe environments with superior shock and vibration resistance.</li>
+                        <li>Fast response times, typically 2-3 milliseconds.</li>
+                        <li>Ultra-fast 0.5 millisecond ion chambers available for high-speed applications like cold mill chatter detection.</li>
+                        <li>High-pressure, low-noise Xenon gas-filled Ion chambers for critical hot mill use.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="spec-sheet-gallery">
+                <h3>Additional Images</h3>
+                <div class="gallery-grid">
+                    <figure>
+                        <img src="~/images/products/rsi-x-ray-source.png" alt="RSI X-Ray Source">
+                        <figcaption>RSI X-Ray Source (Model 1).</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="~/images/products/rsi-x-ray-source-2.png" alt="RSI X-Ray Source">
+                        <figcaption>RSI X-Ray Source (Model 2).</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="~/images/products/rsi-quad-standard-magazine.jpg" alt="RSI's Pneumatic Quad Storage Magazine">
+                        <figcaption>Pneumatic Quad Standard Magazine.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section cta-section">
+        <div class="container">
+            <h2>Have Questions?</h2>
+            <p>Contact our team to discuss your specific application needs or to request a quote for our X-Ray Sources and Detectors.</p>
+            <a asp-page="/ContactUs" asp-route-subject="Sources and Detectors Inquiry" class="btn btn-primary">Contact Us</a>
+        </div>
+    </section>
+</main>

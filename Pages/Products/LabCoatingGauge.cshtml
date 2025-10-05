@@ -1,0 +1,117 @@
+﻿@page
+@{
+    ViewData["SiteName"] = "Radiometric Services & Instruments, LLC";
+    ViewData["Title"] = "Lab Coating Gauge | RSI";
+    ViewData["MetaDescription"] = "Technical details for the custom-built RSI GaugeMaster Lab Coating Gauge, an instrument for offline quality control and product sampling.";
+    ViewData["Canonical"] = "https://www.rsi-xray.com/products/lab-coating-gauge";
+
+    ViewData["OgTitle"] = "Lab Coating Gauge | RSI";
+    ViewData["OgDescription"] = "Technical details for the custom-built RSI GaugeMaster Lab Coating Gauge, an instrument for offline quality control and product sampling.";
+    ViewData["OgImage"] = "https://www.rsi-xray.com/images/social-cards/products-lab-coating-gauge.jpg";
+    ViewData["OgType"] = "website";
+
+    ViewData["TwitterCard"] = "summary_large_image";
+    ViewData["TwitterTitle"] = "Lab Coating Gauge | RSI";
+    ViewData["TwitterDescription"] = "Technical details for the custom-built RSI GaugeMaster Lab Coating Gauge, an instrument for offline quality control and product sampling.";
+    ViewData["TwitterImage"] = "https://www.rsi-xray.com/images/social-cards/products-lab-coating-gauge.jpg";
+}
+
+@section HeadContent {
+    <link rel="stylesheet" href="~/css/products-shared.css" asp-append-version="true" />
+    <script type="application/ld+json">
+    @Html.Raw(@"{
+      ""@context"": ""https://schema.org"",
+      ""@type"": ""Product"",
+      ""name"": ""GaugeMaster Lab Coating Gauge"",
+      ""description"": ""A custom-built laboratory gauge designed for simple, reliable, and unambiguous measurement of coating weight on offline product samples."",
+      ""brand"": { ""@type"": ""Brand"", ""name"": ""RSI"" },
+      ""additionalProperty"": [
+        { ""@type"": ""PropertyValue"", ""name"": ""Application"", ""value"": ""Laboratory Quality Control & Product Sampling"" },
+        { ""@type"": ""PropertyValue"", ""name"": ""Coating Types"", ""value"": ""Zinc, Galvanneal, Aluminum Type 1, Aluminum Type 2, ZAM® (Zn-Al-Mg)"" },
+        { ""@type"": ""PropertyValue"", ""name"": ""Substrates"", ""value"": ""Carbon Steel, 409 Stainless Steel"" },
+        { ""@type"": ""PropertyValue"", ""name"": ""Substrate Thickness"", ""value"": ""0.35 to 3.5 Millimeters"" },
+        { ""@type"": ""PropertyValue"", ""name"": ""Key Feature"", ""value"": ""Bench Top Head Enclosure with Foot Switch operation for ease of use"" },
+        { ""@type"": ""PropertyValue"", ""name"": ""Operating System"", ""value"": ""Ubuntu (Linux) Real-Time OS"" }
+      ]
+    }")
+    </script>
+    <script type="application/ld+json">
+    @Html.Raw(@"{
+      ""@context"": ""https://schema.org"",
+      ""@type"": ""BreadcrumbList"",
+      ""itemListElement"": [{
+        ""@type"": ""ListItem"", ""position"": 1, ""name"": ""Home"", ""item"": ""https://www.rsi-xray.com/""
+      },{
+        ""@type"": ""ListItem"", ""position"": 2, ""name"": ""Products"", ""item"": ""https://www.rsi-xray.com/products.html""
+      },{
+        ""@type"": ""ListItem"", ""position"": 3, ""name"": ""Lab Coating Gauge"", ""item"": ""https://www.rsi-xray.com/products/lab-coating-gauge.html""
+      }]
+    }")
+    </script>
+}
+
+<main>
+    <section class="page-hero-section">
+        <div class="container">
+            <h1>Lab Coating Gauge</h1>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container spec-sheet-container">
+            <div class="breadcrumb">
+                <a asp-page="/Products">‹ Back to Products</a>
+            </div>
+
+            <div class="spec-sheet-main">
+                <div class="spec-sheet-content">
+                    <h2>Custom-Built for Quality Control</h2>
+                    <p>This Lab Coating Gauge is a quality control instrument designed for offline product sampling. While RSI's online gauges automate coating thickness control during production, this lab gauge is used to verify the final quality. It checks random samples from the finished coil, providing critical statistical data on the final coating weight. The laboratory coating weight gauge is designed to allow samples to be checked simply and easily with no adjustments necessary by the user, thus providing an unambiguous and reliable measurement of coating weight by unskilled operators. For more information on our custom-build process, see our <a asp-page="/Solutions">Solutions page</a>.</p>
+                    
+                    <h3>Key Features & Specifications</h3>
+                    <ul>
+                        <li><strong>Application:</strong> Offline laboratory gauge for final product quality control.</li>
+                        <li><strong>Coating Types Measured:</strong> Zinc, Galvanneal, Aluminum Type 1 & 2, and ZAM® (Zn-Al-Mg).</li>
+                        <li><strong>Substrates Measured:</strong> Carbon Steel and 409 Stainless Steel.</li>
+                         <li><strong>Substrate Thickness:</strong> 0.35 to 3.5 Millimeters.</li>
+                        <li><strong>Hardware:</strong> Features a Bench Top Head Enclosure with an air-cooled X-ray measuring head and foot switch for raising and lowering the sample clamp.</li>
+                        <li><strong>Operator Interface:</strong> Includes a 17" Operator's Display for grade code entry, measurement display, and tolerance limit indicators.</li>
+                        <li><strong>Operating System:</strong> Utilizes Ubuntu (Linux) Real-Time Operating System for robust and reliable performance.</li>
+                    </ul>
+                </div>
+                <div class="spec-sheet-image">
+                    <figure>
+                        <img src="~/images/products/rsi-benchtop-coating-gauge.png" alt="RSI GaugeMaster Lab Coating Gauge">
+                        <figcaption>RSI's custom-built GaugeMaster Lab Coating Gauge.</figcaption>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="spec-sheet-gallery">
+                <h3>Additional Images</h3>
+                <div class="gallery-grid">
+                    <figure>
+                        <img src="~/images/products/rsi-main-electronics-cabinet-technician-terminal.jpg" alt="RSI Main Electronics Cabinet">
+                        <figcaption>Main Electronics Cabinet with 17" Operator's Display.</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="~/images/products/rsi-motherboard-portrait.jpg" alt="RSI Gauge Processor Board">
+                        <figcaption>Gauge Processor with Ubuntu (Linux) Real-Time OS.</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="~/images/products/rsi-standardized-page-screen-grab.jpg" alt="Screenshot of RSI's software interface">
+                        <figcaption>Standardize Page from RSI's software.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section cta-section">
+        <div class="container">
+            <h2>Have Questions?</h2>
+            <p>Contact our team to discuss your specific application needs or to request a quote for your Lab Coating Gauge needs.</p>
+            <a asp-page="/ContactUs" asp-route-subject="Lab Gauge Inquiry" class="btn btn-primary">Contact Us</a>
+        </div>
+    </section>
+</main>

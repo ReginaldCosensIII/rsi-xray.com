@@ -36,45 +36,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Core meta -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="~/images/favicon.jpg">
-    <link rel="apple-touch-icon" href="~/images/favicon.jpg">
+    <link rel="icon" type="image/png" href="~/images/favicon/favicon.ico">
+    <link rel="apple-touch-icon" href="~/images/favicon/apple-touch-icon.png">
 
-    <!-- Fonts & icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
-    <!-- Global CSS -->
     <link rel="stylesheet" href="~/css/global.css" asp-append-version="true" />
 
     @* -----------------------------
-       Google Analytics 4 (gtag.js)
-       - To enable: remove this Razor comment wrapper
-       - Replace ID if needed
-       ----------------------------- *@
+        Google Analytics 4 (gtag.js)
+        - To enable: remove this Razor comment wrapper
+        - Replace ID if needed
+        ----------------------------- *@
     @*
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T4XTG0R754"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YOUR_ID_HERE"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){ dataLayer.push(arguments); }
       gtag('js', new Date());
-      gtag('config', 'G-T4XTG0R754', { anonymize_ip: true });
+      gtag('config', 'G-YOUR_ID_HERE', { anonymize_ip: true });
     </script>
     *@
 
-    <!-- Per-page SEO/meta (reads ViewData[...] keys) -->
     @await Html.PartialAsync("_SeoHead")
 
-    <!-- Page-specific head (JSON-LD, extra CSS, etc.) -->
     @RenderSection("HeadContent", required: false)
 </head>
 <body>
 
-    <!-- ===== Header (shared) ===== -->
     <header class="site-header">
         <div class="header-top-bar">
             <div class="container">
@@ -107,61 +101,34 @@
 
                 <nav class="main-nav">
                     <ul id="main-nav-list" data-visible="false">
-                        <li>
-                            <a asp-page="/Index"
-                               class="@(IsActive("/") ? "is-active" : null)"
-                               aria-current="@(IsActive("/") ? "page" : null)">
-                                Home
-                            </a>
+                        <li><a asp-page="/Index" class="@(IsActive("/") ? "is-active" : null)">Home</a></li>
+                        <li class="dropdown">
+                            <a asp-page="/Products" class="@(IsActive("/products", true) ? "is-active" : null)">Products <i class="fa-solid fa-chevron-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li class="products-overview-link"><a asp-page="/Products">Products Overview</a></li>
+                                <li><a asp-page="/Products/CoatingGauges">Online Coating Weight Gauges</a></li>
+                                <li><a asp-page="/Products/ThicknessGauges">Online Thickness Gauges</a></li>
+                                <li><a asp-page="/Products/LabCoatingGauge">Lab Coating Gauge</a></li>
+                                <li><a asp-page="/Products/SourcesDetectors">X-Ray Sources & Detectors</a></li>
+                                <li><a asp-page="/Products/UpgradePackage">Upgrade Packages</a></li>
+                            </ul>
                         </li>
-
-                        <!-- Products / Solutions placeholders still # until you have pages -->
-                        <li><a href="#">Products</a></li>
-                        <li>
-                            <a asp-page="/Solutions"
-                               class="@(IsActive("/solutions") ? "is-active" : null)"
-                               aria-current="@(IsActive("/solutions") ? "page" : null)">
-                                Solutions
-                            </a>
-                        </li>
-                        <li><a href="#">Spare Parts & Repairs</a></li>
-                        <li><a href="#">Performance Monitoring</a></li>
-
-                        <li>
-                            <a asp-page="/Faq"
-                               class="@(IsActive("/faq") ? "is-active" : null)"
-                               aria-current="@(IsActive("/faq") ? "page" : null)">
-                                FAQs
-                            </a>
-                        </li>
-
-                        <li>
-                            <a asp-page="/AboutUs"
-                               class="@(IsActive("/about-us") ? "is-active" : null)"
-                               aria-current="@(IsActive("/about-us") ? "page" : null)">
-                                About Us
-                            </a>
-                        </li>
-
-                        <li>
-                            <a asp-page="/ContactUs"
-                               class="@(IsActive("/contact-us") ? "is-active" : null)"
-                               aria-current="@(IsActive("/contact-us") ? "page" : null)">
-                                Contact Us
-                            </a>
-                        </li>
+                        <li><a asp-page="/Solutions" class="@(IsActive("/solutions") ? "is-active" : null)">Solutions</a></li>
+                        <li><a asp-page="/SpareParts" class="@(IsActive("/spare-parts") ? "is-active" : null)">Spare Parts & Repairs</a></li>
+                        <li><a asp-page="/PerformanceMonitoring" class="@(IsActive("/performance-monitoring") ? "is-active" : null)">Performance Monitoring</a></li>
+                        <li><a asp-page="/Faq" class="@(IsActive("/faq") ? "is-active" : null)">FAQs</a></li>
+                        <li><a asp-page="/AboutUs" class="@(IsActive("/about-us") ? "is-active" : null)">About Us</a></li>
+                        <li><a asp-page="/ContactUs" class="@(IsActive("/contact-us") ? "is-active" : null)">Contact Us</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
     </header>
 
-    <!-- ===== Page content ===== -->
     <main>
         @RenderBody()
     </main>
 
-    <!-- ===== Footer (shared) ===== -->
     <footer class="site-footer">
         <div class="container">
             <div class="footer-main">
@@ -184,58 +151,25 @@
                 <div class="footer-links">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li>
-                            <a asp-page="/Index"
-                               class="@(IsActive("/Index") ? "is-active" : null)"
-                               aria-current="@(IsActive("/Index") ? "page" : null)">
-                                Home
-                            </a>
-                        </li>
-                        <li><a href="#">Products</a></li>
-                        <li><a href="#">Products</a></li>
-                        <li>
-                            <a asp-page="/Solutions"
-                               class="@(IsActive("/solutions") ? "is-active" : null)"
-                               aria-current="@(IsActive("/solutions") ? "page" : null)">
-                                Solutions
-                            </a>
-                        </li>
-                        <li><a href="#">Spare Parts</a></li>
-                        <li><a href="#">Performance</a></li>
-                        <li>
-                            <a asp-page="/Faq"
-                               class="@(IsActive("/faq") ? "is-active" : null)"
-                               aria-current="@(IsActive("/faq") ? "page" : null)">
-                                FAQs
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-page="/AboutUs"
-                               class="@(IsActive("/aboutt-us") ? "is-active" : null)"
-                               aria-current="@(IsActive("/about-us") ? "page" : null)">
-                                About Us
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-page="/ContactUs"
-                               class="@(IsActive("/contact-us") ? "is-active" : null)"
-                               aria-current="@(IsActive("/contact-us") ? "page" : null)">
-                                Contact Us
-                            </a>
-                        </li>
+                        <li><a asp-page="/Index">Home</a></li>
+                        <li><a asp-page="/Products">Products</a></li>
+                        <li><a asp-page="/Solutions">Solutions</a></li>
+                        <li><a asp-page="/SpareParts">Spare Parts & Repairs</a></li>
+                        <li><a asp-page="/PerformanceMonitoring">Performance Monitoring</a></li>
+                        <li><a asp-page="/Faq">FAQ</a></li>
+                        <li><a asp-page="/AboutUs">About Us</a></li>
+                        <li><a asp-page="/ContactUs">Contact Us</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-copyright">
-                <p>© <script>document.write(new Date().getFullYear())</script> Radiometric Services & Instruments, LLC All Rights Reserved.</p>
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> Radiometric Services & Instruments, LLC All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Global/site scripts -->
     <script src="~/js/main.js" defer></script>
 
-    <!-- Page-specific scripts -->
     @RenderSection("Scripts", required: false)
 </body>
 </html>
