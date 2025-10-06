@@ -106,13 +106,12 @@
 
                 <nav class="main-nav">
                     @{
-                        // Get the current page path to determine which nav link is active
                         var currentPage = ViewContext.RouteData.Values["page"]?.ToString() ?? "";
                     }
                     <ul id="main-nav-list" data-visible="false">
-                        <li><a asp-page="/Index" class="@(currentPage == "/Index" ? "is-active" : "")">Home</a></li>
+                        <li><a asp-page="/Index" class="@(currentPage.Equals("/Index", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">Home</a></li>
                         <li class="dropdown">
-                            <a asp-page="/Products" class="@(currentPage.StartsWith("/Products") ? "is-active" : "")">Products <i class="fa-solid fa-chevron-down"></i></a>
+                            <a asp-page="/Products" class="@(currentPage.StartsWith("/Products", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">Products <i class="fa-solid fa-chevron-down"></i></a>
                             <ul class="dropdown-menu">
                                 <li><a asp-page="/Products">Products Overview</a></li>
                                 <li><a asp-page="/Products/CoatingGauges">Online Coating Weight Gauges</a></li>
@@ -122,12 +121,12 @@
                                 <li><a asp-page="/Products/UpgradePackage">Upgrade Packages</a></li>
                             </ul>
                         </li>
-                        <li><a asp-page="/Solutions" class="@(currentPage == "/Solutions" ? "is-active" : "")">Solutions</a></li>
-                        <li><a asp-page="/SpareParts" class="@(currentPage.StartsWith("/SpareParts") ? "is-active" : "")">Spare Parts & Repairs</a></li>
-                        <li><a asp-page="/PerformanceMonitoring" class="@(currentPage == "/PerformanceMonitoring" ? "is-active" : "")">Performance Monitoring</a></li>
-                        <li><a asp-page="/Faq" class="@(currentPage == "/Faq" ? "is-active" : "")">FAQs</a></li>
-                        <li><a asp-page="/AboutUs" class="@(currentPage == "/AboutUs" ? "is-active" : "")">About Us</a></li>
-                        <li><a asp-page="/ContactUs" class="@(currentPage == "/ContactUs" ? "is-active" : "")">Contact Us</a></li>
+                        <li><a asp-page="/Solutions" class="@(currentPage.Equals("/Solutions", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">Solutions</a></li>
+                        <li><a asp-page="/SpareParts" class="@(currentPage.StartsWith("/SpareParts", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">Spare Parts & Repairs</a></li>
+                        <li><a asp-page="/PerformanceMonitoring" class="@(currentPage.Equals("/PerformanceMonitoring", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">Performance Monitoring</a></li>
+                        <li><a asp-page="/Faq" class="@(currentPage.Equals("/Faq", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">FAQs</a></li>
+                        <li><a asp-page="/AboutUs" class="@(currentPage.Equals("/AboutUs", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">About Us</a></li>
+                        <li><a asp-page="/ContactUs" class="@(currentPage.Equals("/ContactUs", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">Contact Us</a></li>
                     </ul>
                 </nav>
             </div>
