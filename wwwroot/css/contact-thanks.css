@@ -9,7 +9,9 @@ html, body {
 .contact-thanks-page {
     position: relative;
     z-index: 0;
-    background-color: var(--color-gray-100);
+    background-image: url('/images/products/full-width.jpg');
+    background-size: cover;
+    background-position: center;
     padding: 3rem 0; /* Adjust or remove if needed */
     display: flex;
     align-items: center;
@@ -24,8 +26,10 @@ html, body {
         bottom: 0;
         left: 0;
         right: 0;
+        width: 100%;
+        height: 100%;
         z-index: -1;
-        
+        background-color: rgba(255, 255, 255, 0.9);
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;

@@ -1,0 +1,188 @@
+﻿@page "/sparepartscatalog"
+@{
+    ViewData["SiteName"] = "Radiometric Services & Instruments, LLC";
+    ViewData["Title"] = "RSI Spare Parts Catalog | GaugeMaster Plus Components";
+    ViewData["MetaDescription"] = "Browse the official catalog of recommended spare parts for the RSI GaugeMaster Plus Thickness Gauge. Find part numbers for computer components, I/O modules, sensors, and C-frame assemblies.";
+    ViewData["Canonical"] = "https://www.rsi-xray.com/spare-parts-catalog";
+
+    ViewData["OgTitle"] = "RSI Spare Parts Catalog | GaugeMaster Plus Components";
+    ViewData["OgDescription"] = "Browse the official catalog of recommended spare parts for the RSI GaugeMaster Plus Thickness Gauge.";
+    ViewData["OgImage"] = "https://www.rsi-xray.com/images/social-cards/spare-parts.jpg";
+    ViewData["OgType"] = "website";
+    
+    ViewData["TwitterCard"] = "summary_large_image";
+    ViewData["TwitterTitle"] = "RSI Spare Parts Catalog | GaugeMaster Plus Components";
+    ViewData["TwitterDescription"] = "Browse the official catalog of recommended spare parts for the RSI GaugeMaster Plus Thickness Gauge.";
+    ViewData["TwitterImage"] = "https://www.rsi-xray.com/images/social-cards/spare-parts.jpg";
+}
+
+@section HeadContent {
+    <link rel="stylesheet" href="~/css/products-shared.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/spare-parts.css" asp-append-version="true" />
+    
+    <script type="application/ld+json">
+    @Html.Raw(@"{
+      ""@context"": ""https://schema.org"",
+      ""@type"": ""CollectionPage"",
+      ""name"": ""RSI Spare Parts Catalog | GaugeMaster Plus Components"",
+      ""description"": ""A catalog of recommended spare parts for a GaugeMaster Plus Thickness Gauge, including computer components, I/O modules, sensors, and C-frame assemblies."",
+      ""url"": ""https://www.rsi-xray.com/spare-parts-catalog"",
+      ""mainEntity"": {
+        ""@type"": ""ItemList"",
+        ""name"": ""GaugeMaster Plus Spare Parts"",
+        ""numberOfItems"": 44,
+        ""itemListElement"": [
+          { ""@type"": ""ListItem"", ""position"": 1, ""item"": { ""@type"": ""Product"", ""name"": ""Assy, PCB, Integrated Mini-backplane"", ""partNumber"": ""M15220-04"" } },
+          { ""@type"": ""ListItem"", ""position"": 2, ""item"": { ""@type"": ""Product"", ""name"": ""Assy, PCB, CPU, ETX, 1GB Ram"", ""partNumber"": ""M14432-05"" } },
+          { ""@type"": ""ListItem"", ""position"": 3, ""item"": { ""@type"": ""Product"", ""name"": ""Assy, ETX Heat Sink w/ Fan"", ""partNumber"": ""M14460-02"" } },
+          { ""@type"": ""ListItem"", ""position"": 4, ""item"": { ""@type"": ""Product"", ""name"": ""Assy, PCB, Fast D/A, 4 Channel, 16bit, TYPE2"", ""partNumber"": ""M15667-01"" } },
+          { ""@type"": ""ListItem"", ""position"": 5, ""item"": { ""@type"": ""Product"", ""name"": ""Assy, PCB, 2 Channel Fast A/D"", ""partNumber"": ""M11382-02"" } },
+          { ""@type"": ""ListItem"", ""position"": 6, ""item"": { ""@type"": ""Product"", ""name"": ""Drive, Flash, 8+ Gb (with Software)"", ""partNumber"": ""E14505-07"" } },
+          { ""@type"": ""ListItem"", ""position"": 7, ""item"": { ""@type"": ""Product"", ""name"": ""Assy, CPU, DRPC-130"", ""partNumber"": ""E15913-02"" } },
+          { ""@type"": ""ListItem"", ""position"": 8, ""item"": { ""@type"": ""Product"", ""name"": ""Assy, PCB, 48 channel, Digital I/O"", ""partNumber"": ""M16061-01"" } },
+          { ""@type"": ""ListItem"", ""position"": 9, ""item"": { ""@type"": ""Product"", ""name"": ""Assy, PCB, 3 channel, 32 Bit, Counter / Tach"", ""partNumber"": ""M13972-01"" } },
+          { ""@type"": ""ListItem"", ""position"": 10, ""item"": { ""@type"": ""Product"", ""name"": ""Assy, PCB, Interface, 3 channel, Counter / Tach"", ""partNumber"": ""M13973-02"" } },
+          { ""@type"": ""ListItem"", ""position"": 11, ""item"": { ""@type"": ""Product"", ""name"": ""Module, Timer, Watchdog, 5V, 1 sec (Brentek)"", ""partNumber"": ""E12283-02"" } },
+          { ""@type"": ""ListItem"", ""position"": 12, ""item"": { ""@type"": ""Product"", ""name"": ""Module, DC, Input, Mini, # 70M-IDC5 (Greyhill)"", ""partNumber"": ""E11890-04"" } },
+          { ""@type"": ""ListItem"", ""position"": 13, ""item"": { ""@type"": ""Product"", ""name"": ""Module, I/O, Output, Mini, 5VDC (Brentek)"", ""partNumber"": ""E11890-06"" } },
+          { ""@type"": ""ListItem"", ""position"": 14, ""item"": { ""@type"": ""Product"", ""name"": ""DC Signal Conditioner (Isolation Amplifier)"", ""partNumber"": ""E12545-04"" } },
+          { ""@type"": ""ListItem"", ""position"": 15, ""item"": { ""@type"": ""Product"", ""name"": ""Assy, PCB, Interface"", ""partNumber"": ""M14554-01"" } },
+          { ""@type"": ""ListItem"", ""position"": 16, ""item"": { ""@type"": ""Product"", ""name"": ""8 Port Unmanaged Switch, 10/100Mbps"", ""partNumber"": ""E13181-05"" } },
+          { ""@type"": ""ListItem"", ""position"": 17, ""item"": { ""@type"": ""Product"", ""name"": ""Assy, PCB, DI/O-24"", ""partNumber"": ""M13745-01"" } },
+          { ""@type"": ""ListItem"", ""position"": 18, ""item"": { ""@type"": ""Product"", ""name"": ""Assy, PCB, X-Ray Driver, Digital"", ""partNumber"": ""M12994-01"" } },
+          { ""@type"": ""ListItem"", ""position"": 19, ""item"": { ""@type"": ""Product"", ""name"": ""Module, Power Amplifier"", ""partNumber"": ""M10733-01"" } },
+          { ""@type"": ""ListItem"", ""position"": 20, ""item"": { ""@type"": ""Product"", ""name"": ""Power Supply, 48vdc"", ""partNumber"": ""M12997-02"" } },
+          { ""@type"": ""ListItem"", ""position"": 21, ""item"": { ""@type"": ""Product"", ""name"": ""Power Supply, 24vdc"", ""partNumber"": ""M12997-01"" } },
+          { ""@type"": ""ListItem"", ""position"": 22, ""item"": { ""@type"": ""Product"", ""name"": ""Touch Screen, 17\"" Technician"", ""partNumber"": ""E14602-01"" } },
+          { ""@type"": ""ListItem"", ""position"": 23, ""item"": { ""@type"": ""Product"", ""name"": ""Touch Screen, 19\"" Remote Operator Display"", ""partNumber"": ""E12835-01"" } },
+          { ""@type"": ""ListItem"", ""position"": 24, ""item"": { ""@type"": ""Product"", ""name"": ""Assy, CPU, Remote Operator Display"", ""partNumber"": ""M16777-01"" } },
+          { ""@type"": ""ListItem"", ""position"": 25, ""item"": { ""@type"": ""Product"", ""name"": ""Power Supply, 5V@10A, DIN Rail"", ""partNumber"": ""E13416-07"" } },
+          { ""@type"": ""ListItem"", ""position"": 26, ""item"": { ""@type"": ""Product"", ""name"": ""Power Supply, 24V@4A, DIN Rail"", ""partNumber"": ""E13416-08"" } },
+          { ""@type"": ""ListItem"", ""position"": 27, ""item"": { ""@type"": ""Product"", ""name"": ""Power Supply, 24V@20A, DIN Rail"", ""partNumber"": ""E13416-16"" } },
+          { ""@type"": ""ListItem"", ""position"": 28, ""item"": { ""@type"": ""Product"", ""name"": ""Circuit Breaker, Double Pole, 20A, Rail Mount"", ""partNumber"": ""E13129-10"" } },
+          { ""@type"": ""ListItem"", ""position"": 29, ""item"": { ""@type"": ""Product"", ""name"": ""Assy, Detector, 75CAI CMS, w/Amphenol"", ""partNumber"": ""M11622-02"" } },
+          { ""@type"": ""ListItem"", ""position"": 30, ""item"": { ""@type"": ""Product"", ""name"": ""Magazine, C/L"", ""partNumber"": ""M14543-0X"" } },
+          { ""@type"": ""ListItem"", ""position"": 31, ""item"": { ""@type"": ""Product"", ""name"": ""Source, 100SL, 0.5\""APP"", ""partNumber"": ""M11218-02"" } },
+          { ""@type"": ""ListItem"", ""position"": 32, ""item"": { ""@type"": ""Product"", ""name"": ""Assy, Source, 160KVSL2"", ""partNumber"": ""M13920-02"" } },
+          { ""@type"": ""ListItem"", ""position"": 33, ""item"": { ""@type"": ""Product"", ""name"": ""Aperture, Front Cover"", ""partNumber"": ""F12857-01"" } },
+          { ""@type"": ""ListItem"", ""position"": 34, ""item"": { ""@type"": ""Product"", ""name"": ""O-Ring, Aperture"", ""partNumber"": ""P10736-01"" } },
+          { ""@type"": ""ListItem"", ""position"": 35, ""item"": { ""@type"": ""Product"", ""name"": ""Camroller, Flanged"", ""partNumber"": ""P13422-01"" } },
+          { ""@type"": ""ListItem"", ""position"": 36, ""item"": { ""@type"": ""Product"", ""name"": ""Sprocket, #50 Chain"", ""partNumber"": ""P13310-02"" } },
+          { ""@type"": ""ListItem"", ""position"": 37, ""item"": { ""@type"": ""Product"", ""name"": ""Bearing, Flanged, Bronze"", ""partNumber"": ""P13299-03"" } },
+          { ""@type"": ""ListItem"", ""position"": 38, ""item"": { ""@type"": ""Product"", ""name"": ""Gear Motor"", ""partNumber"": ""P12858-21"" } },
+          { ""@type"": ""ListItem"", ""position"": 39, ""item"": { ""@type"": ""Product"", ""name"": ""Lamp, Warning"", ""partNumber"": ""P12861-01"" } },
+          { ""@type"": ""ListItem"", ""position"": 40, ""item"": { ""@type"": ""Product"", ""name"": ""Assy, Switch, Flow, 1/2\"""", ""partNumber"": ""P15375-16"" } },
+          { ""@type"": ""ListItem"", ""position"": 41, ""item"": { ""@type"": ""Product"", ""name"": ""Air Prep Combo"", ""partNumber"": ""P12909-02"" } },
+          { ""@type"": ""ListItem"", ""position"": 42, ""item"": { ""@type"": ""Product"", ""name"": ""Switch, Proximity"", ""partNumber"": ""E13037-01"" } },
+          { ""@type"": ""ListItem"", ""position"": 43, ""item"": { ""@type"": ""Product"", ""name"": ""Nozzle, Air wipe"", ""partNumber"": ""P12813-01"" } },
+          { ""@type"": ""ListItem"", ""position"": 44, ""item"": { ""@type"": ""Product"", ""name"": ""Assy, Motor Controller, 0.5HP"", ""partNumber"": ""M13159-01"" } }
+        ]
+      }
+    }")
+    </script>
+    <script type="application/ld+json">
+    @Html.Raw(@"{
+      ""@context"": ""https://schema.org"",
+      ""@type"": ""BreadcrumbList"",
+      ""itemListElement"": [
+        { ""@type"": ""ListItem"", ""position"": 1, ""name"": ""Home"", ""item"": ""https://www.rsi-xray.com/"" },
+        { ""@type"": ""ListItem"", ""position"": 2, ""name"": ""Spare Parts & Repairs"", ""item"": ""https://www.rsi-xray.com/spare-parts"" },
+        { ""@type"": ""ListItem"", ""position"": 3, ""name"": ""Spare Parts Catalog"", ""item"": ""https://www.rsi-xray.com/spare-parts-catalog"" }
+      ]
+    }")
+    </script>
+}
+
+<main>
+    <section class="page-hero-section">
+        <div class="container">
+            <h1>Spare Parts Catalog</h1>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="breadcrumb">
+                <a asp-page="/SpareParts">‹ Back to Spare Parts & Repairs</a>
+            </div>
+
+            <h2 style="text-align: center;">Recommended Spares for GaugeMaster Plus</h2>
+            <p class="section-intro-text" style="text-align: center;">Below is a list of recommended spares for two years of operation for a GaugeMaster Plus Thickness Gauge. For pricing, availability, or to inquire about parts not listed here, please contact our team.</p>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Part Number</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="category-header"><td colspan="3">Computer</td></tr>
+                        <tr><td>1</td><td>M15220-04</td><td>Assy, PCB, Integrated Mini-backplane</td></tr>
+                        <tr><td>2</td><td>M14432-05</td><td>Assy, PCB, CPU, ETX, 1GB Ram</td></tr>
+                        <tr><td>3</td><td>M14460-02</td><td>Assy, ETX Heat Sink w/ Fan</td></tr>
+                        <tr><td>4</td><td>M15667-01</td><td>Assy, PCB, Fast D/A, 4 Channel, 16bit, TYPE2</td></tr>
+                        <tr><td>5</td><td>M11382-02</td><td>Assy, PCB, 2 Channel Fast A/D</td></tr>
+                        <tr><td>6</td><td>E14505-07</td><td>Drive, Flash, 8+ Gb (with Software)</td></tr>
+                        <tr><td>7</td><td>E15913-02</td><td>Assy, CPU, DRPC-130</td></tr>
+                        <tr><td>8</td><td>M16061-01</td><td>Assy, PCB, 48 channel, Digital I/O</td></tr>
+                        <tr><td>9</td><td>M13972-01</td><td>Assy, PCB, 3 channel, 32 Bit, Counter / Tach</td></tr>
+                        <tr><td>10</td><td>M13973-02</td><td>Assy, PCB, Interface, 3 channel, Counter / Tach</td></tr>
+
+                        <tr class="category-header"><td colspan="3">I/O Panel</td></tr>
+                        <tr><td>11</td><td>E12283-02</td><td>Module, Timer, Watchdog, 5V, 1 sec (Brentek)</td></tr>
+                        <tr><td>12</td><td>E11890-04</td><td>Module, DC, Input, Mini, # 70M-IDC5 (Greyhill)</td></tr>
+                        <tr><td>13</td><td>E11890-06</td><td>Module, I/O, Output, Mini, 5VDC (Brentek)</td></tr>
+                        <tr><td>14</td><td>E12545-04</td><td>DC Signal Conditioner (Isolation Amplifier)</td></tr>
+                        <tr><td>15</td><td>M14554-01</td><td>Assy, PCB, Interface</td></tr>
+                        <tr><td>16</td><td>E13181-05</td><td>8 Port Unmanaged Switch, 10/100Mbps</td></tr>
+                        <tr><td>17</td><td>M13745-01</td><td>Assy, PCB, DI/O-24</td></tr>
+
+                        <tr class="category-header"><td colspan="3">X-Ray Driver Chassis</td></tr>
+                        <tr><td>18</td><td>M12994-01</td><td>Assy, PCB, X-Ray Driver, Digital</td></tr>
+                        <tr><td>19</td><td>M10733-01</td><td>Module, Power Amplifier</td></tr>
+                        <tr><td>20</td><td>M12997-02</td><td>Power Supply, 48vdc</td></tr>
+                        <tr><td>21</td><td>M12997-01</td><td>Power Supply, 24vdc</td></tr>
+
+                        <tr class="category-header"><td colspan="3">System Power Supplies</td></tr>
+                        <tr><td>25</td><td>E13416-07</td><td>Power Supply, 5V@10A, DIN Rail</td></tr>
+                        <tr><td>26</td><td>E13416-08</td><td>Power Supply, 24V@4A, DIN Rail</td></tr>
+                        <tr><td>27</td><td>E13416-16</td><td>Power Supply, 24V@20A, DIN Rail</td></tr>
+                        <tr><td>28</td><td>E13129-10</td><td>Circuit Breaker, Double Pole, 20A, Rail Mount</td></tr>
+
+                        <tr class="category-header"><td colspan="3">Measurement Sensors</td></tr>
+                        <tr><td>29</td><td>M11622-02</td><td>Assy, Detector, 75CAI CMS, w/Amphenol</td></tr>
+                        <tr><td>30</td><td>M14543-0X</td><td>Magazine, C/L</td></tr>
+                        <tr><td>31</td><td>M11218-02</td><td>Source, 100SL, 0.5" APP</td></tr>
+                        <tr><td>32</td><td>M13920-02</td><td>Assy, Source, 160KVSL2</td></tr>
+
+                        <tr class="category-header"><td colspan="3">C-Frame</td></tr>
+                        <tr><td>33</td><td>F12857-01</td><td>Aperture, Front Cover</td></tr>
+                        <tr><td>34</td><td>P10736-01</td><td>O-Ring, Aperture</td></tr>
+                        <tr><td>35</td><td>P13422-01</td><td>Camroller, Flanged</td></tr>
+                        <tr><td>36</td><td>P13310-02</td><td>Sprocket, #50 Chain</td></tr>
+                        <tr><td>37</td><td>P13299-03</td><td>Bearing, Flanged, Bronze</td></tr>
+                        <tr><td>38</td><td>P12858-21</td><td>Gear Motor</td></tr>
+                        <tr><td>39</td><td>P12861-01</td><td>Lamp, Warning</td></tr>
+                        <tr><td>40</td><td>P15375-16</td><td>Assy, Switch, Flow, 1/2"</td></tr>
+                        <tr><td>41</td><td>P12909-02</td><td>Air Prep Combo</td></tr>
+                        <tr><td>42</td><td>E13037-01</td><td>Switch, Proximity</td></tr>
+                        <tr><td>43</td><td>P12813-01</td><td>Nozzle, Air wipe</td></tr>
+                        <tr><td>44</td><td>M13159-01</td><td>Assy, Motor Controller, 0.5HP</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="section cta-section">
+        <div class="container">
+            <h2>Ready to Order or Can't Find a Part?</h2>
+            <p>Our expert team is ready to provide pricing, confirm availability, and help you find any component you need, even if it's not listed here. Contact us today for a quote.</p>
+            <a asp-page="/ContactUs" asp-route-subject="Spare Parts Request" class="btn btn-primary">Request a Quote for Parts</a>
+        </div>
+    </section>
+
+</main>

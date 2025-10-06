@@ -1,0 +1,117 @@
+﻿@page "/performance-monitoring"
+@{
+    ViewData["SiteName"] = "Radiometric Services & Instruments, LLC";
+    ViewData["Title"] = "Real-Time Performance Monitoring | RSI";
+    ViewData["MetaDescription"] = "RSI's integrated hardware and software solutions provide real-time performance monitoring, system diagnostics, and detailed coil reporting to prevent failures and ensure quality.";
+    ViewData["Canonical"] = "https://www.rsi-xray.com/performance-monitoring";
+
+    ViewData["OgTitle"] = "Real-Time Performance Monitoring | RSI";
+    ViewData["OgDescription"] = "RSI's integrated hardware and software solutions provide real-time performance monitoring, system diagnostics, and detailed coil reporting to prevent failures and ensure quality.";
+    ViewData["OgImage"] = "https://www.rsi-xray.com/images/social-cards/performance-monitoring.jpg";
+    ViewData["OgType"] = "website";
+
+    ViewData["TwitterCard"] = "summary_large_image";
+    ViewData["TwitterTitle"] = "Real-Time Performance Monitoring | RSI";
+    ViewData["TwitterDescription"] = "RSI's integrated hardware and software solutions provide real-time performance monitoring, system diagnostics, and detailed coil reporting to prevent failures and ensure quality.";
+    ViewData["TwitterImage"] = "https://www.rsi-xray.com/images/social-cards/performance-monitoring.jpg";
+}
+
+@section HeadContent {
+    <link rel="stylesheet" href="~/css/products-shared.css" asp-append-version="true" />
+
+    <script type="application/ld+json">
+    @Html.Raw(@"{
+      ""@context"": ""https://schema.org"",
+      ""@type"": ""Service"",
+      ""serviceType"": ""Real-Time Performance Monitoring"",
+      ""provider"": {
+        ""@type"": ""Organization"",
+        ""name"": ""Radiometric Services & Instruments, LLC""
+      },
+      ""name"": ""Real-Time Performance Monitoring for Gauging Systems"",
+      ""description"": ""RSI's integrated hardware and software solutions provide real-time performance monitoring, system diagnostics, and detailed coil reporting to prevent failures and ensure quality."",
+      ""areaServed"": {
+        ""@type"": ""Country"",
+        ""name"": ""USA""
+      }
+    }")
+    </script>
+    <script type="application/ld+json">
+    @Html.Raw(@"{
+      ""@context"": ""https://schema.org"",
+      ""@type"": ""BreadcrumbList"",
+      ""itemListElement"": [
+        { ""@type"": ""ListItem"", ""position"": 1, ""name"": ""Home"", ""item"": ""https://www.rsi-xray.com/"" },
+        { ""@type"": ""ListItem"", ""position"": 2, ""name"": ""Performance Monitoring"", ""item"": ""https://www.rsi-xray.com/performance-monitoring"" }
+      ]
+    }")
+    </script>
+}
+
+<main>
+    <section class="page-hero-section">
+        <div class="container">
+            <h1>Real-Time Performance Monitoring</h1>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container feature-grid">
+            <div class="feature-image">
+                <img src="~/images/performance-monitoring/rsi-typical-gauge-display.webp" alt="Operator monitoring multiple screens showing system performance data in a control room.">
+            </div>
+            <div class="feature-content">
+                <h2>Hardware & Software, Fully Integrated</h2>
+                <p>Our real-time software provides high-performance accuracy while being versatile for the end-user. From temperature and coatings to changes in alloys, RSI can provide dynamic calculations and corrections for most situations. This full-stack approach ensures seamless operation and support, with a simple, easy-to-use interface that allows for deep system analysis. </p>
+                <ul>
+                    <li><strong>Versatile Calculations:</strong> Dynamic corrections for temperature, coatings, and alloy changes.</li>
+                    <li><strong>Real-Time Diagnostics:</strong> Features full diagnostics with multiple screens and detailed alarm and event logging by time and date. </li>
+                    <li><strong>Customizable Interface:</strong> The touchscreen interface offers customer-configurable displays with multi-level, password-protected access. </li>
+                    <li><strong>Remote Support:</strong> Includes remote diagnostic capabilities via network connection for fast and efficient troubleshooting. </li>
+                </ul>
+                <a asp-page="/ContactUs" asp-route-subject="Demo Request" class="btn btn-primary">Request a Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-alt-bg">
+        <div class="container feature-grid">
+            <div class="feature-content">
+                <h2>Prevent Costly System Failures</h2>
+                <p>Unmonitored systems can lead to catastrophic failures and expensive downtime. Our integrated software and hardware support provides the data and alerts you need to perform preventative maintenance and keep your operations running smoothly. Temperature monitoring for the X-ray power driver and source helps recognize and avert overheating problems, minimizing production delays. </p>
+                <a asp-page="/ContactUs" asp-route-subject="Service Request" class="btn btn-primary">Schedule Maintenance</a>
+            </div>
+            <div class="feature-image">
+                <img src="~/images/performance-monitoring/performance-monitoring-card-768x576.jpg" alt="Screenshot of the RSI Technician's Terminal displaying gauge status, alarms, and thickness data.">
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container feature-grid">
+            <div class="feature-image">
+                <img src="~/images/performance-monitoring/rsi-coil-report-package.png" alt="Example of an RSI coil report showing statistical data, standard deviation, and violation segments.">
+            </div>
+            <div class="feature-content">
+                <h2>Detailed Coil Reporting & Analysis</h2>
+                <p>Our optional Coil Report Package provides a comprehensive analysis of each coil. The system stores all collected data, allowing technicians to perform a detailed analysis of any selected portion of a coil. These reports can be stored in PDF format and include crucial information to ensure product quality and maintain historical records. </p>
+                <h4>Report Features:</h4>
+                <ul>
+                    <li><strong>Coil Summary & Statistics:</strong> Includes mean, max, min, range, and variance. </li>
+                    <li><strong>Violation & Tolerance Reporting:</strong> Details out-of-tolerance sections with max deviation, start, and end points. </li>
+                    <li><strong>Visual Data:</strong> Generates histograms and full coil length profiles for at-a-glance analysis. </li>
+                    <li><strong>Reversing Mill Support:</strong> An optional Pass Report is available for reversing mill applications. </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section cta-section">
+        <div class="container">
+            <h2>Enhance Your Quality Control</h2>
+            <p>Contact our team to learn more about our performance monitoring software and how it can improve your operational efficiency and product quality.</p>
+            <a asp-page="/ContactUs" asp-route-subject="Performance Monitoring Inquiry" class="btn btn-primary">Get in Touch</a>
+        </div>
+    </section>
+
+</main>

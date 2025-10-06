@@ -1,0 +1,116 @@
+﻿@page "/spare-parts"
+@{
+    ViewData["SiteName"] = "Radiometric Services & Instruments, LLC";
+    ViewData["Title"] = "Spare Parts & In-House Repairs | RSI";
+    ViewData["MetaDescription"] = "RSI offers a comprehensive inventory of spare parts for legacy DMC and Radiometrie systems, plus expert in-house repair services and preventative maintenance contracts.";
+    ViewData["Canonical"] = "https://www.rsi-xray.com/spare-parts";
+
+    ViewData["OgTitle"] = "Spare Parts & In-House Repairs | RSI";
+    ViewData["OgDescription"] = "RSI offers a comprehensive inventory of spare parts for legacy DMC and Radiometrie systems, plus expert in-house repair services and preventative maintenance contracts.";
+    ViewData["OgImage"] = "https://www.rsi-xray.com/images/social-cards/spare-parts.jpg";
+    ViewData["OgType"] = "website";
+
+    ViewData["TwitterCard"] = "summary_large_image";
+    ViewData["TwitterTitle"] = "Spare Parts & In-House Repairs | RSI";
+    ViewData["TwitterDescription"] = "RSI offers a comprehensive inventory of spare parts for legacy DMC and Radiometrie systems, plus expert in-house repair services and preventative maintenance contracts.";
+    ViewData["TwitterImage"] = "https://www.rsi-xray.com/images/social-cards/spare-parts.jpg";
+}
+
+@section HeadContent {
+    <link rel="stylesheet" href="~/css/products-shared.css" asp-append-version="true" />
+
+    <script type="application/ld+json">
+    @Html.Raw(@"{
+      ""@context"": ""https://schema.org"",
+      ""@type"": ""Service"",
+      ""serviceType"": [
+        ""In-House Repair Services"",
+        ""Legacy System Support"",
+        ""Preventative Maintenance Contracts""
+      ],
+      ""provider"": {
+        ""@type"": ""Organization"",
+        ""name"": ""Radiometric Services & Instruments, LLC""
+      },
+      ""name"": ""Spare Parts & Repair Services for Gauging Systems"",
+      ""description"": ""RSI provides expert in-house repair services, a comprehensive inventory of spare parts for legacy DMC and Radiometrie systems, and preventative maintenance contracts to ensure peak performance."",
+      ""areaServed"": {
+        ""@type"": ""Country"",
+        ""name"": ""USA""
+      }
+    }")
+    </script>
+    <script type="application/ld+json">
+    @Html.Raw(@"{
+      ""@context"": ""https://schema.org"",
+      ""@type"": ""BreadcrumbList"",
+      ""itemListElement"": [
+        { ""@type"": ""ListItem"", ""position"": 1, ""name"": ""Home"", ""item"": ""https://www.rsi-xray.com/"" },
+        { ""@type"": ""ListItem"", ""position"": 2, ""name"": ""Spare Parts & Repairs"", ""item"": ""https://www.rsi-xray.com/spare-parts"" }
+      ]
+    }")
+    </script>
+}
+
+<main>
+    <section class="page-hero-section">
+        <div class="container">
+            <h1>Spare Parts & In-House Repairs</h1>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container feature-grid">
+            <div class="feature-image">
+                <img src="~/images/spares-repairs/rsi-parts-collage.jpg" alt="A wide shot of the RSI warehouse and manufacturing facility.">
+            </div>
+            <div class="feature-content">
+                <h2>The Right Parts, Right When You Need Them</h2>
+                <p>With over 200 years of combined gauging experience, RSI has become the industry leader in supporting legacy systems. We stock a large inventory of new, refurbished, and hard-to-find spare parts for legacy DMC, Radiometrie, and ThermoFisher gauging systems. Our expertise allows us to keep your critical components running, minimizing downtime and maintenance costs.</p>
+                <p>In addition to our vast inventory, we manufacture backwards-compatible x-ray sources and detectors that are mechanically and electrically compatible with many older gauges, providing a modern upgrade path for obsolete components. </p>
+                <a asp-page="/SparePartsCatalog" class="btn btn-primary">View Parts Catalog</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-alt-bg">
+        <div class="container feature-grid">
+            <div class="feature-content">
+                <h2>Expert In-House Repair Services</h2>
+                <p>Even the best components can fail, impacting your plant's productivity. A fast, reliable repair service is essential to avoid costly downtime. Our certified technicians at our fully-equipped facility in Frederick, Maryland, quickly repair or refurbish your existing measurement sensors—including x-ray sources, detectors, and magazines—to original factory specifications. </p>
+                <ul>
+                    <li><strong>Fast Turnaround:</strong> We offer fast turnaround on fully tested repairs to get you back online quickly. </li>
+                    <li><strong>Legacy System Experts:</strong> We specialize in repairs for all models of Boyle Controls, DMC, and Radiometrie gauges.</li>
+                    <li><strong>Certified Technicians:</strong> Our experienced service engineers know your equipment inside and out. </li>
+                </ul>
+                <a asp-page="/ContactUs" asp-route-subject="Repair Request" class="btn btn-primary">Start a Repair</a>
+            </div>
+            <div class="feature-image">
+                <img src="~/images/spares-repairs/rsi-factory-floor-expanded.jpg" alt="A view of industrial machinery in the RSI repair workshop.">
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container feature-grid">
+            <div class="feature-image">
+                <img src="~/images/contact-us/service-thumbnail-768x576.jpg" alt="An RSI service engineer working on a gauging system in the field.">
+            </div>
+            <div class="feature-content">
+                <h2>Factory Support & Service Contracts</h2>
+                <p>Maintaining instruments at peak performance improves efficiency and maximizes profitability. For facilities facing budget or resource constraints, our preventative maintenance contracts provide a customized service package tailored to your needs. Outsource your maintenance activities to us and focus on what you do best: your core business.</p>
+                <h4>Factory Support Services:</h4>
+                <p>Our Factory Tech Support experts provide comprehensive support directly from the product manufacturer. Whether you have technical questions or need urgent system support, you can reach us via our 24/7 emergency hotline at <strong>(+1) 717-476-9012</strong>. </p>
+                <a asp-page="/ContactUs" asp-route-subject="Service Contract Inquiry" class="btn btn-primary">Inquire About Service Contracts</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section cta-section">
+        <div class="container">
+            <h2>Need a Specific Part?</h2>
+            <p>Our spare parts fulfillment team is ready to help you find the exact component you need. Contact us today for pricing and availability.</p>
+            <a asp-page="/ContactUs" asp-route-subject="Spare Parts Request" class="btn btn-primary">Contact Our Parts Department</a>
+        </div>
+    </section>
+</main>

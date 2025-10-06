@@ -4,7 +4,7 @@
 
 /* --- 1. Hero & CTA Sections --- */
 .page-hero-section {
-    background-image: linear-gradient(rgba(255, 0, 0, 0.7), rgba(255, 0, 0, 0.7)), url('../images/homepage/AdobeStock_445895041.jpeg');
+    background-image: linear-gradient(rgba(255, 0, 0, 0.75), rgba(255, 0, 0, 0.75)), url('/images/homepage/full-width-hero-bg.jpg');
     background-size: cover;
     background-position: center;
     padding: 4rem 0;
@@ -17,9 +17,9 @@
     }
 
 .cta-section {
-    background-image: linear-gradient(rgba(175, 175, 175, 0.9), rgba(212, 212, 212, 0.9)), url('/images/homepage/AdobeStock_445895041.jpeg');
+    background-image: linear-gradient(rgba(175, 175, 175, 0.9), rgba(212, 212, 212, 0.9)), url('/images/homepage/full-width-hero-bg.jpg');
     text-align: center;
-    min-height: 60vh;
+    min-height: 50vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -42,7 +42,7 @@
 /* --- Products & Solutions Intro Section - BG --- */
 .intro-section-wrapper {
     position: relative;
-    background-image: url('/images/products/full-width.png');
+    background-image: url('/images/products/full-width.jpg');
     background-size: cover;
     background-position: center;
     z-index: 1;
@@ -87,6 +87,10 @@
 .feature-content p {
     font-size: 1.125rem;
     line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.feature-content ul {
     margin-bottom: 1.5rem;
 }
 

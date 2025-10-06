@@ -1,14 +1,3 @@
-/* --- Page Hero Banner (Reusable) --- */
-.page-hero-section {
-    background-image:
-        linear-gradient(rgba(255, 0, 0, 0.7), rgba(255, 0, 0, 0.7)),
-        url('../images/homepage/AdobeStock_445895041.jpeg');
-    background-size: cover;
-    background-position: center;
-    padding: 4rem 0;
-    text-align: center;
-}
-
 .page-hero-section h1 {
     color: var(--color-white);
     font-size: 3rem;

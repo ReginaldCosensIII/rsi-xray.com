@@ -73,16 +73,21 @@
         <div class="header-top-bar">
             <div class="container">
                 <div class="top-bar-content">
-                    <div class="contact-item">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <a href="https://www.google.com/maps/search/?api=1&query=4507+Metropolitan+Court+Unit+J,+Frederick,+MD+21704" target="_blank" rel="noopener noreferrer">
-                            4507 Metropolitan Ct., Unit J., Frederick, MD 21704 USA
-                        </a>
+                    <div class="header-motto">
+                        Your <span class="motto-highlight">#1</span> source for thickness and coating gauge needs
                     </div>
-                    <span class="separator">|</span>
-                    <div class="contact-item">
-                        <i class="fa-solid fa-phone"></i>
-                        <a href="tel:+13018743494">(+1) 301-874-3494</a>
+                    <div class="top-bar-contact-group">
+                        <div class="contact-item">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <a href="https://www.google.com/maps/search/?api=1&query=4507+Metropolitan+Court+Unit+J,+Frederick,+MD+21704" target="_blank" rel="noopener noreferrer">
+                                4507 Metropolitan Ct., Unit J., Frederick, MD 21704 USA
+                            </a>
+                        </div>
+                        <span class="separator">|</span>
+                        <div class="contact-item">
+                            <i class="fa-solid fa-phone"></i>
+                            <a href="tel:+13018743494">(+1) 301-874-3494</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -100,12 +105,16 @@
                 </button>
 
                 <nav class="main-nav">
+                    @{
+                        // Get the current page path to determine which nav link is active
+                        var currentPage = ViewContext.RouteData.Values["page"]?.ToString() ?? "";
+                    }
                     <ul id="main-nav-list" data-visible="false">
-                        <li><a asp-page="/Index" class="@(IsActive("/") ? "is-active" : null)">Home</a></li>
+                        <li><a asp-page="/Index" class="@(currentPage == "/Index" ? "is-active" : "")">Home</a></li>
                         <li class="dropdown">
-                            <a asp-page="/Products" class="@(IsActive("/products", true) ? "is-active" : null)">Products <i class="fa-solid fa-chevron-down"></i></a>
+                            <a asp-page="/Products" class="@(currentPage.StartsWith("/Products") ? "is-active" : "")">Products <i class="fa-solid fa-chevron-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li class="products-overview-link"><a asp-page="/Products">Products Overview</a></li>
+                                <li><a asp-page="/Products">Products Overview</a></li>
                                 <li><a asp-page="/Products/CoatingGauges">Online Coating Weight Gauges</a></li>
                                 <li><a asp-page="/Products/ThicknessGauges">Online Thickness Gauges</a></li>
                                 <li><a asp-page="/Products/LabCoatingGauge">Lab Coating Gauge</a></li>
@@ -113,12 +122,12 @@
                                 <li><a asp-page="/Products/UpgradePackage">Upgrade Packages</a></li>
                             </ul>
                         </li>
-                        <li><a asp-page="/Solutions" class="@(IsActive("/solutions") ? "is-active" : null)">Solutions</a></li>
-                        <li><a asp-page="/SpareParts" class="@(IsActive("/spare-parts") ? "is-active" : null)">Spare Parts & Repairs</a></li>
-                        <li><a asp-page="/PerformanceMonitoring" class="@(IsActive("/performance-monitoring") ? "is-active" : null)">Performance Monitoring</a></li>
-                        <li><a asp-page="/Faq" class="@(IsActive("/faq") ? "is-active" : null)">FAQs</a></li>
-                        <li><a asp-page="/AboutUs" class="@(IsActive("/about-us") ? "is-active" : null)">About Us</a></li>
-                        <li><a asp-page="/ContactUs" class="@(IsActive("/contact-us") ? "is-active" : null)">Contact Us</a></li>
+                        <li><a asp-page="/Solutions" class="@(currentPage == "/Solutions" ? "is-active" : "")">Solutions</a></li>
+                        <li><a asp-page="/SpareParts" class="@(currentPage.StartsWith("/SpareParts") ? "is-active" : "")">Spare Parts & Repairs</a></li>
+                        <li><a asp-page="/PerformanceMonitoring" class="@(currentPage == "/PerformanceMonitoring" ? "is-active" : "")">Performance Monitoring</a></li>
+                        <li><a asp-page="/Faq" class="@(currentPage == "/Faq" ? "is-active" : "")">FAQs</a></li>
+                        <li><a asp-page="/AboutUs" class="@(currentPage == "/AboutUs" ? "is-active" : "")">About Us</a></li>
+                        <li><a asp-page="/ContactUs" class="@(currentPage == "/ContactUs" ? "is-active" : "")">Contact Us</a></li>
                     </ul>
                 </nav>
             </div>
@@ -133,8 +142,8 @@
         <div class="container">
             <div class="footer-main">
                 <div class="footer-details">
-                    <div class="logo">
-                        <a asp-page="/Index"><img src="~/images/cropped-logo.png" asp-append-version="true" alt="Radiometric Services & Instruments Logo" /></a>
+                    <div class="footer-logo">
+                        <a asp-page="/Index" class="footer-logo-text">RSI</a>
                     </div>
                     <p>Radiometric Services & Instruments, LLC</p>
                     <div class="contact-item">
