@@ -155,7 +155,7 @@ a {
    ================================================================= */
 .page-hero-section {
     padding: 4rem 0;
-    background-image: linear-gradient(rgba(255,0,0,.7), rgba(255,0,0,.7)), url('../images/homepage/AdobeStock_445895041.jpeg');
+    background-image: linear-gradient(rgba(255,0,0,.7), rgba(255,0,0,.7)), url('/images/homepage/full-width-hero-bg.jpg');
     background-size: cover;
     background-position: center;
     text-align: center;
@@ -170,9 +170,9 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 60vh;
+    min-height: 50vh;
     padding: 4rem 0;
-    background-image: linear-gradient(rgba(175,175,175,.9), rgba(212,212,212,.9)), url('/images/homepage/AdobeStock_445895041.jpeg');
+    background-image: linear-gradient(rgba(175,175,175,.9), rgba(212,212,212,.9)), url('/images/homepage/full-width-hero-bg.jpg');
     background-size: cover;
     background-position: center;
     text-align: center;
@@ -310,7 +310,31 @@ a {
 
 .top-bar-content {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-motto {
+    font-style: italic;
+}
+
+.motto-highlight {
+    color: var(--color-accent-red);
+}
+
+/* --- Responsive Adjustments for Header --- */
+@media (max-width: 768px) {
+    .header-motto {
+        display: none;
+    }
+
+    .top-bar-content {
+        justify-content: flex-end; /* Re-center contact info on mobile */
+    }
+}
+
+.top-bar-contact-group {
+    display: flex;
     align-items: center;
     gap: 1rem;
 }
@@ -443,131 +467,6 @@ a {
 }
 
 /* =================================================================
-   11) RESPONSIVE STYLES (REBUILT FOR NAVIGATION)
-   ================================================================= */
-
-/* --- Mobile Navigation (1100px and down) --- */
-@media (max-width: 1100px) {
-    .mobile-nav-toggle {
-        display: block;
-        position: absolute;
-        top: 50%;
-        right: 20px;
-        transform: translateY(-50%);
-        z-index: 9999;
-        background: transparent;
-        border: 0;
-        padding: 0.5rem;
-        cursor: pointer;
-    }
-
-        .mobile-nav-toggle .fa-solid {
-            font-size: 2rem;
-            color: var(--color-accent-yellow);
-            display: block;
-        }
-
-        .mobile-nav-toggle .fa-xmark {
-            display: none;
-        }
-
-        .mobile-nav-toggle[aria-expanded="true"] .fa-xmark {
-            display: block;
-        }
-
-        .mobile-nav-toggle[aria-expanded="true"] .fa-bars {
-            display: none;
-        }
-
-    #main-nav-list {
-        position: fixed;
-        inset: 0 0 0 40%;
-        flex-direction: column;
-        padding: min(20vh, 10rem) 2rem;
-        gap: 1.5rem;
-        background-color: hsla(0, 0%, 10%, 0.9);
-        backdrop-filter: blur(1rem);
-        transform: translateX(100%);
-        transition: transform 350ms ease-out;
-        z-index: 9998;
-    }
-
-        #main-nav-list[data-visible="true"] {
-            transform: translateX(0%);
-        }
-
-        #main-nav-list a {
-            color: var(--color-white);
-            font-size: 1.1rem;
-        }
-
-            #main-nav-list a:hover {
-                color: var(--color-accent-red);
-            }
-
-    .main-nav .dropdown {
-        padding-bottom: 0; /* Reset desktop padding */
-    }
-
-    .main-nav .dropdown-menu {
-        position: static;
-        display: none;
-        border: none;
-        box-shadow: none;
-        background-color: transparent;
-        padding-left: 1.5rem;
-        margin-top: 1rem;
-    }
-
-    .main-nav .dropdown.open .dropdown-menu {
-        display: block;
-    }
-
-    .main-nav .dropdown > a .fa-chevron-down {
-        transition: transform 0.3s ease;
-    }
-
-    .main-nav .dropdown.open > a .fa-chevron-down {
-        transform: rotate(180deg);
-    }
-
-    .main-nav .dropdown-menu li a {
-        color: var(--color-gray-300);
-        font-weight: normal;
-        padding: 0.5rem 0;
-    }
-
-        .main-nav .dropdown-menu li a:hover {
-            background-color: transparent;
-            color: var(--color-accent-red);
-        }
-}
-
-/* --- Small Mobile & Footer Adjustments --- */
-@media (max-width: 768px) {
-    #main-nav-list {
-        inset: 0 0 0 20%;
-    }
-
-    .footer-main {
-        flex-direction: column;
-        text-align: center;
-        align-items: center;
-    }
-
-    .footer-details {
-        align-items: center;
-    }
-
-    .footer-links {
-        display: none;
-    }
-
-    .cta-section {
-        min-height: 40vh;
-    }
-}
-/* =================================================================
    8) FOOTER
    ================================================================= */
 .site-footer {
@@ -640,6 +539,28 @@ a {
         margin: 0;
     }
 
+.footer-logo {
+    margin-bottom: -1.0rem;
+    color: var(--color-accent-red);
+}
+
+/* --- Footer Logo Text --- */
+.site-footer a.footer-logo-text,
+.site-footer a.footer-logo-text:visited,
+.site-footer a.footer-logo-text:hover {
+    color: var(--color-accent-red); /* Ensures color is ALWAYS red */
+    text-decoration: none; /* Ensures NO underline appears */
+    display: inline-block; /* Required for transforms to work on inline elements like <a> */
+    transform: skewX(-10deg);
+}
+
+/* This rule holds the basic font styling */
+.footer-logo-text {
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 3.75rem;
+    font-style: italic; /* Use the browser's native italic */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
 
 /* =================================================================
    9) MODALS (LIGHTBOX & CONTENT)

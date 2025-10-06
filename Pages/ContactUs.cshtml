@@ -129,20 +129,24 @@
                     <label asp-for="FormData.Subject"></label>
                     <select asp-for="FormData.Subject" class="form-control" required>
                         <option value="General Inquiry">General Inquiry</option>
-                        <option value="Product Inquiry">Product Inquiry</option>
+                        <option value="Sales Question">Sales Question</option>
+                        <option value="Free Consultation Request">Free Consultation Request</option>
+                        <option value="Uptime Report Request">Uptime Report Request</option>
+        
+                        <option value="Product Inquiry">Product Inquiry (General)</option>
                         <option value="Coating Gauge Inquiry">Coating Gauge Inquiry</option>
                         <option value="Thickness Gauge Inquiry">Thickness Gauge Inquiry</option>
                         <option value="Lab Gauge Inquiry">Lab Gauge Inquiry</option>
-                        <option value="Upgrade Inquiry">Upgrade Package Inquiry</option>
-                        <option value="On-site Evaluation">On-site Evaluation</option>
                         <option value="Sources and Detectors Inquiry">Sources and Detectors Inquiry</option>
+                        <option value="Upgrade Inquiry">Upgrade Package Inquiry</option>
                         <option value="Custom Gauging Solution">Custom Gauging Solution</option>
-                        <option value="Free Consultation Request">Free Consultation Request</option> 
-                        <option value="Uptime Report Request">Uptime Report Request</option>     
-                        <option value="Equipment Evaluation">Equipment Evaluation</option>
-                        <option value="Sales Question">Sales Question</option>
+        
                         <option value="Service Request">Service Request</option>
-                        <option value="Spare Parts & Repairs">Spare Parts & Repairs</option>
+                        <option value="Repair Request">Repair Request</option>
+                        <option value="Spare Parts Request">Spare Parts Request</option>
+                        <option value="Service Contract Inquiry">Service Contract Inquiry</option>
+                        <option value="Equipment Evaluation">Equipment Evaluation</option>
+                        <option value="Software Demo Request">Software Demo Request</option>
                     </select>
                     <span asp-validation-for="FormData.Subject" class="text-danger"></span>
                 </div>
