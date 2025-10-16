@@ -1,39 +1,4 @@
-﻿@{
-    // Top-level layout used by all pages.
-    // Individual pages can:
-    //  - set ViewData["Title"], ViewData["MetaDescription"], etc.
-    //  - inject extra <head> tags via @section HeadContent
-    Layout = null;
-
-    // Helper to mark the current nav item as active.
-@functions {
-    // Normalizes a path for comparisons:
-    // - lower case
-    // - no trailing slash (except root)
-    // - treat "", "/" and "/index" as "/"
-    private string NormalizePath(string p)
-    {
-        p = (p ?? string.Empty).Trim().TrimEnd('/').ToLowerInvariant();
-        if (string.IsNullOrEmpty(p) || p == "/index") return "/";
-        return p.StartsWith("/") ? p : "/" + p;
-    }
-
-    // Compare current request path to a target slug like "/about-us".
-    // includeChildren = true makes "/about-us/team" match "/about-us"
-    bool IsActive(string slug, bool includeChildren = false)
-    {
-        var path = NormalizePath(Context?.Request?.Path.Value);
-        var target = NormalizePath(slug);
-
-        if (includeChildren)
-            return path == target || path.StartsWith(target + "/");
-
-        return path == target;
-    }
-}
-
-}
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -43,25 +8,14 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></noscript>
 
     <link rel="stylesheet" href="~/css/global.css" asp-append-version="true" />
-
-    @* -----------------------------
-        Google Analytics 4 (gtag.js)
-        - To enable: remove this Razor comment wrapper
-        - Replace ID if needed
-        ----------------------------- *@
-    @*
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YOUR_ID_HERE"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){ dataLayer.push(arguments); }
-      gtag('js', new Date());
-      gtag('config', 'G-YOUR_ID_HERE', { anonymize_ip: true });
-    </script>
-    *@
 
     @await Html.PartialAsync("_SeoHead")
 
@@ -69,115 +23,123 @@
 </head>
 <body>
 
-    <header class="site-header">
-        <div class="header-top-bar">
-            <div class="container">
-                <div class="top-bar-content">
-                    <div class="header-motto">
-                        Your <span class="motto-highlight">#1</span> source for thickness and coating gauge needs
+    <!-- Global Container to ensure proper alignment -->
+    <div class="site-wrapper">
+        <!-- Header -->
+        <header class="site-header">
+            <div class="header-top-bar">
+                <div class="container">
+                    <div class="top-bar-content">
+                        <div class="header-motto">
+                            Your <span class="motto-highlight">#1</span> source for thickness and coating gauge needs
+                        </div>
+                        <div class="top-bar-contact-group">
+                            <div class="contact-item">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <a href="https://www.google.com/maps/search/?api=1&query=4507+Metropolitan+Court+Unit+J,+Frederick,+MD+21704" target="_blank" rel="noopener noreferrer">
+                                    4507 Metropolitan Ct., Unit J., Frederick, MD 21704 USA
+                                </a>
+                            </div>
+                            <span class="separator">|</span>
+                            <div class="contact-item">
+                                <i class="fa-solid fa-phone"></i>
+                                <a href="tel:+13018743494">(+1) 301-874-3494</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="top-bar-contact-group">
+                </div>
+            </div>
+            <div class="header-main">
+                <div class="container">
+                    <div class="logo">
+                        <a asp-page="/Index"><img src="~/images/cropped-logo.png" asp-append-version="true" alt="Radiometric Services & Instruments Logo" /></a>
+                    </div>
+
+                    <button class="mobile-nav-toggle" aria-controls="main-nav-list" aria-expanded="false">
+                        <span class="sr-only">Menu</span>
+                        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+                        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                    </button>
+
+                    <nav class="main-nav">
+                        @{
+                            var currentPage = ViewContext.RouteData.Values["page"]?.ToString() ?? "";
+                        }
+                        <ul id="main-nav-list" data-visible="false">
+                            <li><a asp-page="/Index" class="@(currentPage.Equals("/Index", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">Home</a></li>
+                            <li class="dropdown">
+                                <a asp-page="/Products" class="@(currentPage.StartsWith("/Products", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">Products <i class="fa-solid fa-chevron-down"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li><a asp-page="/Products">Products Overview</a></li>
+                                    <li><a asp-page="/Products/CoatingGauges">Online Coating Weight Gauges</a></li>
+                                    <li><a asp-page="/Products/ThicknessGauges">Online Thickness Gauges</a></li>
+                                    <li><a asp-page="/Products/LabCoatingGauge">Lab Coating Gauge</a></li>
+                                    <li><a asp-page="/Products/SourcesDetectors">X-Ray Sources & Detectors</a></li>
+                                    <li><a asp-page="/Products/UpgradePackage">Upgrade Packages</a></li>
+                                </ul>
+                            </li>
+                            <li><a asp-page="/Solutions" class="@(currentPage.Equals("/Solutions", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">Solutions</a></li>
+                            <li><a asp-page="/SpareParts" class="@(currentPage.StartsWith("/SpareParts", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">Spare Parts & Repairs</a></li>
+                            <li><a asp-page="/PerformanceMonitoring" class="@(currentPage.Equals("/PerformanceMonitoring", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">Performance Monitoring</a></li>
+                            <li><a asp-page="/Faq" class="@(currentPage.Equals("/Faq", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">FAQs</a></li>
+                            <li><a asp-page="/AboutUs" class="@(currentPage.Equals("/AboutUs", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">About Us</a></li>
+                            <li><a asp-page="/ContactUs" class="@(currentPage.Equals("/ContactUs", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">Contact Us</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <!-- Page content -->
+        <main>
+            @RenderBody()
+        </main>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="container">
+                <div class="footer-main">
+                    <div class="footer-details">
+                        <div class="footer-logo">
+                            <a asp-page="/Index" class="footer-logo-text">RSI</a>
+                        </div>
+                        <p>Radiometric Services & Instruments, LLC</p>
                         <div class="contact-item">
                             <i class="fa-solid fa-location-dot"></i>
                             <a href="https://www.google.com/maps/search/?api=1&query=4507+Metropolitan+Court+Unit+J,+Frederick,+MD+21704" target="_blank" rel="noopener noreferrer">
-                                4507 Metropolitan Ct., Unit J., Frederick, MD 21704 USA
+                                4507 Metropolitan Court Unit J, Frederick, MD 21704
                             </a>
                         </div>
-                        <span class="separator">|</span>
                         <div class="contact-item">
                             <i class="fa-solid fa-phone"></i>
                             <a href="tel:+13018743494">(+1) 301-874-3494</a>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="header-main">
-            <div class="container">
-                <div class="logo">
-                    <a asp-page="/Index"><img src="~/images/cropped-logo.png" asp-append-version="true" alt="Radiometric Services & Instruments Logo" /></a>
-                </div>
-
-                <button class="mobile-nav-toggle" aria-controls="main-nav-list" aria-expanded="false">
-                    <span class="sr-only">Menu</span>
-                    <i class="fa-solid fa-bars" aria-hidden="true"></i>
-                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
-                </button>
-
-                <nav class="main-nav">
-                    @{
-                        var currentPage = ViewContext.RouteData.Values["page"]?.ToString() ?? "";
-                    }
-                    <ul id="main-nav-list" data-visible="false">
-                        <li><a asp-page="/Index" class="@(currentPage.Equals("/Index", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">Home</a></li>
-                        <li class="dropdown">
-                            <a asp-page="/Products" class="@(currentPage.StartsWith("/Products", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">Products <i class="fa-solid fa-chevron-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a asp-page="/Products">Products Overview</a></li>
-                                <li><a asp-page="/Products/CoatingGauges">Online Coating Weight Gauges</a></li>
-                                <li><a asp-page="/Products/ThicknessGauges">Online Thickness Gauges</a></li>
-                                <li><a asp-page="/Products/LabCoatingGauge">Lab Coating Gauge</a></li>
-                                <li><a asp-page="/Products/SourcesDetectors">X-Ray Sources & Detectors</a></li>
-                                <li><a asp-page="/Products/UpgradePackage">Upgrade Packages</a></li>
-                            </ul>
-                        </li>
-                        <li><a asp-page="/Solutions" class="@(currentPage.Equals("/Solutions", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">Solutions</a></li>
-                        <li><a asp-page="/SpareParts" class="@(currentPage.StartsWith("/SpareParts", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">Spare Parts & Repairs</a></li>
-                        <li><a asp-page="/PerformanceMonitoring" class="@(currentPage.Equals("/PerformanceMonitoring", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">Performance Monitoring</a></li>
-                        <li><a asp-page="/Faq" class="@(currentPage.Equals("/Faq", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">FAQs</a></li>
-                        <li><a asp-page="/AboutUs" class="@(currentPage.Equals("/AboutUs", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">About Us</a></li>
-                        <li><a asp-page="/ContactUs" class="@(currentPage.Equals("/ContactUs", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">Contact Us</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </header>
-
-    <main>
-        @RenderBody()
-    </main>
-
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-main">
-                <div class="footer-details">
-                    <div class="footer-logo">
-                        <a asp-page="/Index" class="footer-logo-text">RSI</a>
-                    </div>
-                    <p>Radiometric Services & Instruments, LLC</p>
-                    <div class="contact-item">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <a href="https://www.google.com/maps/search/?api=1&query=4507+Metropolitan+Court+Unit+J,+Frederick,+MD+21704" target="_blank" rel="noopener noreferrer">
-                            4507 Metropolitan Court Unit J, Frederick, MD 21704
-                        </a>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fa-solid fa-phone"></i>
-                        <a href="tel:+13018743494">(+1) 301-874-3494</a>
+                    <div class="footer-links">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a asp-page="/Index">Home</a></li>
+                            <li><a asp-page="/Products">Products</a></li>
+                            <li><a asp-page="/Solutions">Solutions</a></li>
+                            <li><a asp-page="/SpareParts">Spare Parts & Repairs</a></li>
+                            <li><a asp-page="/PerformanceMonitoring">Performance Monitoring</a></li>
+                            <li><a asp-page="/Faq">FAQ</a></li>
+                            <li><a asp-page="/AboutUs">About Us</a></li>
+                            <li><a asp-page="/ContactUs">Contact Us</a></li>
+                        </ul>
                     </div>
                 </div>
-                <div class="footer-links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a asp-page="/Index">Home</a></li>
-                        <li><a asp-page="/Products">Products</a></li>
-                        <li><a asp-page="/Solutions">Solutions</a></li>
-                        <li><a asp-page="/SpareParts">Spare Parts & Repairs</a></li>
-                        <li><a asp-page="/PerformanceMonitoring">Performance Monitoring</a></li>
-                        <li><a asp-page="/Faq">FAQ</a></li>
-                        <li><a asp-page="/AboutUs">About Us</a></li>
-                        <li><a asp-page="/ContactUs">Contact Us</a></li>
-                    </ul>
+                <div class="footer-copyright">
+                    <p>&copy; <script>document.write(new Date().getFullYear())</script> Radiometric Services & Instruments, LLC All Rights Reserved.</p>
                 </div>
             </div>
-            <div class="footer-copyright">
-                <p>&copy; <script>document.write(new Date().getFullYear())</script> Radiometric Services & Instruments, LLC All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
+        </footer>
 
-    <script src="~/js/main.js" defer></script>
+        <!-- Global JS -->
+        <script src="~/js/main.js" defer></script>
 
-    @RenderSection("Scripts", required: false)
+        <!-- Page-specific JS -->
+        @RenderSection("Scripts", required: false)
+    </div>
 </body>
 </html>
