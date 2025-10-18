@@ -1,48 +1,25 @@
 ﻿/* =================================================================
-   SHARED STYLES FOR PRODUCT, SOLUTIONS, & SERVICE PAGES
-   ================================================================= */
-
-/* --- 1. Hero & CTA Sections --- */
-.page-hero-section {
-    background-image: linear-gradient(rgba(255, 0, 0, 0.75), rgba(255, 0, 0, 0.75)), url('/images/homepage/full-width-hero-bg.jpg');
-    background-size: cover;
-    background-position: center;
-    padding: 4rem 0;
-    text-align: center;
-}
-
-    .page-hero-section h1 {
-        color: var(--color-white);
-        font-size: 3rem;
-    }
-
-.cta-section {
-    background-image: linear-gradient(rgba(175, 175, 175, 0.9), rgba(212, 212, 212, 0.9)), url('/images/homepage/full-width-hero-bg.jpg');
-    text-align: center;
-    min-height: 50vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-size: cover;
-    background-position: center;
-}
-
-    .cta-section h2 {
-        font-size: 2.5rem;
-    }
-
-    .cta-section p {
-        font-size: 1.125rem;
-        color: var(--color-secondary);
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+    SHARED STYLES FOR PRODUCT, SOLUTIONS, & SERVICE PAGES
+    ================================================================= */
 
 /* --- Products & Solutions Intro Section - BG --- */
+/*
+  OPTIMIZATION: 
+  - Replaced the original rule for .intro-section-wrapper to use the 
+    global .webp / .no-webp classes for optimized background images.
+  - The original full-width.jpg (106 KB) is now replaced by either
+    section-bg.webp or section-bg.jpg from the /images/shared/ folder.
+*/
+.no-webp .intro-section-wrapper {
+    background-image: url('../images/shared/full-width-intro-section-bg.jpg');
+}
+
+.webp .intro-section-wrapper {
+    background-image: url('../images/shared/full-width-intro-section-bg.webp');
+}
+
 .intro-section-wrapper {
     position: relative;
-    background-image: url('/images/products/full-width.jpg');
     background-size: cover;
     background-position: center;
     z-index: 1;
@@ -58,6 +35,13 @@
         z-index: -1;
         background-color: rgba(255, 255, 255, 0.9);
     }
+
+/*
+  NOTE: The .section-alt-bg class is defined in global.css and already
+  contains the logic for its own specific shared background. No changes
+  are needed for it here.
+*/
+
 
 /* --- 2. General Section & Layout Styles --- */
 .section-heading {
@@ -217,8 +201,4 @@ figcaption {
         .spec-page-grid .feature-image {
             order: -1;
         }
-
-    .cta-section {
-        min-height: 40vh;
-    }
 }

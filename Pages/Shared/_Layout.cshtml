@@ -3,6 +3,21 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script>
+        (function() {
+            var canvas = document.createElement('canvas');
+            canvas.width = 1;
+            canvas.height = 1;
+            var ctx = canvas.getContext('2d');
+            if (ctx && canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0) {
+                document.documentElement.classList.add('webp');
+            } else {
+                document.documentElement.classList.add('no-webp');
+            }
+        })();
+    </script>
+
     <link rel="icon" type="image/png" href="~/images/favicon/favicon.ico">
     <link rel="apple-touch-icon" href="~/images/favicon/apple-touch-icon.png">
 
@@ -10,8 +25,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
 
+    @{
+        var currentPage = ViewContext.RouteData.Values["page"]?.ToString() ?? "";
+        bool isHomePage = currentPage.Equals("/Index", StringComparison.OrdinalIgnoreCase);
+    }
+
+    @* --- Preload the LCP image for all subpages (but NOT the homepage) --- *@
+    @if (!isHomePage)
+    {
+        <link rel="preload" as="image" href="/images/shared/full-width-hero-bg-mobile.webp" media="(max-width: 600px)" fetchpriority="high">
+        <link rel="preload" as="image" href="/images/shared/full-width-hero-bg.webp" media="(min-width: 601px)" fetchpriority="high">
+    }
+
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
-    
+
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></noscript>
 
@@ -23,9 +50,7 @@
 </head>
 <body>
 
-    <!-- Global Container to ensure proper alignment -->
     <div class="site-wrapper">
-        <!-- Header -->
         <header class="site-header">
             <div class="header-top-bar">
                 <div class="container">
@@ -52,7 +77,12 @@
             <div class="header-main">
                 <div class="container">
                     <div class="logo">
-                        <a asp-page="/Index"><img src="~/images/cropped-logo.png" asp-append-version="true" alt="Radiometric Services & Instruments Logo" /></a>
+                        <a asp-page="/Index">
+                            <picture>
+                                <source srcset="~/images/cropped-logo.webp" type="image/webp">
+                                <img src="~/images/cropped-logo.png" asp-append-version="true" alt="Radiometric Services & Instruments Logo" width="283" height="50" />
+                            </picture>
+                        </a>
                     </div>
 
                     <button class="mobile-nav-toggle" aria-controls="main-nav-list" aria-expanded="false">
@@ -90,12 +120,10 @@
             </div>
         </header>
 
-        <!-- Page content -->
         <main>
             @RenderBody()
         </main>
 
-        <!-- Footer -->
         <footer class="site-footer">
             <div class="container">
                 <div class="footer-main">
@@ -130,15 +158,13 @@
                     </div>
                 </div>
                 <div class="footer-copyright">
-                    <p>&copy; <script>document.write(new Date().getFullYear())</script> Radiometric Services & Instruments, LLC All Rights Reserved.</p>
+                    <p>© @DateTime.Now.Year Radiometric Services & Instruments, LLC All Rights Reserved.</p>
                 </div>
             </div>
         </footer>
 
-        <!-- Global JS -->
         <script src="~/js/main.js" defer></script>
 
-        <!-- Page-specific JS -->
         @RenderSection("Scripts", required: false)
     </div>
 </body>
