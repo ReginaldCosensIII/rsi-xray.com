@@ -12,7 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!lightboxImg || !lightboxCaption || !closeBtn) return;
 
     const openModal = (imgElement) => {
-        const imgSrc = imgElement.src;
+        // --- CHANGE IS HERE ---
+        // Check for a high-quality source, otherwise fall back to the original src.
+        const largeSrc = imgElement.getAttribute('data-large-src');
+        const imgSrc = largeSrc || imgElement.src;
+        // --- END OF CHANGE ---
+
         const captionText = imgElement.dataset.caption || imgElement.nextElementSibling?.innerHTML || '';
 
         lightboxImg.src = imgSrc;

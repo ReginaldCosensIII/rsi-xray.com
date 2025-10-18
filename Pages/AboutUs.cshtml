@@ -20,6 +20,11 @@
 }
 
 @section HeadContent {
+    @* --- PRELOAD LCP IMAGE (Desktop) --- *@
+    <link rel="preload" as="image" href="/images/about-us/rsi-office-front.webp" media="(min-width: 601px)" fetchpriority="high">
+    
+    @* --- PRELOAD LCP IMAGE (Mobile) --- *@
+    <link rel="preload" as="image" href="/images/about-us/rsi-office-front-mobile.webp" media="(max-width: 600px)" fetchpriority="high">
 
     <link rel="stylesheet" href="~/css/about-us.css" asp-append-version="true" />
 
@@ -67,8 +72,6 @@
     </script>
 }
 
-<!-- ===== Body content only (header/footer come from _Layout) ===== -->
-
 <section class="page-hero-section">
     <div class="container">
         <h1>About Us</h1>
@@ -78,9 +81,14 @@
 <section class="section dark-bg-section">
     <div class="container about-us-grid">
         <div class="about-us-image">
-            <img src="~/images/about-us/rsi-office-front.jpg"
-                 asp-append-version="true"
-                 alt="RSI Team or Facility" />
+            <picture>
+                <source media="(max-width: 600px)" srcset="~/images/about-us/rsi-office-front-mobile.webp" type="image/webp">
+                <source media="(max-width: 600px)" srcset="~/images/about-us/rsi-office-front-mobile.jpg" type="image/jpeg">
+                <source srcset="~/images/about-us/rsi-office-front.webp" type="image/webp">
+                <img src="~/images/about-us/rsi-office-front.jpg"
+                     asp-append-version="true"
+                     alt="RSI Team or Facility" width="768" height="576" />
+            </picture>
         </div>
         <div class="about-us-content">
             <h2>Our Mission &amp; History</h2>
@@ -115,11 +123,18 @@
             <p>Today, RSI is the undisputed industry leader in support and system upgrades for legacy DMC and Radiometrie systems. We are committed to ensuring that these powerful, long-lasting systems continue to perform for our clients, preserving their investment and maximizing their operational efficiency.</p>
         </div>
         <div class="timeline-diagram-container">
-            <img src="~/images/about-us/rsi-legacy-timeline-asset.png"
-                 asp-append-version="true"
-                 alt="DMC RSI Company Timeline Diagram"
-                 class="enlarge-on-click"
-                 data-caption="The evolution of RSI from industry pioneers like DMC and Radiometrie." />
+            <picture>
+                <source media="(max-width: 600px)" srcset="~/images/about-us/rsi-legacy-timeline-asset-mobile.webp" type="image/webp">
+                <source media="(max-width: 600px)" srcset="~/images/about-us/rsi-legacy-timeline-asset-mobile.png" type="image/png">
+                <source srcset="~/images/about-us/rsi-legacy-timeline-asset.webp" type="image/webp">
+                <img src="~/images/about-us/rsi-legacy-timeline-asset.png"
+                     asp-append-version="true"
+                     alt="DMC RSI Company Timeline Diagram"
+                     class="enlarge-on-click"
+                     data-large-src="/images/about-us/rsi-legacy-timeline-asset-large.webp"
+                     data-caption="The evolution of RSI from industry pioneers like DMC and Radiometrie."
+                     loading="lazy" width="1200" height="657" />
+            </picture>
         </div>
     </div>
 </section>
@@ -144,9 +159,14 @@
 <section class="section">
     <div class="container about-us-grid">
         <div class="about-us-image">
-            <img src="~/images/performance-monitoring/performance-monitoring-card-768x576.jpg"
-                 asp-append-version="true"
-                 alt="Image representing quality and excellence" />
+            <picture>
+                <source media="(max-width: 600px)" srcset="~/images/shared/technician-monitoring-data-mobile.webp" type="image/webp">
+                <source media="(max-width: 600px)" srcset="~/images/shared/technician-monitoring-data-mobile.jpg" type="image/jpeg">
+                <source srcset="~/images/shared/technician-monitoring-data.webp" type="image/webp">
+                <img src="~/images/performance-monitoring/performance-monitoring-card-768x576.jpg"
+                     asp-append-version="true"
+                     alt="Image representing quality and excellence" loading="lazy" width="768" height="576" />
+            </picture>
         </div>
         <div class="about-us-content">
             <h2>Our Promise of Excellence</h2>
@@ -182,14 +202,22 @@
             <p>Our global presence ensures that we can provide fast, responsive, on-site service by experienced engineers who know your equipment inside and out. For emergencies, we offer a 24-hour telephone hotline, providing you with the peace of mind that comes from knowing that expert help is always just a phone call away.</p>
         </div>
         <div class="about-us-image-container">
-            <img src="~/images/about-us/rsi-beijing-headquarters.jpg"
-                 asp-append-version="true"
-                 alt="Image representing global support network"
-                 class="main-image" />
-            <img src="~/images/about-us/rsi-beijing-plaque.jpg"
-                 asp-append-version="true"
-                 alt="RSI Beijing Office Plaque"
-                 class="overlay-plaque" />
+            <picture>
+                <source media="(max-width: 600px)" srcset="~/images/about-us/global-support-mobile.webp" type="image/webp">
+                <source media="(max-width: 600px)" srcset="~/images/about-us/global-support-mobile.jpg" type="image/jpeg">
+                <source srcset="~/images/about-us/global-support.webp" type="image/webp">
+                <img src="~/images/about-us/rsi-beijing-headquarters.jpg"
+                     asp-append-version="true"
+                     alt="Image representing global support network"
+                     class="main-image" loading="lazy" width="592" height="442" />
+            </picture>
+            <picture>
+                <source srcset="~/images/about-us/rsi-beijing-plaque.webp" type="image/webp">
+                <img src="~/images/about-us/rsi-beijing-plaque.jpg"
+                     asp-append-version="true"
+                     alt="RSI Beijing Office Plaque"
+                     class="overlay-plaque" loading="lazy" width="500" height="485" />
+            </picture>
         </div>
     </div>
 </section>
@@ -198,7 +226,7 @@
     <div class="container">
         <h2>Let's Talk</h2>
         <p>Ready to improve your operations? Contact our experts today to learn how RSI can help. For a full list of our service and sales contacts, please visit our Contact Us page.</p>
-        <a asp-page="/ContactUs" class="btn btn-primary">Get in Touch</a>
+        <a asp-page="/ContactUs" class="btn btn-primary" aria-label="Contact RSI for a consultation">Contact RSI Today</a>
     </div>
 </section>
 
