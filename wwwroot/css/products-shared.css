@@ -10,7 +10,51 @@
 .webp .intro-section-wrapper {
     background-image: url('../images/shared/full-width-intro-section-bg.webp');
 }
+        font-size: 3rem;
+    text-align: center;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+}
 
+    .cta-section h2 {
+        font-size: 2.5rem;
+    }
+
+    .cta-section p {
+        font-size: 1.125rem;
+        color: var(--color-secondary);
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+/* --- Products & Solutions Intro Section - BG --- */
+    text-align: center;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+}
+
+    .cta-section h2 {
+        font-size: 2.5rem;
+    }
+
+    .cta-section p {
+        font-size: 1.125rem;
+        color: var(--color-secondary);
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+/* --- Products & Solutions Intro Section - BG --- */
 .intro-section-wrapper {
     position: relative;
     background-size: cover;
@@ -28,6 +72,13 @@
         z-index: -1;
         background-color: rgba(255, 255, 255, 0.9);
     }
+
+/*
+  NOTE: The .section-alt-bg class is defined in global.css and already
+  contains the logic for its own specific shared background. No changes
+  are needed for it here.
+*/
+
 
 /* --- 2. General Section & Layout Styles --- */
 .section-heading {
