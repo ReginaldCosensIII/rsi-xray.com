@@ -3,13 +3,6 @@
     ================================================================= */
 
 /* --- Products & Solutions Intro Section - BG --- */
-/*
-  OPTIMIZATION: 
-  - Replaced the original rule for .intro-section-wrapper to use the 
-    global .webp / .no-webp classes for optimized background images.
-  - The original full-width.jpg (106 KB) is now replaced by either
-    section-bg.webp or section-bg.jpg from the /images/shared/ folder.
-*/
 .no-webp .intro-section-wrapper {
     background-image: url('../images/shared/full-width-intro-section-bg.jpg');
 }
@@ -35,13 +28,6 @@
         z-index: -1;
         background-color: rgba(255, 255, 255, 0.9);
     }
-
-/*
-  NOTE: The .section-alt-bg class is defined in global.css and already
-  contains the logic for its own specific shared background. No changes
-  are needed for it here.
-*/
-
 
 /* --- 2. General Section & Layout Styles --- */
 .section-heading {
@@ -106,10 +92,32 @@
     align-items: flex-start;
 }
 
-.spec-sheet-image img {
-    width: 100%;
+/* New container for the main image to control aspect ratio and borders */
+.spec-image-container {
     border-radius: 8px;
+    overflow: hidden;
     border: 1px solid #ddd;
+    line-height: 0; /* Prevents extra space */
+}
+
+    .spec-image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+/* Page-specific aspect ratio modifier classes */
+.aspect-ratio-coating {
+    aspect-ratio: 389 / 411; /* Taller ratio for Coating Gauges page */
+}
+
+.aspect-ratio-lab {
+    aspect-ratio: 369 / 448; /* Even taller ratio for Lab Gauge page */
+}
+
+aspect-ratio-upgrade {
+    aspect-ratio: 538 / 303;
 }
 
 .feature-content h3 {
@@ -138,9 +146,9 @@ hr.section-divider {
     grid-template-columns: 2fr 3fr; /* 40/60 split */
 }
 
-/* NEW: Figure & Figcaption Styles for Image Captions */
+/* Figure & Figcaption Styles */
 figure {
-    margin: 0; /* Resets browser default margin */
+    margin: 0;
     padding: 0;
 }
 
@@ -166,21 +174,27 @@ figcaption {
         margin-bottom: 2rem;
     }
 
-    .spec-sheet-gallery img {
-        border-radius: 8px;
-    }
-
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
-    align-items: center;
+    align-items: end;
 }
+
+    .gallery-grid figure {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
 
     .gallery-grid img {
         width: 100%;
         max-height: 350px;
         object-fit: contain;
+        object-position: bottom; /* Aligns image to the bottom */
+        border-radius: 0;
+        border: none;
+        flex-grow: 1; /* Allows image to take up space */
     }
 
 /* --- 5. Responsive Overrides --- */
@@ -196,7 +210,6 @@ figcaption {
         grid-template-columns: 1fr;
     }
 
-        /* UPDATED: Universal rule to put image first on mobile for all grids */
         .feature-grid .feature-image,
         .spec-page-grid .feature-image {
             order: -1;

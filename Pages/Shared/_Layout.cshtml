@@ -37,7 +37,9 @@
         <link rel="preload" as="image" href="/images/shared/full-width-hero-bg.webp" media="(min-width: 601px)" fetchpriority="high">
     }
 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    @* --- Asynchronously load font stylesheets to make them non-render-blocking --- *@
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap"></noscript>
 
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></noscript>
@@ -93,12 +95,12 @@
 
                     <nav class="main-nav">
                         @{
-                            var currentPage = ViewContext.RouteData.Values["page"]?.ToString() ?? "";
+                            var currentPageNav = ViewContext.RouteData.Values["page"]?.ToString() ?? "";
                         }
                         <ul id="main-nav-list" data-visible="false">
-                            <li><a asp-page="/Index" class="@(currentPage.Equals("/Index", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">Home</a></li>
+                            <li><a asp-page="/Index" class="@(currentPageNav.Equals("/Index", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">Home</a></li>
                             <li class="dropdown">
-                                <a asp-page="/Products" class="@(currentPage.StartsWith("/Products", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">Products <i class="fa-solid fa-chevron-down"></i></a>
+                                <a asp-page="/Products" class="@(currentPageNav.StartsWith("/Products", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">Products <i class="fa-solid fa-chevron-down"></i></a>
                                 <ul class="dropdown-menu">
                                     <li><a asp-page="/Products">Products Overview</a></li>
                                     <li><a asp-page="/Products/CoatingGauges">Online Coating Weight Gauges</a></li>
@@ -108,12 +110,12 @@
                                     <li><a asp-page="/Products/UpgradePackage">Upgrade Packages</a></li>
                                 </ul>
                             </li>
-                            <li><a asp-page="/Solutions" class="@(currentPage.Equals("/Solutions", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">Solutions</a></li>
-                            <li><a asp-page="/SpareParts" class="@(currentPage.StartsWith("/SpareParts", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">Spare Parts & Repairs</a></li>
-                            <li><a asp-page="/PerformanceMonitoring" class="@(currentPage.Equals("/PerformanceMonitoring", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">Performance Monitoring</a></li>
-                            <li><a asp-page="/Faq" class="@(currentPage.Equals("/Faq", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">FAQs</a></li>
-                            <li><a asp-page="/AboutUs" class="@(currentPage.Equals("/AboutUs", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">About Us</a></li>
-                            <li><a asp-page="/ContactUs" class="@(currentPage.Equals("/ContactUs", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">Contact Us</a></li>
+                            <li><a asp-page="/Solutions" class="@(currentPageNav.Equals("/Solutions", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">Solutions</a></li>
+                            <li><a asp-page="/SpareParts" class="@(currentPageNav.StartsWith("/SpareParts", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">Spare Parts & Repairs</a></li>
+                            <li><a asp-page="/PerformanceMonitoring" class="@(currentPageNav.Equals("/PerformanceMonitoring", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">Performance Monitoring</a></li>
+                            <li><a asp-page="/Faq" class="@(currentPageNav.Equals("/Faq", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">FAQs</a></li>
+                            <li><a asp-page="/AboutUs" class="@(currentPageNav.Equals("/AboutUs", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">About Us</a></li>
+                            <li><a asp-page="/ContactUs" class="@(currentPageNav.Equals("/ContactUs", StringComparison.OrdinalIgnoreCase) ? "is-active" : "")">Contact Us</a></li>
                         </ul>
                     </nav>
                 </div>
