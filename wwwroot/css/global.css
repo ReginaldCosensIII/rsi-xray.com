@@ -753,6 +753,10 @@ a {
                 color: var(--color-accent-red);
             }
 
+            #main-nav-list a.is-active {
+                color: var(--color-accent-red);
+            }
+
     .main-nav .dropdown {
         padding-bottom: 0;
     }

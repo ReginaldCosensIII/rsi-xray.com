@@ -62,7 +62,12 @@
     <section class="section">
         <div class="container feature-grid">
             <div class="feature-image">
-                <img src="~/images/spares-repairs/rsi-parts-collage.jpg" alt="A wide shot of the RSI warehouse and manufacturing facility.">
+                <picture>
+                    <source srcset="~/images/spares-repairs/rsi-parts-collage-400.webp" media="(max-width: 767px)" type="image/webp">
+                    <source srcset="~/images/spares-repairs/rsi-parts-collage-400.jpg" media="(max-width: 767px)">
+                    <source srcset="~/images/spares-repairs/rsi-parts-collage-600.webp" type="image/webp">
+                    <img src="~/images/spares-repairs/rsi-parts-collage-600.jpg" alt="A wide shot of the RSI warehouse and manufacturing facility." width="600" height="600">
+                </picture>
             </div>
             <div class="feature-content">
                 <h2>The Right Parts, Right When You Need Them</h2>
@@ -86,7 +91,12 @@
                 <a asp-page="/ContactUs" asp-route-subject="Repair Request" class="btn btn-primary">Start a Repair</a>
             </div>
             <div class="feature-image">
-                <img src="~/images/spares-repairs/rsi-factory-floor-expanded.jpg" alt="A view of industrial machinery in the RSI repair workshop.">
+                <picture>
+                    <source srcset="~/images/spares-repairs/rsi-factory-floor-expanded-400.webp" media="(max-width: 767px)" type="image/webp">
+                    <source srcset="~/images/spares-repairs/rsi-factory-floor-expanded-400.jpg" media="(max-width: 767px)">
+                    <source srcset="~/images/spares-repairs/rsi-factory-floor-expanded-600.webp" type="image/webp">
+                    <img src="~/images/spares-repairs/rsi-factory-floor-expanded-600.jpg" alt="A view of industrial machinery in the RSI repair workshop." loading="lazy" width="600" height="450">
+                </picture>
             </div>
         </div>
     </section>
@@ -94,7 +104,12 @@
     <section class="section">
         <div class="container feature-grid">
             <div class="feature-image">
-                <img src="~/images/contact-us/service-thumbnail-768x576.jpg" alt="An RSI service engineer working on a gauging system in the field.">
+                <picture>
+                    <source srcset="~/images/shared/service-thumbnail-400.webp" media="(max-width: 767px)" type="image/webp">
+                    <source srcset="~/images/shared/service-thumbnail-400.jpg" media="(max-width: 767px)">
+                    <source srcset="~/images/shared/service-thumbnail-600.webp" type="image/webp">
+                    <img src="~/images/shared/service-thumbnail-600.jpg" alt="An RSI service engineer working on a gauging system in the field." loading="lazy" width="600" height="450">
+                </picture>
             </div>
             <div class="feature-content">
                 <h2>Factory Support & Service Contracts</h2>

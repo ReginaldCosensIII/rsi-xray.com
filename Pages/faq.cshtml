@@ -20,10 +20,8 @@
 }
 
 @section HeadContent {
-    <!-- Page-specific CSS (global.css + fonts/icons come from _Layout) -->
     <link rel="stylesheet" href="~/css/faq.css" asp-append-version="true" />
 
-    <!-- JSON-LD: FAQPage (questions reflect on-page content) -->
     <script type="application/ld+json">
     @Html.Raw(@"{
       ""@context"": ""https://schema.org"",
@@ -81,7 +79,6 @@
     }")
     </script>
 
-    <!-- JSON-LD: BreadcrumbList -->
     <script type="application/ld+json">
     @Html.Raw(@"{
       ""@context"": ""https://schema.org"",
@@ -94,7 +91,6 @@
     </script>
 }
 
-<!-- ======= FAQ page content (rendered inside _Layout) ======= -->
 <section class="page-hero-section">
     <div class="container">
         <h1>Frequently Asked Questions</h1>
@@ -107,23 +103,41 @@
 
         <div class="image-grid">
             <div class="grid-item">
-                <img src="~/images/faq/rsi-typical-system-config-asset.webp"
-                     asp-append-version="true"
-                     alt="A diagram showing the typical system configuration of an RSI thickness gauge." class="enlarge-on-click" />
+                <picture>
+                    <source srcset="~/images/faq/rsi-typical-system-config-asset-500.webp?v=1" media="(max-width: 767px)" />
+                    <img src="~/images/faq/rsi-typical-system-config-asset.webp"
+                         asp-append-version="true"
+                         alt="A diagram showing the typical system configuration of an RSI thickness gauge."
+                         class="enlarge-on-click"
+                         loading="lazy"
+                         width="1200" height="755" />
+                </picture>
                 <div class="grid-item-caption">RSI GaugeMaster Plus Typical Configuration</div>
             </div>
 
             <div class="grid-item">
-                <img src="~/images/faq/rsi-better-hot-mill-c-frame-diagram.webp"
-                     asp-append-version="true"
-                     alt="A diagram highlighting the special features of a heavy-duty C-frame for steel hot mills." class="enlarge-on-click" />
+                <picture>
+                    <source srcset="~/images/faq/rsi-better-hot-mill-c-frame-diagram-500.webp?v=1" media="(max-width: 767px)" />
+                    <img src="~/images/faq/rsi-better-hot-mill-c-frame-diagram.webp"
+                         asp-append-version="true"
+                         alt="A diagram highlighting the special features of a heavy-duty C-frame for steel hot mills."
+                         class="enlarge-on-click"
+                         loading="lazy"
+                         width="1200" height="773" />
+                </picture>
                 <div class="grid-item-caption">Hot Mill C-Frame Features</div>
             </div>
 
             <div class="grid-item">
-                <img src="~/images/faq/rsi-gaugemaster-plus-cabinet-diagram.webp"
-                     asp-append-version="true"
-                     alt="A diagram showing the internal components of the Main Electronic Cabinet (MEC)." class="enlarge-on-click" />
+                <picture>
+                    <source srcset="~/images/faq/rsi-gaugemaster-plus-cabinet-diagram-500.webp?v=1" media="(max-width: 767px)" />
+                    <img src="~/images/faq/rsi-gaugemaster-plus-cabinet-diagram.webp"
+                         asp-append-version="true"
+                         alt="A diagram showing the internal components of the Main Electronic Cabinet (MEC)."
+                         class="enlarge-on-click"
+                         loading="lazy"
+                         width="1200" height="708" />
+                </picture>
                 <div class="grid-item-caption">Inside the Main Electronic Cabinet</div>
             </div>
         </div>
@@ -175,10 +189,15 @@
                         Our GaugeMaster Plus systems are equipped with various DC X-ray sources suitable for a wide range of materials and thicknesses.
                         The table below outlines the maximum thickness our gauges can measure for both steel and pure aluminum, based on the X-ray source model:
                     </p>
-                    <img src="~/images/faq/rsi-mastergauge-applications-table.png"
-                         asp-append-version="true"
-                         alt="A table showing the maximum measurable thickness for steel and aluminum based on different X-ray source kilovolt (kV) ratings."
-                         class="accordion-image" />
+                    <picture>
+                        <source srcset="~/images/faq/rsi-mastergauge-applications-table-600.webp?v=1" type="image/webp" media="(max-width: 767px)" />
+                        <img src="~/images/faq/rsi-mastergauge-applications-table.png"
+                             asp-append-version="true"
+                             alt="A table showing the maximum measurable thickness for steel and aluminum based on different X-ray source kilovolt (kV) ratings."
+                             class="accordion-image"
+                             loading="lazy"
+                             width="1200" height="718" />
+                    </picture>
                 </div>
             </div>
 
@@ -193,10 +212,15 @@
                         in the lower arm and a detector in the upper arm. By measuring how the material absorbs the x-rays, we can determine its thickness with high
                         accuracy and speed.
                     </p>
-                    <img src="~/images/faq/rsi-c-frame-illustration.jpg"
-                         asp-append-version="true"
-                         alt="Diagram of a C-Frame Gauge"
-                         class="accordion-image" />
+                    <picture>
+                        <source srcset="~/images/faq/rsi-c-frame-illustration-600.webp?v=1" type="image/webp" media="(max-width: 767px)" />
+                        <img src="~/images/faq/rsi-c-frame-illustration.jpg"
+                             asp-append-version="true"
+                             alt="Diagram of a C-Frame Gauge"
+                             class="accordion-image"
+                             loading="lazy"
+                             width="654" height="603" />
+                    </picture>
                 </div>
             </div>
 
@@ -256,7 +280,6 @@
     </div>
 
 @section Scripts {
-    <!-- Page-specific JS -->
     <script src="~/js/faq.js" defer asp-append-version="true"></script>
     <script src="~/js/modal.js" defer asp-append-version="true"></script>
 

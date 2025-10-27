@@ -100,6 +100,16 @@
     border-radius: 10px;
 }
 
+/* Utility to remove border-radius from specific images */
+.feature-image.no-radius {
+    border-radius: 0;
+}
+
+    .feature-image.no-radius img,
+    .feature-image.no-radius picture {
+        border-radius: 0;
+    }
+
 .feature-content h2 {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
