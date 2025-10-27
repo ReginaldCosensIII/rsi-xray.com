@@ -52,8 +52,6 @@ namespace RSIWebsiteBackend
                 });
             });
 
-            // IMPORTANT: Do NOT call builder.WebHost.UseKestrel() for in-process hosting.
-
             var app = builder.Build();
 
             if (!app.Environment.IsDevelopment())
@@ -91,7 +89,16 @@ namespace RSIWebsiteBackend
             app.UseResponseCompression();
             app.UseRateLimiter();
             app.UseStatusCodePagesWithReExecute("/Error/{0}");
-            app.UseStaticFiles();
+
+            // *** CONSOLIDATED STATIC FILES CONFIGURATION ***
+            // This single call will serve static files AND apply caching headers.
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                OnPrepareResponse = ctx =>
+                {
+                    ctx.Context.Response.Headers.Append("Cache-Control", "public,max-age=31536000");
+                }
+            });
 
             app.UseRouting();
             app.UseAuthorization();

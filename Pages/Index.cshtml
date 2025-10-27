@@ -21,7 +21,28 @@
 }
 
 @section HeadContent {
+    @* --- PRELOAD LCP IMAGE FOR HOMEPAGE --- *@
+    <link rel="preload" as="image" href="/images/homepage/hero-background-mobile.webp" media="(max-width: 600px)" fetchpriority="high">
+    <link rel="preload" as="image" href="/images/homepage/hero-background-1536x1152.webp" fetchpriority="high">
+
     <link rel="stylesheet" href="~/css/homepage.css" asp-append-version="true" />
+
+    <!-- Style block for responsive hero image -->
+    <style>
+        .hero-section {
+            /* Fallback for older browsers */
+            background-image: url('/images/homepage/hero-background-1536x1152.jpg');
+            /* Modern format for modern browsers */
+            background-image: url('/images/homepage/hero-background-1536x1152.webp');
+        }
+
+        /* On mobile screens, use a smaller, optimized image */
+        @@media (max-width: 600px) {
+            .hero-section {
+                background-image: url('/images/homepage/hero-background-mobile.webp');
+            }
+        }
+    </style>
 
     <!-- Structured Data: Organization -->
     <script type="application/ld+json">
@@ -110,7 +131,7 @@
                 <div class="card-icon">
                     <i class="fa-solid fa-award" aria-hidden="true"></i>
                 </div>
-                <h3>200+ Years of Experience</h3>
+                <h3>200+ Years of Combined Experience</h3>
                 <p>With the expertise & knowledge to offer new thickness and coating gauges and to extend the lifetime of existing systems. RSI knows gauges better than any other gauge supplier in North America.</p>
             </div>
 
@@ -143,28 +164,43 @@
 
         <div class="services-grid">
             <div class="card">
-                <img src="~/images/homepage/repairs-services-card-800x800.jpg" alt="Upgrade package example" class="card-image-top" asp-append-version="true" />
+                <picture>
+                    <source media="(max-width: 600px)" srcset="~/images/homepage/repairs-services-card-400x400-mobile.webp" type="image/webp">
+                    <source media="(max-width: 600px)" srcset="~/images/homepage/repairs-services-card-400x400-mobile.jpg" type="image/jpeg">
+                    <source srcset="~/images/homepage/repairs-services-card-800x800.webp" type="image/webp">
+                    <img src="~/images/homepage/repairs-services-card-800x800.jpg" alt="Upgrade package example" class="card-image-top" asp-append-version="true" loading="lazy" width="400" height="400" />
+                </picture>
                 <div class="card-content">
                     <h3>Upgrade Packages</h3>
                     <p>The RSI Upgrade Package provides a flexible solution to obsolescence issues of older gauging electronics. Upgrade packages re-use the existing radiation sources and measuring frames and can often re-use or upgrade existing detector units, reducing the cost of new spare parts inventories.</p>
-                    <a href="/Products/UpgradePackage" class="learn-more btn btn-primary" aria-label="Learn more about upgrade packages">Learn More</a>
+                    <a href="/Products/Upgrade-Package" class="learn-more btn btn-primary" aria-label="Learn About Upgrades">Learn About Upgrades</a>
                 </div>
             </div>
             <div class="card">
-                <img src="~/images/homepage/upgrade-package-card-800x800.jpg" alt="Repairs and services" class="card-image-top" asp-append-version="true" />
+                <picture>
+                    <source media="(max-width: 600px)" srcset="~/images/homepage/upgrade-package-card-400x400-mobile.webp" type="image/webp">
+                    <source media="(max-width: 600px)" srcset="~/images/homepage/upgrade-package-card-400x400-mobile.jpg" type="image/jpeg">
+                    <source srcset="~/images/homepage/upgrade-package-card-800x800.webp" type="image/webp">
+                    <img src="~/images/homepage/upgrade-package-card-800x800.jpg" alt="Repairs and services" class="card-image-top" asp-append-version="true" loading="lazy" width="400" height="400" />
+                </picture>
                 <div class="card-content">
                     <h3>Repairs and Parts Services</h3>
                     <p>There’s always the risk that even the best components will fail, impacting the productivity of your plant. A fast and reliable repair service is essential if costly downtime needs to be avoided. Our In-house Repair Services make repairs easy for you.</p>
-                    <a href="/Spare-Parts" class="learn-more btn btn-primary" aria-label="Learn more about repairs and parts services">Learn More</a>
+                    <a href="/Spare-Parts" class="learn-more btn btn-primary" aria-label="Explore Parts & Repairs">Explore Parts & Repairs</a>
                 </div>
             </div>
 
             <div class="card">
-                <img src="~/images/homepage/performance-monitoring-card-800x800.jpg" alt="Performance monitoring" class="card-image-top" asp-append-version="true" />
+                <picture>
+                    <source media="(max-width: 600px)" srcset="~/images/homepage/performance-monitoring-card-400x400-mobile.webp" type="image/webp">
+                    <source media="(max-width: 600px)" srcset="~/images/homepage/performance-monitoring-card-400x400-mobile.jpg" type="image/jpeg">
+                    <source srcset="~/images/homepage/performance-monitoring-card-800x800.webp" type="image/webp">
+                    <img src="~/images/homepage/performance-monitoring-card-800x800.jpg" alt="Performance monitoring" class="card-image-top" asp-append-version="true" loading="lazy" width="400" height="400" />
+                </picture>
                 <div class="card-content">
                     <h3>Performance Monitoring</h3>
                     <p>Real-time software provides high performance accuracy while being versatile for the end-user. From temperature and coatings to changes in alloys, RSI can provide dynamic calculations and corrections for most situations.</p>
-                    <a href="/Performance-Monitoring" class="learn-more btn btn-primary" aria-label="Learn more about performance monitoring">Learn More</a>
+                    <a href="/Performance-Monitoring" class="learn-more btn btn-primary" aria-label="Discover Monitoring Solutions">Discover Monitoring Solutions</a>
                 </div>
             </div>
         </div>

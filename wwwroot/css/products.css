@@ -5,10 +5,10 @@
    ================================================================= */
 
 /* --- 1. Intro Section & Carousel --- */
-    .intro-section-wrapper .section-heading,
-    .intro-section-wrapper .section-intro-text {
-        color: #333;
-    }
+.intro-section-wrapper .section-heading,
+.intro-section-wrapper .section-intro-text {
+    color: #333;
+}
 
 .spotlight-carousel-container {
     position: relative;
@@ -92,7 +92,7 @@
         color: black;
     }
 
-.spotlight-content h4 {
+.spotlight-content h3 {
     margin: 0 0 0.5rem 0;
     font-size: 1.5rem;
     color: #333;
@@ -132,12 +132,10 @@
 
 /* --- 2. Main Product Sections (Alternating) --- */
 .product-feature-grid .feature-content h2 {
-    /* UPDATED: Increased space below the heading */
     margin-bottom: 2rem;
 }
 
 .product-feature-grid .feature-content p {
-    /* UPDATED: Increased space below the paragraph */
     margin-bottom: 2rem;
 }
 
@@ -164,7 +162,7 @@
 }
 
 .vertical-product-card .btn-group {
-    gap: 2.5rem; /* Adjust this value as needed */
+    gap: 2.5rem;
 }
 
 /* --- 3. Two-Column Vertical Product Section --- */
@@ -189,6 +187,8 @@
         margin-bottom: 1.5rem;
     }
 
+    /* === UPDATED RULES START === */
+    /* This rule will make both images the same height by enforcing a 16:9 aspect ratio and cropping the image to fit. */
     .vertical-product-card img {
         width: 100%;
         border-radius: 8px;
@@ -196,6 +196,7 @@
         aspect-ratio: 16 / 9;
         object-fit: cover;
     }
+    /* === UPDATED RULES END === */
 
     .vertical-product-card p {
         font-size: 1.1rem;
@@ -249,7 +250,7 @@
         margin-top: 5px;
     }
 
-    .spotlight-mobile-content h4 {
+    .spotlight-mobile-content h3 {
         margin: 0 0 0.5rem 0;
         font-size: 1.25rem;
         color: #333;
@@ -269,4 +270,3 @@
         text-align: center;
     }
 }
-

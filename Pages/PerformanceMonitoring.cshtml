@@ -57,8 +57,13 @@
 
     <section class="section">
         <div class="container feature-grid">
-            <div class="feature-image">
-                <img src="~/images/performance-monitoring/rsi-typical-gauge-display.webp" alt="Operator monitoring multiple screens showing system performance data in a control room.">
+            <div class="feature-image no-radius">
+                <picture>
+                    <source srcset="~/images/performance-monitoring/rsi-typical-gauge-display-400.webp" media="(max-width: 600px)" type="image/webp">
+                    <source srcset="~/images/performance-monitoring/rsi-typical-gauge-display-400.jpg" media="(max-width: 600px)">
+                    <source srcset="~/images/performance-monitoring/rsi-typical-gauge-display-600.webp" type="image/webp">
+                    <img src="~/images/performance-monitoring/rsi-typical-gauge-display-600.jpg" alt="Operator monitoring multiple screens showing system performance data in a control room." width="600" height="434">
+                </picture>
             </div>
             <div class="feature-content">
                 <h2>Hardware & Software, Fully Integrated</h2>
@@ -82,15 +87,25 @@
                 <a asp-page="/ContactUs" asp-route-subject="Service Request" class="btn btn-primary">Schedule Maintenance</a>
             </div>
             <div class="feature-image">
-                <img src="~/images/performance-monitoring/performance-monitoring-card-768x576.jpg" alt="Screenshot of the RSI Technician's Terminal displaying gauge status, alarms, and thickness data.">
+                <picture>
+                    <source srcset="~/images/shared/technician-monitoring-data-400.webp" media="(max-width: 600px)" type="image/webp">
+                    <source srcset="~/images/shared/technician-monitoring-data-400.jpg" media="(max-width: 600px)">
+                    <source srcset="~/images/shared/technician-monitoring-data-600.webp" type="image/webp">
+                    <img src="~/images/shared/technician-monitoring-data-600.jpg" alt="Screenshot of the RSI Technician's Terminal displaying gauge status, alarms, and thickness data." loading="lazy" width="600" height="450">
+                </picture>
             </div>
         </div>
     </section>
 
     <section class="section">
         <div class="container feature-grid">
-            <div class="feature-image">
-                <img src="~/images/performance-monitoring/rsi-coil-report-package.png" alt="Example of an RSI coil report showing statistical data, standard deviation, and violation segments.">
+            <div class="feature-image no-radius">
+                <picture>
+                    <source srcset="~/images/performance-monitoring/rsi-coil-report-package-400.webp" media="(max-width: 600px)" type="image/webp">
+                    <source srcset="~/images/performance-monitoring/rsi-coil-report-package-400.png" media="(max-width: 600px)">
+                    <source srcset="~/images/performance-monitoring/rsi-coil-report-package-600.webp" type="image/webp">
+                    <img src="~/images/performance-monitoring/rsi-coil-report-package-600.png" alt="Example of an RSI coil report showing statistical data, standard deviation, and violation segments." loading="lazy" width="600" height="364">
+                </picture>
             </div>
             <div class="feature-content">
                 <h2>Detailed Coil Reporting & Analysis</h2>

@@ -21,8 +21,8 @@
 
 
 /* =================================================================
-   0) THEME TOKENS (VARIABLES)
-   ================================================================= */
+    0) THEME TOKENS (VARIABLES)
+    ================================================================= */
 :root {
     /* Accent Colors */
     --color-accent-yellow: #f1c40f;
@@ -55,8 +55,8 @@
 
 
 /* =================================================================
-   1) RESETS & BASE STYLES
-   ================================================================= */
+    1) RESETS & BASE STYLES
+    ================================================================= */
 *,
 *::before,
 *::after {
@@ -74,8 +74,8 @@ body {
 
 
 /* =================================================================
-   2) TYPOGRAPHY
-   ================================================================= */
+    2) TYPOGRAPHY
+    ================================================================= */
 h1, h2, h3, h4 {
     font-family: var(--font-heading);
     color: var(--color-primary);
@@ -117,10 +117,9 @@ a {
     font-style: italic;
 }
 
-
 /* =================================================================
-   3) LAYOUT HELPERS
-   ================================================================= */
+    3) LAYOUT HELPERS
+    ================================================================= */
 .container {
     max-width: 1280px;
     margin-left: auto;
@@ -151,11 +150,12 @@ a {
 }
 
 /* =================================================================
-   4) REUSABLE SECTIONS
-   ================================================================= */
+    4) REUSABLE SECTIONS (CORRECTED HERO & CTA)
+    ================================================================= */
+
+/* --- Page Hero Section --- */
 .page-hero-section {
     padding: 4rem 0;
-    background-image: linear-gradient(rgba(255,0,0,.7), rgba(255,0,0,.7)), url('/images/homepage/full-width-hero-bg.jpg');
     background-size: cover;
     background-position: center;
     text-align: center;
@@ -166,13 +166,13 @@ a {
         font-size: 3rem;
     }
 
+/* --- CTA Section --- */
 .cta-section {
     display: flex;
     flex-direction: column;
     justify-content: center;
     min-height: 50vh;
     padding: 4rem 0;
-    background-image: linear-gradient(rgba(175,175,175,.9), rgba(212,212,212,.9)), url('/images/homepage/full-width-hero-bg.jpg');
     background-size: cover;
     background-position: center;
     text-align: center;
@@ -189,9 +189,53 @@ a {
         margin: 1rem auto 1.5rem;
     }
 
+/* --- Background Image Logic for Hero & CTA --- */
+
+/* Fallback for browsers WITHOUT WebP support */
+.no-webp .page-hero-section {
+    background-image: linear-gradient(rgba(255, 0, 0, 0.75), rgba(255, 0, 0, 0.75)), url(../images/shared/full-width-hero-bg.jpg);
+}
+
+.no-webp .cta-section {
+    background-image: linear-gradient(rgba(175, 175, 175, 0.9), rgba(212, 212, 212, 0.9)), url(../images/shared/full-width-hero-bg.jpg);
+}
+
+/* Modern version for browsers WITH WebP support */
+.webp .page-hero-section {
+    background-image: linear-gradient(rgba(255, 0, 0, 0.75), rgba(255, 0, 0, 0.75)), url(../images/shared/full-width-hero-bg.webp);
+}
+
+.webp .cta-section {
+    background-image: linear-gradient(rgba(175, 175, 175, 0.9), rgba(212, 212, 212, 0.9)), url(../images/shared/full-width-hero-bg.webp);
+}
+
+/* * CORRECTED MOBILE-SPECIFIC BACKGROUND IMAGES 
+ * (This block now includes the gradients)
+ */
+@media (max-width: 600px) {
+    /* --- Mobile Fallbacks (no-webp) --- */
+    .no-webp .page-hero-section {
+        background-image: linear-gradient(rgba(255, 0, 0, 0.75), rgba(255, 0, 0, 0.75)), url(../images/shared/full-width-hero-bg-mobile.jpg);
+    }
+
+    .no-webp .cta-section {
+        background-image: linear-gradient(rgba(175, 175, 175, 0.9), rgba(212, 212, 212, 0.9)), url(../images/shared/full-width-hero-bg-mobile.jpg);
+    }
+
+    /* --- Mobile Modern (webp) --- */
+    .webp .page-hero-section {
+        background-image: linear-gradient(rgba(255, 0, 0, 0.75), rgba(255, 0, 0, 0.75)), url(../images/shared/full-width-hero-bg-mobile.webp);
+    }
+
+    .webp .cta-section {
+        background-image: linear-gradient(rgba(175, 175, 175, 0.9), rgba(212, 212, 212, 0.9)), url(../images/shared/full-width-hero-bg-mobile.webp);
+    }
+}
+
+
 /* =================================================================
-   5) BUTTONS
-   ================================================================= */
+    5) BUTTONS
+    ================================================================= */
 .btn {
     display: inline-block;
     padding: 0.5rem 1.5rem;
@@ -236,8 +280,8 @@ a {
 
 
 /* =================================================================
-   6) CARDS
-   ================================================================= */
+    6) CARDS
+    ================================================================= */
 .card {
     display: flex;
     flex-direction: column;
@@ -293,8 +337,8 @@ a {
 
 
 /* =================================================================
-   7) HEADER & NAVIGATION (REBUILT & FIXED)
-   ================================================================= */
+    7) HEADER & NAVIGATION (REBUILT & FIXED)
+    ================================================================= */
 .site-header {
     position: sticky;
     top: 0;
@@ -320,17 +364,6 @@ a {
 
 .motto-highlight {
     color: var(--color-accent-red);
-}
-
-/* --- Responsive Adjustments for Header --- */
-@media (max-width: 768px) {
-    .header-motto {
-        display: none;
-    }
-
-    .top-bar-content {
-        justify-content: flex-end; /* Re-center contact info on mobile */
-    }
 }
 
 .top-bar-contact-group {
@@ -410,7 +443,6 @@ a {
 /* --- Dropdown Menu Base --- */
 .main-nav .dropdown {
     position: relative;
-    /* FIX: Add padding to create the hover "bridge" */
     padding-bottom: 0.0rem;
 }
 
@@ -424,7 +456,6 @@ a {
     border-top: 3px solid var(--color-accent-red);
     list-style: none;
     padding: 0.5rem 0;
-    /* FIX: Removed margin-top to close the gap */
     margin: 0;
     min-width: 280px;
     z-index: 1010;
@@ -446,29 +477,9 @@ a {
     transition: transform 0.3s ease;
 }
 
-/* --- Desktop-Specific Styles (1100.02px and up) --- */
-@media (min-width: 1100.02px) {
-    .mobile-nav-toggle {
-        display: none;
-    }
-
-    .main-nav .dropdown:hover .dropdown-menu {
-        display: block;
-    }
-
-    .main-nav .dropdown-menu li a:hover {
-        background-color: #f5f5f5;
-        color: var(--color-accent-red);
-    }
-
-    .main-nav .dropdown:hover > a .fa-chevron-down {
-        transform: rotate(180deg);
-    }
-}
-
 /* =================================================================
-   8) FOOTER
-   ================================================================= */
+    8) FOOTER
+    ================================================================= */
 .site-footer {
     padding: 2.5rem 0 0;
     background-color: var(--color-background-dark);
@@ -544,29 +555,25 @@ a {
     color: var(--color-accent-red);
 }
 
-/* --- Footer Logo Text --- */
 .site-footer a.footer-logo-text,
 .site-footer a.footer-logo-text:visited,
 .site-footer a.footer-logo-text:hover {
-    color: var(--color-accent-red); /* Ensures color is ALWAYS red */
-    text-decoration: none; /* Ensures NO underline appears */
-    display: inline-block; /* Required for transforms to work on inline elements like <a> */
+    color: var(--color-accent-red);
+    text-decoration: none;
+    display: inline-block;
     transform: skewX(-10deg);
 }
 
-/* This rule holds the basic font styling */
 .footer-logo-text {
     font-family: "Arial Black", Gadget, sans-serif;
     font-size: 3.75rem;
-    font-style: italic; /* Use the browser's native italic */
+    font-style: italic;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* =================================================================
-   9) MODALS (LIGHTBOX & CONTENT)
-   ================================================================= */
-
-/* --- Image Lightbox Modal --- */
+    9) MODALS (LIGHTBOX & CONTENT)
+    ================================================================= */
 .enlarge-on-click {
     cursor: zoom-in;
 }
@@ -632,70 +639,9 @@ a {
         color: var(--color-gray-300);
     }
 
-/* --- Content Modal (e.g., Solutions Page) --- */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    inset: 0;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.6);
-    animation: fadeIn 0.3s;
-}
-
-    .modal .modal-content {
-        background-color: #fff;
-        margin: 5% auto;
-        padding: 2rem;
-        border: 1px solid #888;
-        width: 80%;
-        max-width: 1200px;
-        border-radius: 8px;
-        position: relative;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        animation: slideIn 0.3s;
-    }
-
-.close-btn {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    position: absolute;
-    top: 10px;
-    right: 25px;
-}
-
-    .close-btn:hover,
-    .close-btn:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
-    }
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes slideIn {
-    from {
-        transform: translateY(-50px);
-    }
-
-    to {
-        transform: translateY(0);
-    }
-}
-
 /* =================================================================
-   10) UTILITIES & ALERTS
-   ================================================================= */
+    10) UTILITIES & ALERTS
+    ================================================================= */
 .visually-hidden {
     position: absolute;
     width: 1px;
@@ -728,10 +674,27 @@ a {
 
 
 /* =================================================================
-   11) RESPONSIVE STYLES (REBUILT FOR NAVIGATION)
-   ================================================================= */
+    11) RESPONSIVE STYLES (REBUILT FOR NAVIGATION)
+    ================================================================= */
+@media (min-width: 1100.02px) {
+    .mobile-nav-toggle {
+        display: none;
+    }
 
-/* --- Mobile Navigation (1100px and down) --- */
+    .main-nav .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+
+    .main-nav .dropdown-menu li a:hover {
+        background-color: #f5f5f5;
+        color: var(--color-accent-red);
+    }
+
+    .main-nav .dropdown:hover > a .fa-chevron-down {
+        transform: rotate(180deg);
+    }
+}
+
 @media (max-width: 1100px) {
     .mobile-nav-toggle {
         display: block;
@@ -790,8 +753,12 @@ a {
                 color: var(--color-accent-red);
             }
 
+            #main-nav-list a.is-active {
+                color: var(--color-accent-red);
+            }
+
     .main-nav .dropdown {
-        padding-bottom: 0; /* Reset desktop padding */
+        padding-bottom: 0;
     }
 
     .main-nav .dropdown-menu {
@@ -828,8 +795,15 @@ a {
         }
 }
 
-/* --- Small Mobile & Footer Adjustments --- */
 @media (max-width: 768px) {
+    .header-motto {
+        display: none;
+    }
+
+    .top-bar-content {
+        justify-content: flex-end;
+    }
+
     #main-nav-list {
         inset: 0 0 0 20%;
     }

@@ -1,8 +1,20 @@
 ﻿/* --- Page-Specific Section Layouts --- */
+/* Fallback for browsers WITHOUT WebP support */
+.no-webp .dark-bg-section {
+    background-image: linear-gradient(rgba(39, 39, 39, 0.87), rgba(134, 134, 134, 0.77)), url(/images/textures/gravel.png);
+}
+
+/* Modern version for browsers WITH WebP support */
+.webp .dark-bg-section {
+    background-image: linear-gradient(rgba(39, 39, 39, 0.87), rgba(134, 134, 134, 0.7)), url(/images/textures/gravel.webp);
+}
+
+/* Shared styles for both versions */
 .dark-bg-section {
-    background-image: linear-gradient(rgba(39, 39, 39, 0.97), rgba(134, 134, 134, 0.97)), url('/images/textures/gravel.png');
+    background-color: #333;
     background-size: auto;
     background-position: center;
+    color: #fff;
 }
 
     .dark-bg-section h2 {
@@ -106,10 +118,11 @@
 }
 
 .slogan-text span {
+    font-family: "Arial Black", Arial, sans-serif;
     color: var(--color-accent-red);
     font-style: italic;
     font-size: 2.2rem;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 
 /* --- Timeline Diagram --- */
