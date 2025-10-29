@@ -78,10 +78,12 @@ namespace RSIWebsiteBackend
                     "frame-ancestors 'self'; " +
                     "upgrade-insecure-requests; " +
                     "img-src 'self' data: https://maps.googleapis.com https://maps.gstatic.com; " +
-                    "script-src 'self' 'unsafe-inline' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; " +
+                    "script-src 'self' 'unsafe-inline' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/ https://www.googletagmanager.com https://*.google-analytics.com; " +
                     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; " +
                     "font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; " +
-                    "frame-src https://www.google.com/;";
+                    "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; " +
+                    "frame-src https://www.google.com/;"; // Existing frame-src for reCaptcha
+
 
                 await next();
             });
