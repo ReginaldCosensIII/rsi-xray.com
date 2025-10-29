@@ -46,12 +46,28 @@
 .contact-info-card {
     background-color: var(--color-background-alt);
     padding: 2rem;
-    border-radius: 0.625rem; 
+    border-radius: 0.625rem;
     margin-bottom: 2rem;
 }
-.contact-info-card .contact-item {
-    margin-bottom: 1rem;
-}
+
+    .contact-info-card .contact-item {
+        margin-bottom: 1rem;
+    }
+
+        /* New Rule: Make all icons red */
+        .contact-info-card .contact-item i {
+            color: var(--color-accent-yellow);
+        }
+
+        /* New Rule: Make all links black by default (e.g., address, main phone) */
+        .contact-info-card .contact-item a {
+            color: var(--color-primary); /* Uses your global.css variable for black text */
+        }
+
+        /* New Rule: Target the LAST contact item (hotline) and make its link red */
+        .contact-info-card .contact-item:last-child a {
+            color: var(--color-accent-red);
+        }
 
 .card-email {
     font-size: 0.9rem;
